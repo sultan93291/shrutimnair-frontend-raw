@@ -3,64 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RedSiraffe - Pay Rent</title>
+  <title>RedGirraffe</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            LightGreen: "#80FFE84D",
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+          },
+          boxShadow: {
+            TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+          },
+          borderRadius: {
+            lg: "1rem",
+            md: "0.75rem",
+            sm: "0.5rem",
+          },
+          screens: {
+            xs: "360px",
+            sm: "480px",
+            md: "576px",
+            lg: "768px",
+            xl: "992px",
+            "2xl": "1200px",
+            "3xl": "1500px",
+            "4xl": "1920px",
+          },
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-gray-50 min-h-screen p-6">
-  <div class="max-w-4xl mx-auto">
+<body>
+  <!-- step form section started here -->
+  <div class="mx-auto pt-[205px] pb-[119px] flex items-center flex-col gap-y-[205px]">
     <!-- Header -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-800">RedSiraffe</h1>
-      <h2 class="text-2xl font-semibold text-gray-700 mt-2">Pay Rent</h2>
-    </div>
-
-    <!-- Progress Steps -->
-    <div class="flex justify-between mb-10 relative">
-      <!-- Progress line -->
-      <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -z-10"></div>
-      <div class="absolute top-1/2 left-0 h-1 bg-blue-600 -z-10" id="progress-line" style="width: 16.66%"></div>
-
-      <!-- Steps -->
-      <div class="step active" data-step="1">
-        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2">1</div>
-        <span class="text-sm font-medium text-gray-700">Tenant Details</span>
-      </div>
-      <div class="step" data-step="2">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          2</div>
-        <span class="text-sm font-medium text-gray-700">Rental Details</span>
-      </div>
-      <div class="step" data-step="3">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          3</div>
-        <span class="text-sm font-medium text-gray-700">Owner Details</span>
-      </div>
-      <div class="step" data-step="4">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          4</div>
-        <span class="text-sm font-medium text-gray-700">Owner Accounts</span>
-      </div>
-      <div class="step" data-step="5">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          5</div>
-        <span class="text-sm font-medium text-gray-700">File Upload</span>
-      </div>
-      <div class="step" data-step="6">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          6</div>
-        <span class="text-sm font-medium text-gray-700">Summary</span>
-      </div>
+    <div class="text-center">
+      <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay Rent</h2>
     </div>
 
     <!-- Form Container -->
-    <div class="bg-white rounded-lg shadow-md p-6">
+    <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+      class="bg-white rounded-lg w-[1700px] rounded-[54px] px-[170px] pt-[198px] pb-[112px] relative">
+
+      <!-- Progress Steps -->
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+        class="absolute w-[1500px] bg-white top-0 left-1/2 transform -translate-x-1/2 py-[55.75px] px-[70.23px] rounded-[30px] mt-[-80px]">       
+        <div class="flex justify-between items-center relative">
+          <!-- Steps -->
+          <div class="step flex flex-col gap-y-3" data-step="1">
+            <div class="w-[220px] bg-[#2F5D50] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#2F5D50" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">Tenant Details</span>
+            </div>
+          </div>
+
+          <div class="step flex flex-col gap-y-3" data-step="2">
+            <div class="w-[220px] bg-[#C1C9D2] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#C1C9D2" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">Rental Details</span>
+            </div>
+          </div>
+
+          <div class="step flex flex-col gap-y-3" data-step="3">
+            <div class="w-[220px] bg-[#C1C9D2] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#C1C9D2" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">Owner Details</span>
+            </div>
+          </div>
+
+          <div class="step flex flex-col gap-y-3" data-step="4">
+            <div class="w-[220px] bg-[#C1C9D2] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#C1C9D2" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">Owner Accounts</span>
+            </div>
+          </div>
+
+          <div class="step flex flex-col gap-y-3" data-step="5">
+            <div class="w-[220px] bg-[#C1C9D2] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#C1C9D2" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">File Upload</span>
+            </div>
+          </div>
+
+          <div class="step flex flex-col gap-y-3" data-step="6">
+            <div class="w-[220px] bg-[#C1C9D2] h-[5.83px] rounded-full step-progress"></div>
+            <div class="flex flex-row items-center gap-x-1">
+              <div class="step-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z"
+                    fill="#C1C9D2" />
+                </svg>
+              </div>
+              <span class="text-[17.407px] leading-[131.78%] font-medium step-text">Summary</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Tenant Details Section -->
-      <div id="tenant-details" class="step-content active" data-step="1">
+      <div id="tenant-details" class="step-content" data-step="1">
         <h3 class="text-xl font-semibold text-gray-800 mb-6">Tenant Details</h3>
 
         <div class="mb-4">
@@ -253,14 +337,21 @@
       const prevButtons = document.querySelectorAll('.prev-step');
       const submitButton = document.getElementById('submit-form');
 
+      // Define step colors
+      const stepColors = {
+        1: "#2F5D50",    // Tenant Details
+        2: "#5469D4",    // Rental Details
+        3: "#4A3B2C",    // Owner Details
+        4: "#1D1842",    // Owner Accounts
+        5: "#1F2526",    // File Upload
+        6: "#B01842"     // Summary
+      };
+
       let currentStep = 1; // Start at Tenant Details (step 1)
 
       // Initialize the form
       updateProgress();
       showCurrentStep();
-
-      // Load saved data if it exists
-      loadFormData();
 
       // Next button click handler
       nextButtons.forEach(button => {
@@ -299,24 +390,51 @@
       function updateProgress() {
         // Update progress line
         const progressPercentage = ((currentStep - 1) / (steps.length - 1)) * 100;
-        progressLine.style.width = `${progressPercentage}%`;
+        if (progressLine) {
+          progressLine.style.width = `${progressPercentage}%`;
+          progressLine.style.backgroundColor = stepColors[currentStep];
+        }
 
         // Update step indicators
         steps.forEach(step => {
           const stepNumber = parseInt(step.getAttribute('data-step'));
-          const stepCircle = step.querySelector('div');
+          const progressBar = step.querySelector('.step-progress');
+          const stepIcon = step.querySelector('.step-icon svg path');
+          const stepText = step.querySelector('.step-text');
 
-          stepCircle.classList.remove(
-            'bg-blue-600', 'bg-green-500', 'text-white',
-            'bg-white', 'border-gray-300', 'text-gray-600', 'border-2'
-          );
+          // Reset all steps
+          step.classList.remove('active', 'completed');
+          if (progressBar) progressBar.style.backgroundColor = '#C1C9D2';
+          if (stepIcon) stepIcon.setAttribute('fill', '#C1C9D2');
+          if (stepText) stepText.style.color = '#697386';
 
+          // Update step states
           if (stepNumber < currentStep) {
-            stepCircle.classList.add('bg-green-500', 'text-white');
+            // Completed step
+            step.classList.add('completed');
+            if (progressBar) progressBar.style.backgroundColor = stepColors[stepNumber];
+            if (stepIcon) {
+              // Replace with checkmark for completed steps
+              stepIcon.parentElement.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M23.9491 11.9136C23.9491 18.1547 18.8897 23.2141 12.6486 23.2141C6.40752 23.2141 1.34814 18.1547 1.34814 11.9136C1.34814 5.67253 6.40752 0.613159 12.6486 0.613159C18.8897 0.613159 23.9491 5.67253 23.9491 11.9136ZM11.3415 17.8971L19.7257 9.51291C20.0104 9.22821 20.0104 8.76658 19.7257 8.48188L18.6947 7.45085C18.41 7.16611 17.9483 7.16611 17.6636 7.45085L10.826 14.2885L7.63362 11.0961C7.34892 10.8114 6.88729 10.8114 6.60254 11.0961L5.57151 12.1271C5.28681 12.4118 5.28681 12.8735 5.57151 13.1582L10.3104 17.8971C10.5952 18.1818 11.0567 18.1818 11.3415 17.8971V17.8971Z" fill="${stepColors[stepNumber]}"/>
+                </svg>
+              `;
+            }
+            if (stepText) stepText.style.color = stepColors[stepNumber];
           } else if (stepNumber === currentStep) {
-            stepCircle.classList.add('bg-blue-600', 'text-white');
-          } else {
-            stepCircle.classList.add('bg-white', 'border-2', 'border-gray-300', 'text-gray-600');
+            // Active step
+            step.classList.add('active');
+            if (progressBar) progressBar.style.backgroundColor = stepColors[stepNumber];
+            if (stepIcon) {
+              // Active step icon
+              stepIcon.parentElement.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M11.8918 0.613159C5.65068 0.613159 0.591309 5.67253 0.591309 11.9136C0.591309 18.1547 5.65068 23.2141 11.8918 23.2141C18.1329 23.2141 23.1922 18.1547 23.1922 11.9136C23.1922 5.67253 18.1329 0.613159 11.8918 0.613159ZM15.5371 11.9136C15.5371 13.9236 13.9018 15.5589 11.8918 15.5589C9.88175 15.5589 8.24646 13.9236 8.24646 11.9136C8.24646 9.9036 9.88175 8.26831 11.8918 8.26831C13.9018 8.26831 15.5371 9.9036 15.5371 11.9136Z" fill="${stepColors[stepNumber]}"/>
+                </svg>
+              `;
+            }
+            if (stepText) stepText.style.color = stepColors[stepNumber];
           }
         });
       }
@@ -326,14 +444,12 @@
         // Hide all step contents first
         stepContents.forEach(content => {
           content.classList.add('hidden');
-          content.classList.remove('active');
         });
 
         // Show only the current step content
         const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
         if (currentContent) {
           currentContent.classList.remove('hidden');
-          currentContent.classList.add('active');
 
           // Special handling for summary step
           if (currentStep === 6) {
@@ -430,9 +546,9 @@
               const item = document.createElement('div');
               item.className = 'border-b border-gray-200 pb-2';
               item.innerHTML = `
-                                <p class="font-medium text-gray-700">${formattedKey}</p>
-                                <p class="text-gray-600">${value}</p>
-                            `;
+                  <p class="font-medium text-gray-700">${formattedKey}</p>
+                  <p class="text-gray-600">${value}</p>
+                `;
               summaryContainer.appendChild(item);
             }
           }
@@ -440,29 +556,16 @@
       }
     });
   </script>
-
-  <style>
-    .step {
-      cursor: pointer;
-      text-align: center;
-      flex: 1;
-      position: relative;
-    }
-
-    .step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 16px;
-      right: -50%;
-      width: 100%;
-      height: 2px;
-      background-color: transparent;
-      z-index: -1;
-    }
-
-    .step-content {
-      transition: all 0.3s ease;
-    }
-  </style>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 700,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+      });
+    });
+  </script>
 </body>
 </html>
