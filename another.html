@@ -40,60 +40,7 @@
     }
   </script>
   <style>
-    .input-label {
-      font-size: 18px;
-      font-weight: 500;
-      color: #2F5D50;
-      margin-bottom: 8px;
-    }
 
-    .input-label span {
-      color: #D80027;
-    }
-
-    .input-styles {
-      border: 1px solid #D1D5DB;
-      border-radius: 8px;
-      padding: 15px 20px;
-      width: 100%;
-      font-size: 16px;
-    }
-
-    .input-styles:focus {
-      outline: none;
-      border-color: #2F5D50;
-    }
-
-    .btn-primary {
-      background-color: #2F5D50;
-      color: white;
-      padding: 15px 30px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 18px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-      background-color: #1E3E34;
-    }
-
-    .btn-outline {
-      background-color: white;
-      color: #2F5D50;
-      border: 1px solid #2F5D50;
-      padding: 15px 30px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 18px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-outline:hover {
-      background-color: #F0F7F5;
-    }
   </style>
 </head>
 <body>
@@ -545,20 +492,72 @@
           </div>
           <!-- Step 6: Summary -->
           <div id="summary" class="step-content hidden" data-step="6">
-            <div class="flex flex-col gap-y-[50px]">
-              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Summary</h3>
-              <div id="summary-content" class="flex flex-col gap-y-[25px]">
-                <!-- Summary will be dynamically populated -->
+            <!-- Summary Header -->
+            <div class="summary-header flex items-center justify-between">
+              <h3 class="text-[#2F5D50] text-[24px] font-semibold">
+                Summary of Your Details
+              </h3>
+              <div class="flex items-center gap-[10px]">
+                <img src="./assests/img/edit.svg" alt="Edit Icon" />
+                <p class="text-[#2F5D50] text-[24px] font-semibold underline cursor-pointer">
+                  Edit Details
+                </p>
+              </div>
+            </div>
+            <!-- Summary Details -->
+            <div class="flex flex-col gap-[139px]">
+              <!-- Tenant Details -->
+              <div class="mt-[50px]" id="tenant-details-summary">
+                <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                  Tenant Details
+                </h3>
+                <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+                </div>
+              </div>
+              <!-- Rental Details -->
+              <div id="rental-details-summary">
+                <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                  Rental Details
+                </h3>
+                <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+                </div>
+              </div>
+              <!-- Owner Details -->
+              <div id="owner-details-summary">
+                <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                  Owner Details
+                </h3>
+                <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+                </div>
+              </div>
+              <!-- Owner Accounts -->
+              <div id="owner-accounts-summary">
+                <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                  Owner Account
+                </h3>
+                <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+                </div>
+              </div>
+              <!-- Files Added -->
+              <div id="files-summary">
+                <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                  Files Added
+                </h3>
+                <div class="image-container flex space-x-4 mt-[44px]">
+                </div>
               </div>
             </div>
           </div>
-          <div class="flex flex-row items-center mt-[94px] gap-x-[36px]">
-            <div class="flex prev-step items-center group" style="display: none;">
+          <!-- Navigation Buttons -->
+          <div class="form-button-container flex flex-row items-center mt-[94px] gap-x-[36px]">
+            <!-- Prev Button (hidden on step 1) -->
+            <div class="flex prev-step items-center group" style="display: none">
               <button
                 class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
                 Prev Step
               </button>
             </div>
+            <!-- Next Button -->
             <div class="flex next-step items-center group">
               <button
                 class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
@@ -576,6 +575,11 @@
               </div>
             </div>
           </div>
+          <!-- Submit Button -->
+          <button type="submit"
+            class="submit-button bg-[#D80027] py-[37px] rounded-[54px] flex items-center justify-center text-[20px] font-extrabold text-[#fff] hidden">
+            Submit Your Application
+          </button>
         </div>
       </div>
     </div>
@@ -595,6 +599,7 @@
         prevButton: document.querySelector('.prev-step'),
         nextButtons: document.querySelectorAll('.next-step button'),
         prevButtons: document.querySelectorAll('.prev-step button'),
+        buttonContainer: document.querySelector(".form-button-container"),
         activeProgressBar: document.querySelector(".progres-width"),
         stepLabels: document.querySelectorAll('.step-label'),
         activePercent: document.querySelector(".active-percent"),
@@ -602,7 +607,13 @@
         addMoreButton: document.getElementById("addMoreButton"),
         dropzoneTemplate: document.querySelector('#dropzone-template'),
         ownerAccountContainer: document.getElementById("owner-account-container"),
-        summaryContent: document.getElementById("summary-content")
+        tenantDetailsSummary: document.getElementById("tenant-details-summary").querySelector('.details'),
+        rentalDetailsSummary: document.getElementById("rental-details-summary").querySelector('.details'),
+        ownerDetailsSummary: document.getElementById("owner-details-summary").querySelector('.details'),
+        ownerAccountsSummary: document.getElementById("owner-accounts-summary").querySelector('.details'),
+        filesSummary: document.getElementById("files-summary").querySelector('.flex'),
+        editDetailsButton: document.querySelector("#summary[data-step='6'] .summary-header p"),
+        submitButton: document.querySelector('.submit-button')
       };
 
       // Validation rules for all fields
@@ -676,7 +687,7 @@
         dropzones.forEach((wrapper, index) => {
           const idx = index + 1;
           validationRules[`file_upload_${idx}`] = {
-            required: idx === 1, // Only the first file upload is required
+            required: idx === 1,
             validate: () => {
               const fileInput = wrapper.querySelector('.file-input');
               if (!fileInput.files.length && idx === 1) return false;
@@ -809,6 +820,20 @@
             prevStep();
           });
         });
+
+        // Edit Details functionality
+        domElements.editDetailsButton.addEventListener('click', function () {
+          formState.currentStep = 1;
+          showCurrentStep();
+        });
+
+        // Submit button
+        domElements.submitButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (formState.currentStep === formState.totalSteps && validateCurrentStep()) {
+            submitForm();
+          }
+        });
       }
 
       function initForm() {
@@ -859,16 +884,16 @@
       function updateNavigationButtons() {
         domElements.prevButton.style.display = formState.currentStep === 1 ? 'none' : 'flex';
         domElements.nextButtons.forEach(btn => {
-          btn.textContent = formState.currentStep === formState.totalSteps ? 'Submit' : 'Next Step';
+          btn.parentElement.style.display = formState.currentStep === formState.totalSteps ? 'none' : 'flex';
         });
+        domElements.submitButton.style.display = formState.currentStep === formState.totalSteps ? 'flex' : 'none';
+        domElements.buttonContainer.style.display = formState.currentStep !== 6 ? "flex" : "none";
       }
 
       function nextStep() {
         if (validateCurrentStep()) {
           saveFormData();
-          if (formState.currentStep === formState.totalSteps) {
-            submitForm();
-          } else {
+          if (formState.currentStep < formState.totalSteps) {
             formState.currentStep++;
             showCurrentStep();
           }
@@ -997,46 +1022,131 @@
 
       function displaySummary() {
         const data = formState.formData;
-        domElements.summaryContent.innerHTML = `
-          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Tenant Details</h4>
-          <p>Tenant Type: ${data.tenant_type || 'N/A'}</p>
-          <p>Salutation: ${data.salutation || 'N/A'}</p>
-          <p>Name: ${data.tenant_first_name || ''} ${data.tenant_middle_name || ''} ${data.tenant_last_name || ''}</p>
-          <p>Date of Birth: ${data.tenant_dob || 'N/A'}</p>
-          <p>Mobile: ${data.tenant_mobile || 'N/A'}</p>
-          <p>Email: ${data.tenant_email || 'N/A'}</p>
-          <p>City: ${data.tenant_city || 'N/A'}</p>
-          <p>Pin Code: ${data.tenant_pin || 'N/A'}</p>
-          <p>Address: ${data.tenant_address || 'N/A'}</p>
-          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Rental Details</h4>
-          <p>Rent Amount: ₹${data.rent_amount || 'N/A'}</p>
-          <p>Tenant PAN: ${data.tenant_pan || 'N/A'}</p>
-          <p>Payment Frequency: ${data.payment_frequency || 'N/A'}</p>
-          <p>GSTIN: ${data.gstin || 'N/A'}</p>
-          <p>Due Date: ${data.due_date || 'N/A'}</p>
-          <p>Agreement Expiry: ${data.agreement_expiry || 'N/A'}</p>
-          <p>Card Issuing Bank: ${data.card_issuing_bank || 'N/A'}</p>
-          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Owner Details</h4>
-          <p>Salutation: ${data.owner_salutation || 'N/A'}</p>
-          <p>Name: ${data.owner_first_name || ''} ${data.owner_middle_name || ''} ${data.owner_last_name || ''}</p>
-          <p>Mobile: ${data.owner_mobile || 'N/A'}</p>
-          <p>Email: ${data.owner_email || 'N/A'}</p>
-          <p>PAN: ${data.owner_pan || 'N/A'}</p>
-          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Owner Accounts</h4>
-          ${Object.keys(data).filter(k => k.startsWith('account_holder_name_')).map((_, idx) => `
-            <p>Account #${idx + 1}</p>
-            <p>Holder Name: ${data[`account_holder_name_${idx + 1}`] || 'N/A'}</p>
-            <p>Rent Amount: ₹${data[`account_rent_amount_${idx + 1}`] || 'N/A'}</p>
-            <p>Account Type: ${data[`account_type_${idx + 1}`] || 'N/A'}</p>
-            <p>PAN: ${data[`account_pan_${idx + 1}`] || 'N/A'}</p>
-            <p>Account Number: ${data[`account_number_${idx + 1}`] || 'N/A'}</p>
-            <p>IFSC: ${data[`bank_ifsc_${idx + 1}`] || 'N/A'}</p>
-          `).join('')}
-          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Uploaded Files</h4>
-          ${Object.keys(data).filter(k => k.startsWith('file_upload_')).map((key, idx) => `
-            <p>File #${idx + 1}: ${data[key].map(file => file.name).join(', ')}</p>
-          `).join('')}
+
+        // Tenant Details
+        domElements.tenantDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">User Type</h6>
+            <p class="font-semibold">${data.tenant_type || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Mobile Number</h6>
+            <p class="font-semibold">${data.tenant_mobile || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Name</h6>
+            <p class="font-semibold">${data.salutation || ''} ${data.tenant_first_name || ''} ${data.tenant_middle_name || ''} ${data.tenant_last_name || ''}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">PAN Number</h6>
+            <p class="font-semibold">${data.tenant_pan || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">DOB</h6>
+            <p class="font-semibold">${data.tenant_dob || 'N/A'}</p>
+          </div>
+          <div></div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Email</h6>
+            <p class="font-semibold">${data.tenant_email || 'N/A'}</p>
+          </div>
         `;
+
+        // Rental Details
+        domElements.rentalDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Address Line 1</h6>
+            <p class="font-semibold">${data.tenant_address || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">City</h6>
+            <p class="font-semibold">${data.tenant_city || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Rent Amount</h6>
+            <p class="font-semibold">₹${data.rent_amount || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Pin Code</h6>
+            <p class="font-semibold">${data.tenant_pin || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Payment Frequency</h6>
+            <p class="font-semibold">${data.payment_frequency || 'N/A'}</p>
+          </div>
+        `;
+
+        // Owner Details
+        domElements.ownerDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Name</h6>
+            <p class="font-semibold">${data.owner_salutation || ''} ${data.owner_first_name || ''} ${data.owner_middle_name || ''} ${data.owner_last_name || ''}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Mobile Number</h6>
+            <p class="font-semibold">${data.owner_mobile || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Email</h6>
+            <p class="font-semibold">${data.owner_email || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">PAN Number</h6>
+            <p class="font-semibold">${data.owner_pan || 'N/A'}</p>
+          </div>
+        `;
+
+        // Owner Accounts
+        let ownerAccountsHtml = '';
+        const accountKeys = Object.keys(data).filter(k => k.startsWith('account_holder_name_'));
+        accountKeys.forEach((_, idx) => {
+          const index = idx + 1;
+          ownerAccountsHtml += `
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Holder Name #${index}</h6>
+              <p class="font-semibold">${data[`account_holder_name_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Rent Amount #${index}</h6>
+              <p class="font-semibold">₹${data[`account_rent_amount_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Type #${index}</h6>
+              <p class="font-semibold">${data[`account_type_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">PAN Number #${index}</h6>
+              <p class="font-semibold">${data[`account_pan_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Number #${index}</h6>
+              <p class="font-semibold">${data[`account_number_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">IFSC #${index}</h6>
+              <p class="font-semibold">${data[`bank_ifsc_${index}`] || 'N/A'}</p>
+            </div>
+          `;
+        });
+        domElements.ownerAccountsSummary.innerHTML = ownerAccountsHtml || '<p>No account details available</p>';
+
+        // Files
+        let filesHtml = '';
+        const fileKeys = Object.keys(data).filter(k => k.startsWith('file_upload_'));
+        fileKeys.forEach((key, idx) => {
+          const files = data[key];
+          files.forEach(file => {
+            const extension = file.name.split('.').pop().toLowerCase();
+            const iconUrl = extension === 'pdf' ? 'https://img.icons8.com/color/96/pdf.png' : 'https://img.icons8.com/color/96/image.png';
+            filesHtml += `
+              <div class="p-2 flex flex-col  items-center">
+                <img src="${iconUrl}" alt="${extension.toUpperCase()} Icon" class="w-12 h-12" />
+                <p class="mt-2 text-xs text-gray-700 t text-center">${file.name}</p>
+              </div>
+            `;
+          });
+        });
+        domElements.filesSummary.innerHTML = filesHtml || '<p>No files uploaded</p>';
       }
 
       function submitForm() {
@@ -1050,15 +1160,5 @@
     });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      AOS.init({
-        duration: 700,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100,
-      });
-    });
-  </script>
 </body>
 </html>

@@ -3,466 +3,699 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RedSiraffe - Pay Rent</title>
+  <title>RedGirraffe</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 min-h-screen p-6">
-  <div class="max-w-4xl mx-auto">
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <h1 class="text-3xl font-bold text-gray-800">RedSiraffe</h1>
-      <h2 class="text-2xl font-semibold text-gray-700 mt-2">Pay Rent</h2>
-    </div>
-
-    <!-- Progress Steps -->
-    <div class="flex justify-between mb-10 relative">
-      <!-- Progress line -->
-      <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 -z-10"></div>
-      <div class="absolute top-1/2 left-0 h-1 bg-blue-600 -z-10" id="progress-line" style="width: 16.66%"></div>
-
-      <!-- Steps -->
-      <div class="step active" data-step="1">
-        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center mx-auto mb-2">1</div>
-        <span class="text-sm font-medium text-gray-700">Tenant Details</span>
-      </div>
-      <div class="step" data-step="2">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          2</div>
-        <span class="text-sm font-medium text-gray-700">Rental Details</span>
-      </div>
-      <div class="step" data-step="3">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          3</div>
-        <span class="text-sm font-medium text-gray-700">Owner Details</span>
-      </div>
-      <div class="step" data-step="4">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          4</div>
-        <span class="text-sm font-medium text-gray-700">Owner Accounts</span>
-      </div>
-      <div class="step" data-step="5">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          5</div>
-        <span class="text-sm font-medium text-gray-700">File Upload</span>
-      </div>
-      <div class="step" data-step="6">
-        <div
-          class="w-8 h-8 rounded-full bg-white border-2 border-gray-300 text-gray-600 flex items-center justify-center mx-auto mb-2">
-          6</div>
-        <span class="text-sm font-medium text-gray-700">Summary</span>
-      </div>
-    </div>
-
-    <!-- Form Container -->
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <!-- Tenant Details Section -->
-      <div id="tenant-details" class="step-content active" data-step="1">
-        <h3 class="text-xl font-semibold text-gray-800 mb-6">Tenant Details</h3>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">First Name*</label>
-          <input type="text" name="tenant_first_name"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="tenant_first_name_error">Please enter first name</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Last Name*</label>
-          <input type="text" name="tenant_last_name"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="tenant_last_name_error">Please enter last name</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Email*</label>
-          <input type="email" name="tenant_email"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="tenant_email_error">Please enter a valid email</p>
-        </div>
-
-        <div class="flex justify-between mt-8">
-          <button
-            class="prev-step px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
-            disabled>
-            Previous
-          </button>
-          <button
-            class="next-step px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Next
-          </button>
-        </div>
-      </div>
-
-      <!-- Rental Details Section -->
-      <div id="rental-details" class="step-content hidden" data-step="2">
-        <h3 class="text-xl font-semibold text-gray-800 mb-6">Rental Details</h3>
-
-        <!-- Rent Amount Section -->
-        <div class="mb-4">
-          <h4 class="text-lg font-medium text-gray-700 mb-4">Rent Amount (Hkt)*</h4>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-gray-700 mb-1">Tenant PAM*</label>
-              <input type="text" name="tenant_pam"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <p class="text-red-500 text-sm mt-1 hidden" id="tenant_pam_error">Please enter tenant PAM</p>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-1">Frequency*</label>
-              <select name="rent_frequency"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="">Select Frequency</option>
-                <option value="monthly">Monthly</option>
-                <option value="quarterly">Quarterly</option>
-                <option value="yearly">Yearly</option>
-              </select>
-              <p class="text-red-500 text-sm mt-1 hidden" id="rent_frequency_error">Please select frequency</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- OSTIN Section -->
-        <div class="mb-4">
-          <h4 class="text-lg font-medium text-gray-700 mb-4">OSTIN (#/ Applicable)</h4>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-gray-700 mb-1">Due Date*</label>
-              <input type="date" name="due_date"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <p class="text-red-500 text-sm mt-1 hidden" id="due_date_error">Please select due date</p>
-            </div>
-            <div>
-              <label class="block text-gray-700 mb-1">Rent Agreement Expiry*</label>
-              <input type="date" name="rent_expiry"
-                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <p class="text-red-500 text-sm mt-1 hidden" id="rent_expiry_error">Please select expiry date</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card Issuing Bank -->
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Card Issuing Bank Name*</label>
-          <input type="text" name="bank_name"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="bank_name_error">Please enter bank name</p>
-        </div>
-
-        <hr class="my-6 border-gray-200">
-
-        <!-- Summary Info -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-gray-50 p-4 rounded-lg">
-            <p class="text-gray-600">Channels & Terms:</p>
-            <p class="text-lg font-semibold">39</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-lg">
-            <p class="text-gray-600">Rental Amount:</p>
-            <p class="text-lg font-semibold">39</p>
-          </div>
-        </div>
-
-        <!-- Navigation Buttons -->
-        <div class="flex justify-between mt-8">
-          <button
-            class="prev-step px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
-            Previous
-          </button>
-          <button
-            class="next-step px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Next
-          </button>
-        </div>
-      </div>
-
-      <!-- Owner Details Section -->
-      <div id="owner-details" class="step-content hidden" data-step="3">
-        <h3 class="text-xl font-semibold text-gray-800 mb-6">Owner Details</h3>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Owner Name*</label>
-          <input type="text" name="owner_name"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="owner_name_error">Please enter owner name</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Owner Email*</label>
-          <input type="email" name="owner_email"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="owner_email_error">Please enter a valid email</p>
-        </div>
-
-        <div class="mb-4">
-          <label class="block text-gray-700 mb-1">Phone Number*</label>
-          <input type="tel" name="owner_phone"
-            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <p class="text-red-500 text-sm mt-1 hidden" id="owner_phone_error">Please enter phone number</p>
-        </div>
-
-        <div class="flex justify-between mt-8">
-          <button
-            class="prev-step px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
-            Previous
-          </button>
-          <button
-            class="next-step px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            Next
-          </button>
-        </div>
-      </div>
-
-      <!-- Summary Section -->
-      <div id="summary" class="step-content hidden" data-step="6">
-        <h3 class="text-xl font-semibold text-gray-800 mb-6">Summary</h3>
-
-        <div class="bg-gray-50 p-6 rounded-lg">
-          <h4 class="text-lg font-medium text-gray-700 mb-4">Your Submission</h4>
-
-          <div class="space-y-4" id="summary-data">
-            <!-- Data will be populated here by JavaScript -->
-          </div>
-        </div>
-
-        <div class="flex justify-between mt-8">
-          <button
-            class="prev-step px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
-            Previous
-          </button>
-          <button id="submit-form"
-            class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
-            Submit
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const steps = document.querySelectorAll('.step');
-      const stepContents = document.querySelectorAll('.step-content');
-      const progressLine = document.getElementById('progress-line');
-      const nextButtons = document.querySelectorAll('.next-step');
-      const prevButtons = document.querySelectorAll('.prev-step');
-      const submitButton = document.getElementById('submit-form');
-
-      let currentStep = 1; // Start at Tenant Details (step 1)
-
-      // Initialize the form
-      updateProgress();
-      showCurrentStep();
-
-      // Load saved data if it exists
-      loadFormData();
-
-      // Next button click handler
-      nextButtons.forEach(button => {
-        button.addEventListener('click', function () {
-          if (validateCurrentStep()) {
-            saveFormData();
-            currentStep++;
-            updateProgress();
-            showCurrentStep();
-          }
-        });
-      });
-
-      // Previous button click handler
-      prevButtons.forEach(button => {
-        button.addEventListener('click', function () {
-          currentStep--;
-          updateProgress();
-          showCurrentStep();
-        });
-      });
-
-      // Submit button click handler
-      if (submitButton) {
-        submitButton.addEventListener('click', function () {
-          if (validateCurrentStep()) {
-            saveFormData();
-            alert('Form submitted successfully!');
-            // Here you would typically send data to server
-            localStorage.removeItem('rentFormData'); // Clear saved data
-          }
-        });
-      }
-
-      // Update progress visualization
-      function updateProgress() {
-        // Update progress line
-        const progressPercentage = ((currentStep - 1) / (steps.length - 1)) * 100;
-        progressLine.style.width = `${progressPercentage}%`;
-
-        // Update step indicators
-        steps.forEach(step => {
-          const stepNumber = parseInt(step.getAttribute('data-step'));
-          const stepCircle = step.querySelector('div');
-
-          stepCircle.classList.remove(
-            'bg-blue-600', 'bg-green-500', 'text-white',
-            'bg-white', 'border-gray-300', 'text-gray-600', 'border-2'
-          );
-
-          if (stepNumber < currentStep) {
-            stepCircle.classList.add('bg-green-500', 'text-white');
-          } else if (stepNumber === currentStep) {
-            stepCircle.classList.add('bg-blue-600', 'text-white');
-          } else {
-            stepCircle.classList.add('bg-white', 'border-2', 'border-gray-300', 'text-gray-600');
-          }
-        });
-      }
-
-      // Show the current step content
-      function showCurrentStep() {
-        // Hide all step contents first
-        stepContents.forEach(content => {
-          content.classList.add('hidden');
-          content.classList.remove('active');
-        });
-
-        // Show only the current step content
-        const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        if (currentContent) {
-          currentContent.classList.remove('hidden');
-          currentContent.classList.add('active');
-
-          // Special handling for summary step
-          if (currentStep === 6) {
-            displaySummaryData();
-          }
-        }
-
-        // Disable previous button on first step
-        const prevButtons = document.querySelectorAll('.prev-step');
-        prevButtons.forEach(button => {
-          button.disabled = currentStep === 1;
-        });
-      }
-
-      // Validate current step
-      function validateCurrentStep() {
-        let isValid = true;
-
-        // Hide all error messages first
-        document.querySelectorAll('[id$="_error"]').forEach(el => {
-          el.classList.add('hidden');
-        });
-
-        // Validate fields in current step
-        const currentContent = document.querySelector(`.step-content[data-step="${currentStep}"]`);
-        if (currentContent) {
-          const requiredFields = currentContent.querySelectorAll('[required], [name]');
-
-          requiredFields.forEach(field => {
-            if (!field.value && field.hasAttribute('required')) {
-              const errorId = `${field.name}_error`;
-              const errorElement = document.getElementById(errorId);
-              if (errorElement) {
-                errorElement.classList.remove('hidden');
-              }
-              isValid = false;
-
-              // Highlight the field
-              field.classList.add('border-red-500');
-              field.classList.remove('border-gray-300');
-              field.addEventListener('input', function () {
-                field.classList.remove('border-red-500');
-                field.classList.add('border-gray-300');
-              });
-            }
-          });
-        }
-
-        return isValid;
-      }
-
-      // Save form data to localStorage
-      function saveFormData() {
-        const formData = {};
-
-        // Collect all form data
-        document.querySelectorAll('input, select').forEach(field => {
-          if (field.name) {
-            formData[field.name] = field.value;
-          }
-        });
-
-        localStorage.setItem('rentFormData', JSON.stringify(formData));
-      }
-
-      // Load form data from localStorage
-      function loadFormData() {
-        const savedData = localStorage.getItem('rentFormData');
-        if (savedData) {
-          const formData = JSON.parse(savedData);
-
-          // Populate form fields
-          Object.keys(formData).forEach(key => {
-            const field = document.querySelector(`[name="${key}"]`);
-            if (field) {
-              field.value = formData[key];
-            }
-          });
-        }
-      }
-
-      // Display summary data
-      function displaySummaryData() {
-        const summaryContainer = document.getElementById('summary-data');
-        summaryContainer.innerHTML = '';
-
-        const savedData = localStorage.getItem('rentFormData');
-        if (savedData) {
-          const formData = JSON.parse(savedData);
-
-          for (const [key, value] of Object.entries(formData)) {
-            if (value) {
-              const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-              const item = document.createElement('div');
-              item.className = 'border-b border-gray-200 pb-2';
-              item.innerHTML = `
-                                <p class="font-medium text-gray-700">${formattedKey}</p>
-                                <p class="text-gray-600">${value}</p>
-                            `;
-              summaryContainer.appendChild(item);
-            }
-          }
-        }
-      }
-    });
-  </script>
-
   <style>
-    .step {
-      cursor: pointer;
-      text-align: center;
-      flex: 1;
-      position: relative;
+    [data-aos="fade-up"] {
+      transform: translate3d(0, 20px, 0) !important;
     }
 
-    .step:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 16px;
-      right: -50%;
-      width: 100%;
-      height: 2px;
-      background-color: transparent;
-      z-index: -1;
+    [data-aos^="fade"][data-aos^="fade"].aos-animate {
+      opacity: 1;
+      transform: translateZ(0) !important;
     }
 
-    .step-content {
-      transition: all 0.3s ease;
+    [data-aos="fade-right"] {
+      transform: translate3d(-40px, 0, 0) !important;
+    }
+
+    [data-aos="fade-left"] {
+      transform: translate3d(60px, 0, 0) !important;
+    }
+
+    [data-aos=zoom-in] {
+      transform: scale(.9) !important;
+    }
+
+    [data-aos=zoom-out] {
+      transform: scale(1.1) !important;
+    }
+
+    [data-aos^=zoom][data-aos^=zoom].aos-animate {
+      opacity: 1;
+      transform: translateZ(0) scale(1) !important;
     }
   </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            LightGreen: "#80FFE84D",
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+          },
+          boxShadow: {
+            TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+          },
+          borderRadius: {
+            lg: "1rem",
+            md: "0.75rem",
+            sm: "0.5rem",
+          },
+          screens: {
+            xs: "360px",
+            sm: "480px",
+            md: "576px",
+            lg: "768px",
+            xl: "992px",
+            "2xl": "1200px",
+            "3xl": "1500px",
+            "4xl": "1920px",
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- navbar started here -->
+  <header class="bg-[#752828] fixed w-full top-0 left-0 h-auto py-2 px-5 lg:px-8 2xl:px-12 flex items-center z-[1000]">
+    <nav class="flex justify-between items-center py-3 w-full">
+
+      <!-- Left Logo -->
+      <a href="/" data-aos="fade-up" data-aos-delay="100">
+        <figure class="w-[125px] lg:w-[164px] 3xl:w-[189px]">
+          <img class="w-full h-full object-cover" src="./assests/img/logo.svg" alt="Logo" />
+        </figure>
+      </a>
+
+      <!-- Right Nav Links (Desktop) -->
+      <div class="2xl:flex gap-6 items-center hidden">
+        <ul data-aos="fade-up" data-aos-delay="100" class="flex items-center">
+          <li><a href="/loans"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Loans</a>
+          </li>
+          <li><a href="/axis-rentpay"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Axis
+              RentPay</a></li>
+          <li><a href="/b2b-sass"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">B2B
+              SaaS</a></li>
+          <li><a href="/zero-carbon"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">ZeroCarbon</a>
+          </li>
+          <li><a href="/log-in"
+              class="px-6 text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Log
+              In</a></li>
+        </ul>
+
+        <!-- Social Contacts -->
+        <div class="space-y-2">
+          <div data-aos="fade-up" data-aos-delay="100" class="flex gap-2 items-center">
+            <!-- WhatsApp SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g clip-path="url(#clip0_23816_1759)">
+                <path
+                  d="M17.071 2.92891C15.1822 1.04016 12.671 0 9.99992 0H9.99984C7.32898 0 4.81758 1.04027 2.92891 2.92891C1.0402 4.81766 0 7.32887 0 10C7.8125e-05 11.7004 0.432813 13.3716 1.25359 14.8497L0.0216406 19.2563C-0.00633464 19.3563 -0.00718532 19.4621 0.0191758 19.5626C0.0455369 19.6631 0.0981613 19.7549 0.171653 19.8283C0.245144 19.9018 0.336859 19.9544 0.437391 19.9808C0.537924 20.0072 0.643658 20.0063 0.74375 19.9783L5.15043 18.7463C6.6284 19.5672 8.29953 20 9.99996 20C12.6711 20 15.1823 18.9598 17.0711 17.0711C18.9599 15.1823 20 12.6711 20 9.99996C19.9999 7.32883 18.9597 4.81766 17.071 2.92891ZM9.99992 18.8281C8.42391 18.8281 6.87691 18.4073 5.52605 17.6113C5.4581 17.5712 5.38274 17.5453 5.30451 17.5351C5.22628 17.5248 5.1468 17.5305 5.07082 17.5518L1.43043 18.5695L2.44816 14.9293C2.4694 14.8533 2.47509 14.7738 2.46487 14.6956C2.45466 14.6174 2.42875 14.542 2.38871 14.4741C1.5927 13.123 1.17195 11.5759 1.17188 9.99996C1.17188 7.64187 2.09016 5.42496 3.75758 3.75754C5.425 2.09012 7.64191 1.17188 9.99992 1.17188C14.8677 1.17188 18.828 5.13215 18.8281 9.99996C18.8281 14.8678 14.8678 18.8281 9.99992 18.8281Z"
+                  fill="white" />
+                <path
+                  d="M14.3164 10.7516C13.9582 10.3934 13.4806 10.1961 12.9715 10.1961C12.4625 10.1961 11.9849 10.3934 11.6268 10.7516L11.3552 11.0232C11.2882 11.0901 11.1981 11.127 11.1017 11.127C11.0052 11.127 10.9151 11.0901 10.848 11.023L8.97797 9.15301C8.91098 9.08605 8.87411 8.99598 8.87407 8.89945C8.87407 8.80293 8.9109 8.71293 8.97782 8.64602L9.24954 8.37434C9.99106 7.63281 9.99106 6.42625 9.24957 5.68473L8.70618 5.14117C8.34793 4.78309 7.87035 4.58594 7.36133 4.58594C6.85231 4.58594 6.37473 4.78313 6.01653 5.14133L5.61137 5.54656C4.75477 6.40316 4.44383 7.67879 4.73575 9.13855C5.01047 10.5121 5.79575 11.9027 6.94696 13.054C8.3977 14.5046 10.2454 15.3707 11.8895 15.3708H11.8898C12.9258 15.3708 13.8127 15.0316 14.4545 14.3898L14.8597 13.9846C15.6012 13.2431 15.6012 12.0365 14.8597 11.2949L14.3164 10.7516ZM14.0311 13.156L13.6259 13.5612C13.2086 13.9784 12.6084 14.1989 11.8899 14.1989H11.8897C10.5494 14.1989 9.01141 13.4611 7.77567 12.2254C6.78621 11.2359 6.11473 10.058 5.88493 8.90875C5.67231 7.84559 5.86946 6.94586 6.44008 6.3752L6.8452 5.97C6.98203 5.8332 7.16532 5.75785 7.36137 5.75785C7.5575 5.75785 7.74086 5.8332 7.87762 5.96992L8.42094 6.51336C8.70555 6.79801 8.70555 7.26109 8.42098 7.5457L8.14926 7.81738C7.86094 8.10566 7.70219 8.49004 7.70223 8.89965C7.70227 9.30918 7.8611 9.69352 8.14938 9.98176L10.0194 11.8517C10.3078 12.1402 10.6922 12.299 11.1017 12.299C11.5112 12.299 11.8955 12.1402 12.1838 11.8519L12.4555 11.5803C12.5923 11.4434 12.7755 11.3681 12.9716 11.3681C13.1676 11.3681 13.3509 11.4434 13.4878 11.5803L14.0311 12.1236C14.3157 12.4082 14.3157 12.8714 14.0311 13.156Z"
+                  fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_23816_1759">
+                  <rect width="20" height="20" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+            <p class="text-[#FFF] text-sm font-bold leading-6">(+91) 80-1019-1019</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" class="flex gap-2 items-center">
+            <!-- Message SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M18.3434 13.6307C18.3434 15.3196 16.9696 16.6912 15.2829 16.6912H5.24156C3.55481 16.6912 2.18094 15.3195 2.18094 13.6307V7.24152C2.18056 6.6972 2.32638 6.16276 2.60316 5.69406L7.5027 10.5936C8.2357 11.3288 9.21731 11.7338 10.2632 11.7338C11.307 11.7338 12.2886 11.3288 13.0216 10.5936L17.9212 5.69406C18.198 6.16276 18.3438 6.6972 18.3434 7.24152V13.6307H18.3434ZM15.2828 4.18094H5.24156C4.545 4.18094 3.90199 4.41668 3.38762 4.80891L8.33645 9.75988C8.84871 10.27 9.53238 10.5529 10.2632 10.5529C10.992 10.5529 11.6757 10.27 12.1879 9.75988L17.1367 4.80891C16.6224 4.41668 15.9794 4.18094 15.2828 4.18094ZM15.2828 3H5.24156C2.90324 3 1 4.90324 1 7.24156V13.6307C1 15.9712 2.90324 17.8723 5.24156 17.8723H15.2828C17.6211 17.8723 19.5244 15.9712 19.5244 13.6307V7.24152C19.5244 4.9032 17.6211 3 15.2828 3Z"
+                fill="white" />
+            </svg>
+            <p class="text-[#FFF] text-sm font-bold leading-6">connect@redgirraffe.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button id="menu-btn"
+        class="bg-primary 2xl:hidden text-white w-10 h-9 lg:w-11 lg:h-10 rounded grid place-items-center">
+        <svg class="hb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#eee" stroke-width=".6"
+          fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+          <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
+            <animate dur="0.2s" attributeName="d"
+              values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze"
+              begin="start.begin" />
+            <animate dur="0.2s" attributeName="d"
+              values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze"
+              begin="reverse.begin" />
+          </path>
+          <rect width="10" height="10" stroke="none">
+            <animate dur="2s" id="reverse" attributeName="width" begin="click" />
+          </rect>
+          <rect width="10" height="10" stroke="none">
+            <animate dur="0.001s" id="start" attributeName="width" values="10;0" fill="freeze" begin="click" />
+            <animate dur="0.001s" attributeName="width" values="0;10" fill="freeze" begin="reverse.begin" />
+          </rect>
+        </svg>
+      </button>
+
+      <!-- Blur Overlay -->
+      <div id="overlay"
+        class="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 2xl:hidden z-[999] opacity-0 pointer-events-none">
+      </div>
+
+      <!-- Mobile Sidebar -->
+      <div id="sidebar"
+        class="fixed top-0 left-0 bg-[#2d2d2d] py-10 px-5 lg:px-7 shadow-lg overflow-y-auto max-h-screen min-h-screen w-[250px] lg:w-[270px] z-[999] 2xl:hidden transform -translate-x-full transition-transform duration-500">
+        <a href="/" class="flex justify-center mb-12">
+          <figure class="w-[150px]">
+            <img class="w-full h-full object-cover" src="./assests/img/logo.svg" alt="Logo" />
+          </figure>
+        </a>
+
+        <ul class="flex flex-col gap-6">
+          <li><a href="/loans"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Loans</a>
+          </li>
+          <li><a href="/axis-rentpay"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Axis
+              RentPay</a></li>
+          <li><a href="/b2b-sass"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">B2B
+              SaaS</a></li>
+          <li><a href="/zero-carbon"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">ZeroCarbon</a>
+          </li>
+          <li><a href="/log-in"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Log
+              In</a></li>
+        </ul>
+
+        <!-- Mobile Social Contacts -->
+        <div class="space-y-4 mt-10">
+          <div class="flex gap-2 items-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M..." />
+            </svg>
+            <p class="text-[#FFF] text-[15px] font-medium leading-6">(+91) 80-1019-1019</p>
+          </div>
+          <div class="flex gap-2 items-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M..." />
+            </svg>
+            <p class="text-[#FFF] text-[15px] font-medium leading-6">connect@redgirraffe.com</p>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button id="close-btn" class="absolute top-3 right-3">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <!-- navbar ended here -->
+  <!-- Mode of payment started here -->
+  <section
+    class="flex flex-col gap-y-[40px] lg:gap-y-[49px] mb-[40px] lg:mb-[60px] xl:mb-[100px] 2xl:mb-[186px]  px-4 xl:px-[20px] 4xl:px-[48px] w-full relative pt-[126px]  ">
+    <div
+      class="flex bg-[#752828] h-[385px] w-full rounded-[20px] md:rounded-[40px] lg:rounded-[80px] items-center justify-center ">
+      <div class="flex flex-col gap-y-[10px] items-center ">
+        <h2 data-aos="fade-up" data-aos-delay="100"
+          class="text-[28px] sm:text-[42px] 3xl:text-[56px] font-[800] leading-[130%] text-white ">
+          Mode Of <span class="text-[#E8C547]"> Payment </span>
+        </h2>
+        <p data-aos="fade-up" data-aos-delay="100"
+          class="text-lg lg:text-left text-center font-normal leading-[160%] text-white ">
+          (You may Sign Up using any of the below mode of Payment)
+        </p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-y-5 lg:gap-y-[34px] ">
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12);"
+        class="flex flex-col-reverse 2xl:flex-row rounded-[20px] lg:rounded-[54px] gap-y-[30px] py-6 xl:py-10  gap-x-[44px] items-center justify-content-center h-auto w-full 2xl:py-[15px] px-5 2xl:px-0 2xl:pl-[18px] 2xl:pr-[34px] bg-[#fff]">
+        <img data-aos="fade-up" data-aos-delay="100" src="./assests/img/credit.png"
+          class=" w-full sm:w-[500px] lg:w-[800px] 3xl:w-[1027px] h-[250px] sm:h-[350px] lg:h-[500px] 3xl:h-[721px] object-cover rounded-[30px] 2xl:rounded-[60px]"
+          alt="not found" />
+        <div class="flex flex-col gap-y-[10px]  ">
+          <h2 data-aos="fade-up" data-aos-delay="100"
+            class=" text-[28px] sm:text-[42px] 3xl:text-[56px] font-[800] leading-[130%] text-[#752828] ">
+            Credit Card
+          </h2>
+          <span data-aos="fade-up" data-aos-delay="100"
+            class="text-[16px] font-normal leading-[180%] text-[#545454] max-w-[697px] font-inter ">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The
+            point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here,
+            content here', making it look like readable English.
+          </span>
+          <div data-aos="fade-up" data-aos-delay="100" class="flex items-center redirect group">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#E8C547] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#E8C547] group-hover:text-[#E8C547] font-[800] ">
+              Apply Now
+            </button>
+            <button
+              class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#E8C547] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#E8C547] group-hover:text-[#E8C547]">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                class="rotate-[-45deg]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12);"
+        class="flex flex-col-reverse 2xl:flex-row rounded-[20px] lg:rounded-[54px] gap-y-[30px] py-6 xl:py-10  gap-x-[44px] items-center justify-content-center h-auto w-full 2xl:py-[15px] px-5 2xl:px-0 2xl:pl-[18px] 2xl:pr-[34px] bg-[#FFFBEE]">
+        <div class="flex flex-col gap-y-[10px]  ">
+          <h2 data-aos="fade-up" data-aos-delay="100"
+            class=" text-[28px] sm:text-[42px] 3xl:text-[56px] font-[800] leading-[130%] text-[#752828] ">
+            Debit Card | UPI | Fund Transfer
+          </h2>
+          <span data-aos="fade-up" data-aos-delay="100"
+            class="text-[16px] font-normal leading-[180%] text-[#545454] max-w-[697px] font-inter ">
+            It is a long established fact that a reader will be distracted by
+            the readable content of a page when looking at its layout. The
+            point of using Lorem Ipsum is that it has a more-or-less normal
+            distribution of letters, as opposed to using 'Content here,
+            content here', making it look like readable English.
+          </span>
+          <div data-aos="fade-up" data-aos-delay="100" class="flex items-center redirect group">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#E8C547] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#E8C547] group-hover:text-[#E8C547] font-[800] ">
+              Apply Now
+            </button>
+
+            <button
+              class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#E8C547] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#E8C547] group-hover:text-[#E8C547]">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                class="rotate-[-45deg]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                </path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <img src="./assests/img/debit.png" data-aos="fade-up" data-aos-delay="100"
+          class=" w-full sm:w-[500px] lg:w-[800px] 3xl:w-[1027px] h-[250px] sm:h-[350px] lg:h-[500px] 3xl:h-[721px] object-cover rounded-[30px] 2xl:rounded-[60px]"
+          alt="not found" />
+      </div>
+    </div>
+  </section>
+  <!-- Mode of payment ended here -->
+  <!-- switch to saving section started here -->
+  <section class="mt-12">
+    <div class="w-full h-[250px] md:h-[300px] xl:h-[394px]"
+      style="background-image: linear-gradient(0deg, rgba(117, 40, 40, 0.8) 0%, rgba(117, 40, 40, 0.8) 100%), url('./assests/img/testimonial-pic.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+
+      <div class="flex flex-col 3xl:flex-row h-full items-center justify-center gap-1 lg:gap-3 xl:gap-5 text-center">
+
+        <p data-aos="fade-up" data-aos-delay="100"
+          class="text-white mb-4 text-center xl:text-left text-3xl xl:text-4xl 3xl:text-[56px] max-w-[569px] font-bold 3xl:leading-[72.8px]">
+          Switch to Savings, Effortlessly.
+        </p>
+
+        <div data-aos="fade-up" data-aos-delay="100" class="flex redirect items-center group">
+          <!-- Button 1 (Get Started Now) -->
+          <button
+            class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#B68D40] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#B68D40] group-hover:text-[#B68D40] font-[800] ">
+            Get Started Now
+          </button>
+
+          <!-- Button 2 (Arrow Button) -->
+          <button
+            class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#B68D40] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#B68D40] group-hover:text-[#B68D40]">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+              class="rotate-[-45deg]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- switch to saving section ended here -->
+
+  <!-- footer section started here -->
+  <footer>
+    <!-- {/* This is the first div */} -->
+    <div class="bg-[#000] pt-7 lg:pt-10 2xl:pt-[68px] px-5 lg:px-8 2xl:px-12 pb-[33px]">
+      <div class="grid lg:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-5 gap-5 4xl:gap-10">
+        <!-- {/* This is the first div */} -->
+        <div class="order-1">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Important Links</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Quick access to essential pages
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                The Journey
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Board of Advisors
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Founding Team
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                INDIA - S A & I
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Team
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Media Relations
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Higher Purpose
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Our Values
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                RentPay™
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                About Us
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Reviews
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                FAQs
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Blog
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Press Releases
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the second div */} -->
+        <div class="order-2">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Policies & Compliance</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Key policies for security and compliance
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Fixed Deposit
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Refer & Earn
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Privacy Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Refund/Cancellation Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Terms & Conditions
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti corruption & Bribery Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Code of Business Conduct & Ethics
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti-Fraud Policy Investigation
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti-Money Laundering Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Sanctions Compliance Statement
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Grievance Redressal Policy
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the Third div */} -->
+        <div class="order-4 xl:order-3">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Business Services</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Solutions for businesses & partners
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                List Your Property
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Register as Agent
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Corporate Rental ERP
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                SME Loans
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Post Your Requirement
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the Fourth div */} -->
+        <div class="order-3 xl:order-4">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Our Offices</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Global presence, local impact
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <div>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px]">
+                  United Kingdom
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe Inc.
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Harben House, Harben Parade, Finchley
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Road, London, NW3 6LH.
+                </a>
+              </li>
+            </div>
+            <div class="pt-5">
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px] mt-5">
+                  Singapore
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe Holdings
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  3 Temasek Avenue, Centennial Tower,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  #17-01, Singapore 039190.
+                </a>
+              </li>
+            </div>
+            <div class="pt-5">
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px] ">
+                  India
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe.com
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  904, Galleria Towers, DLF Phase IV,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Gurgaon, Haryana - 122002.
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  507, Tulsiani Chambers, Nariman Point,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Mumbai - 400021.
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <!-- {/* This is the Fifth div */} -->
+        <div class="order-5">
+          <div>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#FFF]">
+              Stay Connected
+            </p>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Never miss an update
+            </p>
+          </div>
+
+          <!-- {/* This is the button section */} -->
+          <div class="mt-5 relative 4xl:w-[320px] h-12">
+            <input data-aos="fade-up" data-aos-delay="100" type="text" placeholder="Enter your email"
+              class="py-3 px-4 rounded-[400px] w-full h-full" />
+            <button
+              class="bg-[#B68D40] rounded-[47px] my-2 px-4 text-[#050404] font-bold leading-[23.8px] py-2 absolute right-1 -top-1">
+              Subscribe
+            </button>
+          </div>
+          <!--  -->
+          <div class="mt-8 flex flex-col gap-y-3 ">
+            <a data-aos="fade-up" data-aos-delay="100" href={"/"}>
+              <img src="./assests/img/logo.svg" alt="" />
+            </a>
+            <div class="flex gap-2 mt-2">
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="border-r-2 border-[#B68D40] pr-2 text-[#B68D40] font-bold text-nowrap">
+                Payments
+              </p>
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="border-r-2 border-[#B68D40] pr-2 text-[#B68D40] font-bold text-nowrap">
+                B2B SaaS
+              </p>
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="pr-2 border-[#B68D40] text-[#B68D40] font-bold text-nowrap">
+                Real Estate
+              </p>
+            </div>
+          </div>
+          <!--  -->
+          <div class="mt-5">
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#E6E6E6] font-[800] leading-[18.2px]">
+              Write to us at:
+            </p>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#E6E6E6] xl:text-xl font-bold">
+              connect@redgirraffe.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- {/* This is the second div */} -->
+    <div class="bg-[#B68D40] h-12">
+      <div class="flex justify-center items-center h-full px-2">
+        <p class="text-[#050404] text-[11px] md:text-[13px] text-center font-bold leading-[21.32px]">
+          Copyright © 2025-2026 | RedGirraffe - All rights reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section ended here -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 700,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+      });
+    });
+  </script>
+  <script src="./scripts/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </body>
 </html>

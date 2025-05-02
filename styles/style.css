@@ -25,44 +25,58 @@ body {
   font-family: "Inter", sans-serif;
 }
 
-.step {
-  cursor: pointer;
-  text-align: center;
-  flex: 1;
-  position: relative;
-}
-.step:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  top: 16px;
-  right: -50%;
-  width: 100%;
-  height: 2px;
-  background-color: transparent;
-  z-index: -1;
-}
-.step-content {
-  transition: all 0.3s ease;
-}
-
 .input-label {
-  color: #4d4d4d;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 130%;
-}
-.input-label span {
-  color: #d80027;
-}
+      font-size: 18px;
+      font-weight: 500;
+      color: #2F5D50;
+      margin-bottom: 8px;
+    }
 
-.input-styles {
-  max-width: 433px;
-  height: auto;
-  padding: 17px 17px;
-  border-radius: 5.575px;
-  border: 1.394px solid  #6b737a;
-  outline: none;
-  font-size: 20px;
-  width: 100%;
-}
+    .input-label span {
+      color: #D80027;
+    }
+
+    .input-styles {
+      border: 1px solid #D1D5DB;
+      border-radius: 8px;
+      padding: 15px 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .input-styles:focus {
+      outline: none;
+      border-color: #2F5D50;
+    }
+
+    .btn-primary {
+      background-color: #2F5D50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #1E3E34;
+    }
+
+    .btn-outline {
+      background-color: white;
+      color: #2F5D50;
+      border: 1px solid #2F5D50;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+      max-width:433px ;
+    }
+
+    .btn-outline:hover {
+      background-color: #F0F7F5;
+    }
