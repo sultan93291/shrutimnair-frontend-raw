@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedGirraffe</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    [data-aos="fade-up"] {
+      transform: translate3d(0, 20px, 0) !important;
+    }
+
+    [data-aos^="fade"][data-aos^="fade"].aos-animate {
+      opacity: 1;
+      transform: translateZ(0) !important;
+    }
+
+    [data-aos="fade-right"] {
+      transform: translate3d(-40px, 0, 0) !important;
+    }
+
+    [data-aos="fade-left"] {
+      transform: translate3d(60px, 0, 0) !important;
+    }
+
+    [data-aos=zoom-in] {
+      transform: scale(.9) !important;
+    }
+
+    [data-aos=zoom-out] {
+      transform: scale(1.1) !important;
+    }
+
+    [data-aos^=zoom][data-aos^=zoom].aos-animate {
+      opacity: 1;
+      transform: translateZ(0) scale(1) !important;
+    }
+
+    .step {
+      cursor: pointer;
+      text-align: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 16px;
+      right: -50%;
+      width: 100%;
+      height: 2px;
+      background-color: transparent;
+      z-index: -1;
+    }
+
+    .step-content {
+      transition: all 0.3s ease;
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            LightGreen: "#80FFE84D",
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+          },
+          boxShadow: {
+            TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+          },
+          borderRadius: {
+            lg: "1rem",
+            md: "0.75rem",
+            sm: "0.5rem",
+          },
+          screens: {
+            xs: "360px",
+            sm: "480px",
+            md: "576px",
+            lg: "768px",
+            xl: "992px",
+            "2xl": "1200px",
+            "3xl": "1500px",
+            "4xl": "1920px",
+          },
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- navbar started here -->
+  <header class="bg-[#2F5D50] fixed w-full top-0 left-0 h-auto py-2 px-5 lg:px-8 2xl:px-12 flex items-center z-[1000]">
+    <nav class="flex justify-between items-center py-3 w-full">
+
+      <!-- Left Logo -->
+      <a href="/" data-aos="fade-up" data-aos-delay="100">
+        <figure class="w-[125px] lg:w-[164px] 3xl:w-[189px]">
+          <img class="w-full h-full object-cover" src="./assests/img/logo.svg" alt="Logo" />
+        </figure>
+      </a>
+
+      <!-- Right Nav Links (Desktop) -->
+      <div class="2xl:flex gap-6 items-center hidden">
+        <ul data-aos="fade-up" data-aos-delay="100" class="flex items-center">
+          <li><a href="/loans"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Loans</a>
+          </li>
+          <li><a href="/axis-rentpay"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Axis
+              RentPay</a></li>
+          <li><a href="/b2b-sass"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">B2B
+              SaaS</a></li>
+          <li><a href="/zero-carbon"
+              class="px-6 border-r border-[#F0F7FF] text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">ZeroCarbon</a>
+          </li>
+          <li><a href="/log-in"
+              class="px-6 text-[#FFF] text-base font-bold leading-5 hover:text-gray-300 transition-all duration-300">Log
+              In</a></li>
+        </ul>
+
+        <!-- Social Contacts -->
+        <div class="space-y-2">
+          <div data-aos="fade-up" data-aos-delay="100" class="flex gap-2 items-center">
+            <!-- WhatsApp SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g clip-path="url(#clip0_23816_1759)">
+                <path
+                  d="M17.071 2.92891C15.1822 1.04016 12.671 0 9.99992 0H9.99984C7.32898 0 4.81758 1.04027 2.92891 2.92891C1.0402 4.81766 0 7.32887 0 10C7.8125e-05 11.7004 0.432813 13.3716 1.25359 14.8497L0.0216406 19.2563C-0.00633464 19.3563 -0.00718532 19.4621 0.0191758 19.5626C0.0455369 19.6631 0.0981613 19.7549 0.171653 19.8283C0.245144 19.9018 0.336859 19.9544 0.437391 19.9808C0.537924 20.0072 0.643658 20.0063 0.74375 19.9783L5.15043 18.7463C6.6284 19.5672 8.29953 20 9.99996 20C12.6711 20 15.1823 18.9598 17.0711 17.0711C18.9599 15.1823 20 12.6711 20 9.99996C19.9999 7.32883 18.9597 4.81766 17.071 2.92891ZM9.99992 18.8281C8.42391 18.8281 6.87691 18.4073 5.52605 17.6113C5.4581 17.5712 5.38274 17.5453 5.30451 17.5351C5.22628 17.5248 5.1468 17.5305 5.07082 17.5518L1.43043 18.5695L2.44816 14.9293C2.4694 14.8533 2.47509 14.7738 2.46487 14.6956C2.45466 14.6174 2.42875 14.542 2.38871 14.4741C1.5927 13.123 1.17195 11.5759 1.17188 9.99996C1.17188 7.64187 2.09016 5.42496 3.75758 3.75754C5.425 2.09012 7.64191 1.17188 9.99992 1.17188C14.8677 1.17188 18.828 5.13215 18.8281 9.99996C18.8281 14.8678 14.8678 18.8281 9.99992 18.8281Z"
+                  fill="white" />
+                <path
+                  d="M14.3164 10.7516C13.9582 10.3934 13.4806 10.1961 12.9715 10.1961C12.4625 10.1961 11.9849 10.3934 11.6268 10.7516L11.3552 11.0232C11.2882 11.0901 11.1981 11.127 11.1017 11.127C11.0052 11.127 10.9151 11.0901 10.848 11.023L8.97797 9.15301C8.91098 9.08605 8.87411 8.99598 8.87407 8.89945C8.87407 8.80293 8.9109 8.71293 8.97782 8.64602L9.24954 8.37434C9.99106 7.63281 9.99106 6.42625 9.24957 5.68473L8.70618 5.14117C8.34793 4.78309 7.87035 4.58594 7.36133 4.58594C6.85231 4.58594 6.37473 4.78313 6.01653 5.14133L5.61137 5.54656C4.75477 6.40316 4.44383 7.67879 4.73575 9.13855C5.01047 10.5121 5.79575 11.9027 6.94696 13.054C8.3977 14.5046 10.2454 15.3707 11.8895 15.3708H11.8898C12.9258 15.3708 13.8127 15.0316 14.4545 14.3898L14.8597 13.9846C15.6012 13.2431 15.6012 12.0365 14.8597 11.2949L14.3164 10.7516ZM14.0311 13.156L13.6259 13.5612C13.2086 13.9784 12.6084 14.1989 11.8899 14.1989H11.8897C10.5494 14.1989 9.01141 13.4611 7.77567 12.2254C6.78621 11.2359 6.11473 10.058 5.88493 8.90875C5.67231 7.84559 5.86946 6.94586 6.44008 6.3752L6.8452 5.97C6.98203 5.8332 7.16532 5.75785 7.36137 5.75785C7.5575 5.75785 7.74086 5.8332 7.87762 5.96992L8.42094 6.51336C8.70555 6.79801 8.70555 7.26109 8.42098 7.5457L8.14926 7.81738C7.86094 8.10566 7.70219 8.49004 7.70223 8.89965C7.70227 9.30918 7.8611 9.69352 8.14938 9.98176L10.0194 11.8517C10.3078 12.1402 10.6922 12.299 11.1017 12.299C11.5112 12.299 11.8955 12.1402 12.1838 11.8519L12.4555 11.5803C12.5923 11.4434 12.7755 11.3681 12.9716 11.3681C13.1676 11.3681 13.3509 11.4434 13.4878 11.5803L14.0311 12.1236C14.3157 12.4082 14.3157 12.8714 14.0311 13.156Z"
+                  fill="white" />
+              </g>
+              <defs>
+                <clipPath id="clip0_23816_1759">
+                  <rect width="20" height="20" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+            <p class="text-[#FFF] text-sm font-bold leading-6">(+91) 80-1019-1019</p>
+          </div>
+          <div data-aos="fade-up" data-aos-delay="100" class="flex gap-2 items-center">
+            <!-- Message SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M18.3434 13.6307C18.3434 15.3196 16.9696 16.6912 15.2829 16.6912H5.24156C3.55481 16.6912 2.18094 15.3195 2.18094 13.6307V7.24152C2.18056 6.6972 2.32638 6.16276 2.60316 5.69406L7.5027 10.5936C8.2357 11.3288 9.21731 11.7338 10.2632 11.7338C11.307 11.7338 12.2886 11.3288 13.0216 10.5936L17.9212 5.69406C18.198 6.16276 18.3438 6.6972 18.3434 7.24152V13.6307H18.3434ZM15.2828 4.18094H5.24156C4.545 4.18094 3.90199 4.41668 3.38762 4.80891L8.33645 9.75988C8.84871 10.27 9.53238 10.5529 10.2632 10.5529C10.992 10.5529 11.6757 10.27 12.1879 9.75988L17.1367 4.80891C16.6224 4.41668 15.9794 4.18094 15.2828 4.18094ZM15.2828 3H5.24156C2.90324 3 1 4.90324 1 7.24156V13.6307C1 15.9712 2.90324 17.8723 5.24156 17.8723H15.2828C17.6211 17.8723 19.5244 15.9712 19.5244 13.6307V7.24152C19.5244 4.9032 17.6211 3 15.2828 3Z"
+                fill="white" />
+            </svg>
+            <p class="text-[#FFF] text-sm font-bold leading-6">connect@redgirraffe.com</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hamburger Button (Mobile) -->
+      <button id="menu-btn"
+        class="bg-primary 2xl:hidden text-white w-10 h-9 lg:w-11 lg:h-10 rounded grid place-items-center">
+        <svg class="hb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#eee" stroke-width=".6"
+          fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
+          <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
+            <animate dur="0.2s" attributeName="d"
+              values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze"
+              begin="start.begin" />
+            <animate dur="0.2s" attributeName="d"
+              values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze"
+              begin="reverse.begin" />
+          </path>
+          <rect width="10" height="10" stroke="none">
+            <animate dur="2s" id="reverse" attributeName="width" begin="click" />
+          </rect>
+          <rect width="10" height="10" stroke="none">
+            <animate dur="0.001s" id="start" attributeName="width" values="10;0" fill="freeze" begin="click" />
+            <animate dur="0.001s" attributeName="width" values="0;10" fill="freeze" begin="reverse.begin" />
+          </rect>
+        </svg>
+      </button>
+
+      <!-- Blur Overlay -->
+      <div id="overlay"
+        class="fixed inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 2xl:hidden z-[999] opacity-0 pointer-events-none">
+      </div>
+
+      <!-- Mobile Sidebar -->
+      <div id="sidebar"
+        class="fixed top-0 left-0 bg-[#2d2d2d] py-10 px-5 lg:px-7 shadow-lg overflow-y-auto max-h-screen min-h-screen w-[250px] lg:w-[270px] z-[999] 2xl:hidden transform -translate-x-full transition-transform duration-500">
+        <a href="/" class="flex justify-center mb-12">
+          <figure class="w-[150px]">
+            <img class="w-full h-full object-cover" src="./assests/img/logo.svg" alt="Logo" />
+          </figure>
+        </a>
+
+        <ul class="flex flex-col gap-6">
+          <li><a href="/loans"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Loans</a>
+          </li>
+          <li><a href="/axis-rentpay"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Axis
+              RentPay</a></li>
+          <li><a href="/b2b-sass"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">B2B
+              SaaS</a></li>
+          <li><a href="/zero-carbon"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">ZeroCarbon</a>
+          </li>
+          <li><a href="/log-in"
+              class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Log
+              In</a></li>
+        </ul>
+
+        <!-- Mobile Social Contacts -->
+        <div class="space-y-4 mt-10">
+          <div class="flex gap-2 items-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M..." />
+            </svg>
+            <p class="text-[#FFF] text-[15px] font-medium leading-6">(+91) 80-1019-1019</p>
+          </div>
+          <div class="flex gap-2 items-center">
+            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M..." />
+            </svg>
+            <p class="text-[#FFF] text-[15px] font-medium leading-6">connect@redgirraffe.com</p>
+          </div>
+        </div>
+
+        <!-- Close Button -->
+        <button id="close-btn" class="absolute top-3 right-3">
+          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <!-- navbar ended here -->
+  <!-- step form  section started here -->
+  <div class="mx-auto pt-[205px] pb-[119px] flex items-center flex-col gap-y-[205px] ">
+    <div class="text-center">
+      <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay Me Rent</h2>
+    </div>
+    <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+      class="bg-white rounded-lg h-auto w-[1700px] rounded-[54px] px-[170px] pt-[198px] pb-[112px] relative">
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+        class="absolute w-[1864px] bg-white top-0 left-1/2 transform -translate-x-1/2 py-[55.75px] px-[70.23px] rounded-[30px] mt-[-80px]">
+        <div class="flex flex-col gap-y-[13px]">
+          <div class="flex flex-col gap-y-[28px] items-center">
+            <div class="w-[1688px] rounded-[14px] h-[12px] bg-[#2F5D50] relative">
+              <div class="absolute top-0 left-0 h-full bg-[#D80027] progres-width rounded-[14px]"></div>
+              <span
+                class="active-percent absolute top-[-30px] text-[17.704px] font-[500] transition-all duration-300 ease-in-out">0%</span>
+            </div>
+            <div class="flex flex-row justify-between w-full">
+              <span class="step-label font-[500] text-[17.704px]">Tenant Details</span>
+              <span class="step-label font-[500] text-[17.704px]">Rental Details</span>
+              <span class="step-label font-[500] text-[17.704px]">Owner Details</span>
+              <span class="step-label font-[500] text-[17.704px]">Owner Accounts</span>
+              <span class="step-label font-[500] text-[17.704px]">File Upload</span>
+              <span class="step-label font-[500] text-[17.704px]">Summary</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col gap-y-[94px]">
+        <!-- Step 1: Tenant Details -->
+        <div id="tenant-details" class="step-content" data-step="1">
+          <div class="flex flex-col gap-y-[82px]">
+            <div class="flex flex-col gap-y-[50px]">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Tenant Personal Info</h3>
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-row gap-x-8 items-center">
+                  <h3 class="text-[20px] font-[600] leading-[130%] text-[#000000]">Tenant Type:</h3>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="tenant_type" value="individual" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Individual</span>
+                  </label>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="tenant_type" value="company" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Company</span>
+                  </label>
+                </div>
+                <p class="text-red-500 text-sm hidden" id="tenant_type_error">Please select tenant type (Individual or
+                  Company)</p>
+              </div>
+            </div>
+            <div class="flex flex-col gap-y-[25px] relative">
+              <div class="flex flex-col gap-y-">
+                <label class="input-label">Salutation <span>*</span></label>
+                <div class="relative max-w-[433px] ">
+                  <select name="salutation" class="input-styles pr-[10px]" required>
+                    <option value="">Select your title</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                  </select>
+                </div>
+                <p class="text-red-500 text-sm hidden" id="salutation_error">Please select your title</p>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">First Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_first_name" placeholder="Enter your first name" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_first_name_error">Please enter your first name</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Middle Name</label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_middle_name" placeholder="Enter your middle name"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_middle_name_error">Please enter a valid middle
+                    name</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Last Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_last_name" placeholder="Enter your last name" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_last_name_error">Please enter your last name</p>
+                </div>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Date of Birth <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="tenant_dob" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_dob_error">Please enter a valid date of birth</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Mobile Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="tel" name="tenant_mobile" placeholder="Enter your 10-digit mobile number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">Please enter a valid 10-digit mobile
+                    number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Email Address <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="email" name="tenant_email" placeholder="Enter your email address" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_email_error">Please enter a valid email address
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">City <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_city" placeholder="Enter your city" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_city_error">Please enter your city</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Pin Code <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_pin" placeholder="Enter your 6-digit pin code" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_pin_error">Please enter a valid 6-digit pin code
+                  </p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Address (Rental Property) <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_address" placeholder="Enter your rental property address"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_address_error">Please enter your address</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 2: Rental Details -->
+        <div id="rental-details" class="step-content hidden" data-step="2">
+          <div class="flex flex-col gap-y-[50px]">
+            <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Rental Details</h3>
+            <div class="flex flex-col gap-y-[25px] w-full relative">
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="number" name="rent_amount" placeholder="Enter the monthly rent amount in INR"
+                      class="input-styles w-full pr-[10px]" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="rent_amount_error">Please enter a valid rent amount</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Tenant PAN <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="tenant_pan" placeholder="Enter your 10-character PAN number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_pan_error">Please enter a valid 10-character PAN
+                    number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Frequency <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="payment_frequency" class="input-styles w-full pr-[10px]" required>
+                      <option value="">Select payment frequency</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="yearly">Yearly</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="payment_frequency_error">Please select payment frequency
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">GSTIN (If Applicable)</label>
+                  <div class="relative w-full">
+                    <input type="text" name="gstin" placeholder="Enter your GSTIN" class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="gstin_error">Please enter a valid 15-character GSTIN</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Due Date <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="due_date" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="due_date_error">Please enter a valid due date</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Rent Agreement Expiry <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="agreement_expiry" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="agreement_expiry_error">Please enter a valid expiry date
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-y-2 w-full">
+                <label class="input-label">Card Issuing Bank Name <span>*</span></label>
+                <div class="relative w-full">
+                  <input type="text" name="card_issuing_bank" placeholder="Enter your card issuing bank name"
+                    class="input-styles" required />
+                </div>
+                <p class="text-red-500 text-sm hidden" id="card_issuing_bank_error">Please enter a valid bank name</p>
+              </div>
+              <div class="flex flex-row gap-x-[30px]">
+                <div class="flex flex-row items-center gap-x-2">
+                  <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Charges & Taxes:</h2>
+                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                </div>
+                <div class="flex flex-row items-center gap-x-2">
+                  <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Total Amount:</h2>
+                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3: Owner Details -->
+        <div id="owner-details" class="step-content hidden" data-step="3">
+          <div class="flex flex-col gap-y-[50px]">
+            <div class="flex flex-col gap-y-[36px]">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Owner Details</h3>
+              <p class="text-[17.704px] font-[600] leading-[130%] text-[#2F5D50]">
+                *Please ensure & verify that the account no., IFSC code, and account holder's name are correct.
+                Incorrect details may lead to issues with the rent payment in which case, RedGirraffe or/and the
+                credit card/debit card issuing banks shall assume no liability.
+              </p>
+            </div>
+            <div class="flex flex-col gap-y-[25px] w-full relative">
+              <div class="flex flex-col gap-y-2 w-full">
+                <label class="input-label">Salutation <span>*</span></label>
+                <div class="relative w-full">
+                  <select name="owner_salutation" class="input-styles w-full pr-[10px]" required>
+                    <option value="">Select your title</option>
+                    <option value="Mr">Mr</option>
+                    <option value="Ms">Ms</option>
+                    <option value="Dr">Dr</option>
+                  </select>
+                </div>
+                <p class="text-red-500 text-sm hidden" id="owner_salutation_error">Please select your title</p>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Owner First Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="owner_first_name" placeholder="Enter owner first name" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_first_name_error">Please enter owner first name</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Owner Middle Name</label>
+                  <div class="relative w-full">
+                    <input type="text" name="owner_middle_name" placeholder="Enter owner middle name"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_middle_name_error">Please enter a valid middle name
+                  </p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Owner Last Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="owner_last_name" placeholder="Enter owner last name" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_last_name_error">Please enter owner last name</p>
+                </div>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Mobile Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="tel" name="owner_mobile" placeholder="Enter owner 10-digit mobile number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_mobile_error">Please enter a valid 10-digit mobile
+                    number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Email Address <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="email" name="owner_email" placeholder="Enter owner email address" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_email_error">Please enter a valid email address</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">PAN Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="owner_pan" placeholder="Enter owner 10-character PAN number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_pan_error">Please enter a valid 10-character PAN
+                    number</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4: Owner Accounts -->
+        <div id="owner-accounts" class="step-content hidden" data-step="4">
+          <div class="flex flex-col gap-y-[50px]" id="owner-account-container">
+            <div class="owner-account-block flex flex-col gap-y-[25px] w-full relative">
+              <div class="flex flex-col gap-y-[36px]">
+                <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Owner Account Details #1</h3>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Account Holder Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="account_holder_name_1" placeholder="Enter account holder name"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="account_holder_name_1_error">Please enter account holder
+                    name</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="number" name="account_rent_amount_1" placeholder="Enter rent amount (INR)"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="account_rent_amount_1_error">Please enter a valid rent
+                    amount</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Account Type <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="account_type_1" class="input-styles w-full pr-[10px]" required>
+                      <option value="">Select account type</option>
+                      <option value="active">Active</option>
+                      <option value="inactive">Inactive</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="account_type_1_error">Please select account type</p>
+                </div>
+              </div>
+              <div class="flex flex-row w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">PAN Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="account_pan_1" placeholder="Enter your PAN number" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="account_pan_1_error">Please enter a valid 10-character
+                    PAN number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Account Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="account_number_1" placeholder="Enter account number" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="account_number_1_error">Please enter a valid account
+                    number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Re-Enter Account Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="re_account_number_1" placeholder="Re-enter account number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="re_account_number_1_error">Account numbers do not match
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-row items-center relative gap-x-[30px]">
+                <div class="flex w-full max-w-[433px] flex-col gap-y-2">
+                  <label class="input-label">Bank IFSC <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="bank_ifsc_1" placeholder="Enter bank IFSC" class="input-styles w-full"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="bank_ifsc_1_error">Please enter a valid 11-character IFSC
+                    code</p>
+                </div>
+                <div class="flex items-center cursor-pointer add-account">
+                  <span class="text-[22px] text-nowrap text-[#2F5D50] font-[600] underline self-start">+ Add More
+                    Account</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 5: File Upload -->
+        <div id="file-upload" class="step-content hidden" data-step="5">
+          <div class="flex flex-col gap-y-[50px]">
+            <div class="flex flex-col gap-y-[36px]">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Upload Rent Agreement/Lease</h3>
+            </div>
+            <div class="flex flex-col gap-y-[50px]">
+              <div id="file-upload-container" class="flex flex-col gap-y-[30px]">
+                <div class="dropzone-wrapper relative">
+                  <div id="dropzone-template"
+                    class="w-full bg-white border border-dashed border-gray-400 py-[53px] text-center shadow-[0_6px_16px_8px_rgba(0,0,0,0.05)] transition-colors duration-300 relative">
+                    <button
+                      class="dropzone-remove absolute top-2 right-2 bg-red-500 text-white rounded px-2 py-1 text-xs hidden">Remove</button>
+                    <div class="flex flex-col items-center justify-center space-y-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none"
+                        class="upload-icon">
+                        <path
+                          d="M12.6537 11.6542C12.6355 11.63 12.6121 11.6103 12.5855 11.5968C12.5588 11.5833 12.5296 11.5763 12.4999 11.5763C12.4703 11.5763 12.441 11.5833 12.4144 11.5968C12.3877 11.6103 12.3644 11.63 12.3461 11.6542L9.61175 15.2521C9.58921 15.282 9.57522 15.3179 9.57139 15.3558C9.56755 15.3936 9.57403 15.4318 9.59007 15.4659C9.60612 15.5001 9.63108 15.5289 9.66212 15.549C9.69315 15.5691 9.72899 15.5797 9.76556 15.5796H11.5698V21.7343C11.5698 21.846 11.6576 21.9374 11.7651 21.9374H13.2299C13.3373 21.9374 13.4252 21.846 13.4252 21.7343V15.5822H15.2343C15.3979 15.5822 15.4882 15.3867 15.3881 15.2546L12.6537 11.6542Z"
+                          fill="#4A3B2C" />
+                        <path
+                          d="M19.8096 9.31074C18.6914 6.24355 15.8423 4.0625 12.5049 4.0625C9.16748 4.0625 6.31836 6.24102 5.2002 9.3082C3.10791 9.87949 1.5625 11.8625 1.5625 14.2188C1.5625 17.0244 3.74756 19.2969 6.44287 19.2969H7.42188C7.5293 19.2969 7.61719 19.2055 7.61719 19.0938V17.5703C7.61719 17.4586 7.5293 17.3672 7.42188 17.3672H6.44287C5.62012 17.3672 4.84619 17.027 4.27002 16.41C3.69629 15.7955 3.39111 14.9678 3.41797 14.1096C3.43994 13.4393 3.65967 12.8096 4.05762 12.2789C4.46533 11.7381 5.03662 11.3445 5.67139 11.1693L6.59668 10.918L6.93604 9.98867C7.146 9.40977 7.43896 8.86895 7.80762 8.37891C8.17156 7.8932 8.60267 7.46624 9.08691 7.11191C10.0903 6.37813 11.272 5.98965 12.5049 5.98965C13.7378 5.98965 14.9194 6.37813 15.9229 7.11191C16.4087 7.46738 16.8384 7.89395 17.2021 8.37891C17.5708 8.86895 17.8638 9.4123 18.0737 9.98867L18.4106 10.9154L19.3335 11.1693C20.6567 11.54 21.582 12.7918 21.582 14.2188C21.582 15.0592 21.2671 15.8514 20.6958 16.4455C20.4156 16.7386 20.0823 16.971 19.7152 17.1292C19.3481 17.2874 18.9545 17.3683 18.5571 17.3672H17.5781C17.4707 17.3672 17.3828 17.4586 17.3828 17.5703V19.0938C17.3828 19.2055 17.4707 19.2969 17.5781 19.2969H18.5571C21.2524 19.2969 23.4375 17.0244 23.4375 14.2188C23.4375 11.865 21.897 9.88457 19.8096 9.31074Z"
+                          fill="#4A3B2C" />
+                      </svg>
+                      <div class="file-selection-text">
+                        <p class="text-[17px] font-[400] text-[#000000]">Select Your File or Drag & Drop</p>
+                        <p style="color: #000000B2" class="text-[12px] font-[400]">png, pdf, jpg, docx accepted</p>
+                      </div>
+                      <div class="selected-filename hidden text-[17px] font-[400] text-[#000000] max-w-[80%] truncate">
+                      </div>
+                      <label
+                        class="cursor-pointer bg-[#4A3B2C] h-auto w-auto py-1 px-[11px] text-[12px] text-white rounded">
+                        Browse
+                        <input type="file" name="file_upload_1" class="hidden file-input cursor-pointer"
+                          accept=".png,.pdf,.jpg,.docx" multiple required />
+                      </label>
+                    </div>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="file_upload_1_error">Please upload at least one valid
+                    file (PNG, PDF, JPG, DOCX, max 5MB)</p>
+                </div>
+              </div>
+              <div class="flex w-full justify-center items-center">
+                <button id="addMoreButton"
+                  class="text-[22px] text-nowrap text-[#2F5D50] font-[600] underline self-start">+ Add More
+                  Files</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 6: Summary -->
+        <div id="summary" class="step-content hidden" data-step="6">
+          <!-- Summary Header -->
+          <div class="summary-header flex items-center justify-between">
+            <h3 class="text-[#2F5D50] text-[24px] font-semibold">
+              Summary of Your Details
+            </h3>
+            <div class="flex items-center gap-[10px]">
+              <img src="./assests/img/edit.svg" alt="Edit Icon" />
+              <p class="text-[#2F5D50] text-[24px] font-semibold underline cursor-pointer">
+                Edit Details
+              </p>
+            </div>
+          </div>
+          <!-- Summary Details -->
+          <div class="flex flex-col gap-[139px]">
+            <!-- Tenant Details -->
+            <div class="mt-[50px]" id="tenant-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                Tenant Details
+              </h3>
+              <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+              </div>
+            </div>
+            <!-- Rental Details -->
+            <div id="rental-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                Rental Details
+              </h3>
+              <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+              </div>
+            </div>
+            <!-- Owner Details -->
+            <div id="owner-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                Owner Details
+              </h3>
+              <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+              </div>
+            </div>
+            <!-- Owner Accounts -->
+            <div id="owner-accounts-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                Owner Account
+              </h3>
+              <div class="details grid grid-cols-2 gap-[32px] gap-x-[278px] mt-[44px]">
+              </div>
+            </div>
+            <!-- Files Added -->
+            <div id="files-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
+                Files Added
+              </h3>
+              <div class="flex space-x-4 mt-[44px]">
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="form-button-container flex flex-row items-center mt-[94px] gap-x-[36px]">
+          <!-- Prev Button (hidden on step 1) -->
+          <div class="flex prev-step items-center group" style="display: none">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
+              Prev Step
+            </button>
+          </div>
+          <!-- Next Button -->
+          <div class="flex next-step items-center group">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
+              Next Step
+            </button>
+            <div
+              class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#2F5D50] text-white border-transparent group-hover:bg-transparent group-hover:border-[#2F5D50]">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                class="text-white group-hover:text-[#2F5D50]" height="1em" width="1em"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                </path>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <button type="submit"
+          class="submit-button bg-[#D80027] py-[37px] rounded-[54px] flex items-center justify-center text-[20px] font-extrabold text-[#fff] hidden">
+          Submit Your Application
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- step form section ended here -->
+  <!-- switch to saving section started here -->
+  <section class="mt-12">
+    <div class="w-full h-[250px] md:h-[300px] xl:h-[394px]"
+      style="background-image: linear-gradient(0deg, rgba(47, 93, 80, 0.80) 0%, rgba(47, 93, 80, 0.80) 100%), url('./assests/img/testimonial-pic.png'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
+
+      <div class="flex flex-col 3xl:flex-row h-full items-center justify-center gap-1 lg:gap-3 xl:gap-5 text-center">
+
+        <p data-aos="fade-up" data-aos-delay="100"
+          class="text-white mb-4 text-center xl:text-left text-3xl xl:text-4xl 3xl:text-[56px] max-w-[569px] font-bold 3xl:leading-[72.8px]">
+          Switch to Savings, Effortlessly.
+        </p>
+        <div data-aos="fade-up" data-aos-delay="100" class="flex items-center group">
+          <!-- Button 1 (Get Started Now) -->
+          <button
+            class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#B68D40] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#B68D40] group-hover:text-[#B68D40] font-bold">
+            Get Started Now
+          </button>
+
+          <!-- Button 2 (Arrow Button) -->
+          <button
+            class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#B68D40] text-[#1A1A1A] border-transparent group-hover:bg-transparent group-hover:border-[#B68D40] group-hover:text-[#B68D40]">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+              class="rotate-[-45deg]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- switch to saving section ended here -->
+
+  <!-- footer section started here -->
+  <footer>
+    <!-- {/* This is the first div */} -->
+    <div class="bg-[#000] pt-7 lg:pt-10 2xl:pt-[68px] px-5 lg:px-8 2xl:px-12 pb-[33px]">
+      <div class="grid lg:grid-cols-2 xl:grid-cols-3 3xl:grid-cols-5 gap-5 4xl:gap-10">
+        <!-- {/* This is the first div */} -->
+        <div class="order-1">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Important Links</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Quick access to essential pages
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                The Journey
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Board of Advisors
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Founding Team
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                INDIA - S A & I
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Team
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Media Relations
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Higher Purpose
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Our Values
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                RentPay™
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                About Us
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Reviews
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                FAQs
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Blog
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Press Releases
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the second div */} -->
+        <div class="order-2">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Policies & Compliance</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Key policies for security and compliance
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Fixed Deposit
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Refer & Earn
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Privacy Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Refund/Cancellation Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Terms & Conditions
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti corruption & Bribery Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Code of Business Conduct & Ethics
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti-Fraud Policy Investigation
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Anti-Money Laundering Policy
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Sanctions Compliance Statement
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Grievance Redressal Policy
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the Third div */} -->
+        <div class="order-4 xl:order-3">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Business Services</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Solutions for businesses & partners
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                List Your Property
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Register as Agent
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Corporate Rental ERP
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                SME Loans
+              </a>
+            </li>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                Post Your Requirement
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- {/* This is the Fourth div */} -->
+        <div class="order-3 xl:order-4">
+          <div data-aos="fade-up" data-aos-delay="100">
+            <p class="text-[#FFF]">Our Offices</p>
+            <p class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Global presence, local impact
+            </p>
+          </div>
+
+          <ul class="mt-6 space-y-1">
+            <div>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px]">
+                  United Kingdom
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe Inc.
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Harben House, Harben Parade, Finchley
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Road, London, NW3 6LH.
+                </a>
+              </li>
+            </div>
+            <div class="pt-5">
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px] mt-5">
+                  Singapore
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe Holdings
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  3 Temasek Avenue, Centennial Tower,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  #17-01, Singapore 039190.
+                </a>
+              </li>
+            </div>
+            <div class="pt-5">
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#B68D40] font-bold leading-[19.6px] ">
+                  India
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  RedGirraffe.com
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  904, Galleria Towers, DLF Phase IV,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Gurgaon, Haryana - 122002.
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  507, Tulsiani Chambers, Nariman Point,
+                </a>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="100">
+                <a href="#" class="text-[#E6E6E6] leading-[23.8px]">
+                  Mumbai - 400021.
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <!-- {/* This is the Fifth div */} -->
+        <div class="order-5">
+          <div>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#FFF]">
+              Stay Connected
+            </p>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#B68D40] font-[800] leading-[22.96px] mt-1">
+              Never miss an update
+            </p>
+          </div>
+
+          <!-- {/* This is the button section */} -->
+          <div class="mt-5 relative 4xl:w-[320px] h-12">
+            <input data-aos="fade-up" data-aos-delay="100" type="text" placeholder="Enter your email"
+              class="py-3 px-4 rounded-[400px] w-full h-full" />
+            <button
+              class="bg-[#B68D40] rounded-[47px] my-2 px-4 text-[#050404] font-bold leading-[23.8px] py-2 absolute right-1 -top-1">
+              Subscribe
+            </button>
+          </div>
+          <!--  -->
+          <div class="mt-8 flex flex-col gap-y-3 ">
+            <a data-aos="fade-up" data-aos-delay="100" href={"/"}>
+              <img src="./assests/img/logo.svg" alt="" />
+            </a>
+            <div class="flex gap-2 mt-2">
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="border-r-2 border-[#B68D40] pr-2 text-[#B68D40] font-bold text-nowrap">
+                Payments
+              </p>
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="border-r-2 border-[#B68D40] pr-2 text-[#B68D40] font-bold text-nowrap">
+                B2B SaaS
+              </p>
+              <p data-aos="fade-up" data-aos-delay="100"
+                class="pr-2 border-[#B68D40] text-[#B68D40] font-bold text-nowrap">
+                Real Estate
+              </p>
+            </div>
+          </div>
+          <!--  -->
+          <div class="mt-5">
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#E6E6E6] font-[800] leading-[18.2px]">
+              Write to us at:
+            </p>
+            <p data-aos="fade-up" data-aos-delay="100" class="text-[#E6E6E6] xl:text-xl font-bold">
+              connect@redgirraffe.com
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- {/* This is the second div */} -->
+    <div class="bg-[#B68D40] h-12">
+      <div class="flex justify-center items-center h-full px-2">
+        <p class="text-[#050404] text-[11px] md:text-[13px] text-center font-bold leading-[21.32px]">
+          Copyright © 2025-2026 | RedGirraffe - All rights reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section ended here -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize form state
+      const formState = {
+        currentStep: 1,
+        totalSteps: 6,
+        formData: {}
+      };
+
+      // DOM elements
+      const domElements = {
+        stepContents: document.querySelectorAll('.step-content'),
+        prevButton: document.querySelector('.prev-step'),
+        nextButtons: document.querySelectorAll('.next-step button'),
+        prevButtons: document.querySelectorAll('.prev-step button'),
+        buttonContainer: document.querySelector(".form-button-container"),
+        activeProgressBar: document.querySelector(".progres-width"),
+        stepLabels: document.querySelectorAll('.step-label'),
+        activePercent: document.querySelector(".active-percent"),
+        fileUploadContainer: document.getElementById("file-upload-container"),
+        addMoreButton: document.getElementById("addMoreButton"),
+        dropzoneTemplate: document.querySelector('#dropzone-template'),
+        ownerAccountContainer: document.getElementById("owner-account-container"),
+        tenantDetailsSummary: document.getElementById("tenant-details-summary").querySelector('.details'),
+        rentalDetailsSummary: document.getElementById("rental-details-summary").querySelector('.details'),
+        ownerDetailsSummary: document.getElementById("owner-details-summary").querySelector('.details'),
+        ownerAccountsSummary: document.getElementById("owner-accounts-summary").querySelector('.details'),
+        filesSummary: document.getElementById("files-summary").querySelector('.flex'),
+        editDetailsButton: document.querySelector("#summary[data-step='6'] .summary-header p"),
+        submitButton: document.querySelector('.submit-button')
+      };
+
+      // Validation rules for all fields
+      const validationRules = {
+        tenant_type: { required: true, validate: () => document.querySelector('input[name="tenant_type"]:checked'), error: 'Please select tenant type (Individual or Company)' },
+        salutation: { required: true, validate: value => value !== '', error: 'Please select your title' },
+        tenant_first_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid first name (letters only, max 50 characters)' },
+        tenant_middle_name: { required: false, validate: value => !value || /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid middle name (letters only, max 50 characters)' },
+        tenant_last_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid last name (letters only, max 50 characters)' },
+        tenant_dob: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            const today = new Date();
+            return !isNaN(date.getTime()) && date < today;
+          }, error: 'Please enter a valid date of birth in the past'
+        },
+        tenant_mobile: { required: true, validate: value => /^[0-9]{10}$/.test(value), error: 'Please enter a valid 10-digit mobile number' },
+        tenant_email: { required: true, validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), error: 'Please enter a valid email address' },
+        tenant_city: { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid city name (letters only, max 100 characters)' },
+        tenant_pin: { required: true, validate: value => /^[0-9]{6}$/.test(value), error: 'Please enter a valid 6-digit pin code' },
+        tenant_address: { required: true, validate: value => value.length >= 5 && value.length <= 200, error: 'Please enter a valid address (5–200 characters)' },
+        rent_amount: { required: true, validate: value => !isNaN(value) && parseFloat(value) > 0, error: 'Please enter a valid rent amount' },
+        tenant_pan: { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character PAN number' },
+        payment_frequency: { required: true, validate: value => ['monthly', 'yearly'].includes(value), error: 'Please select payment frequency' },
+        gstin: { required: false, validate: value => !value || /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/.test(value), error: 'Please enter a valid 15-character GSTIN' },
+        due_date: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            return !isNaN(date.getTime());
+          }, error: 'Please enter a valid due date'
+        },
+        agreement_expiry: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            const dueDate = new Date(document.querySelector('[name="due_date"]').value);
+            return !isNaN(date.getTime()) && (!dueDate || date > dueDate);
+          }, error: 'Please enter a valid expiry date after the due date'
+        },
+        card_issuing_bank: { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid bank name (letters only, max 100 characters)' },
+        owner_salutation: { required: true, validate: value => value !== '', error: 'Please select owner title' },
+        owner_first_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner first name (letters only, max 50 characters)' },
+        owner_middle_name: { required: false, validate: value => !value || /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner middle name (letters only, max 50 characters)' },
+        owner_last_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner last name (letters only, max 50 characters)' },
+        owner_mobile: { required: true, validate: value => /^[0-9]{10}$/.test(value), error: 'Please enter a valid 10-digit owner mobile number' },
+        owner_email: { required: true, validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), error: 'Please enter a valid owner email address' },
+        owner_pan: { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character owner PAN number' }
+      };
+
+      // Initialize dynamic validation rules for owner accounts
+      function updateAccountValidationRules() {
+        const accountBlocks = domElements.ownerAccountContainer.querySelectorAll('.owner-account-block');
+        accountBlocks.forEach((block, index) => {
+          const idx = index + 1;
+          validationRules[`account_holder_name_${idx}`] = { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid account holder name (letters only, max 100 characters)' };
+          validationRules[`account_rent_amount_${idx}`] = { required: true, validate: value => !isNaN(value) && parseFloat(value) > 0, error: 'Please enter a valid rent amount' };
+          validationRules[`account_type_${idx}`] = { required: true, validate: value => ['active', 'inactive'].includes(value), error: 'Please select account type' };
+          validationRules[`account_pan_${idx}`] = { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character PAN number' };
+          validationRules[`account_number_${idx}`] = { required: true, validate: value => /^[0-9]{9,18}$/.test(value), error: 'Please enter a valid account number (9–18 digits)' };
+          validationRules[`re_account_number_${idx}`] = {
+            required: true,
+            validate: value => value === document.querySelector(`[name="account_number_${idx}"]`).value,
+            error: 'Account numbers do not match'
+          };
+          validationRules[`bank_ifsc_${idx}`] = { required: true, validate: value => /^[A-Z]{4}0[A-Z0-9]{6}$/.test(value), error: 'Please enter a valid 11-character IFSC code' };
+        });
+      }
+
+      // Initialize file upload validation
+      function updateFileValidationRules() {
+        const dropzones = domElements.fileUploadContainer.querySelectorAll('.dropzone-wrapper');
+        dropzones.forEach((wrapper, index) => {
+          const idx = index + 1;
+          validationRules[`file_upload_${idx}`] = {
+            required: idx === 1,
+            validate: () => {
+              const fileInput = wrapper.querySelector('.file-input');
+              if (!fileInput.files.length && idx === 1) return false;
+              const allowedTypes = ['image/png', 'application/pdf', 'image/jpeg', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+              const maxSize = 5 * 1024 * 1024; // 5MB
+              for (let file of fileInput.files) {
+                if (!allowedTypes.includes(file.type) || file.size > maxSize) return false;
+              }
+              return true;
+            },
+            error: 'Please upload at least one valid file (PNG, PDF, JPG, DOCX, max 5MB)'
+          };
+        });
+      }
+
+      // Setup initial dropzone
+      const firstDropzone = domElements.fileUploadContainer.querySelector('.dropzone-wrapper');
+      firstDropzone.querySelector('.dropzone-remove').classList.add('hidden');
+      setupDropzone(firstDropzone.querySelector('#dropzone-template'));
+
+      // Add more dropzone functionality
+      domElements.addMoreButton.addEventListener('click', function () {
+        const newDropzoneWrapper = document.createElement('div');
+        newDropzoneWrapper.className = 'dropzone-wrapper relative';
+        const newDropzone = domElements.dropzoneTemplate.cloneNode(true);
+        newDropzone.id = '';
+        const fileInput = newDropzone.querySelector('.file-input');
+        fileInput.name = `file_upload_${document.querySelectorAll('.dropzone-wrapper').length + 1}`;
+        fileInput.value = '';
+        newDropzone.querySelector('.dropzone-remove').classList.remove('hidden');
+        newDropzone.querySelector('.file-selection-text').classList.remove('hidden');
+        newDropzone.querySelector('.selected-filename').classList.add('hidden');
+        newDropzone.querySelector('.selected-filename').textContent = '';
+        newDropzoneWrapper.appendChild(newDropzone);
+        domElements.fileUploadContainer.appendChild(newDropzoneWrapper);
+        setupDropzone(newDropzone);
+        updateFileValidationRules();
+      });
+
+      // Setup dropzone event listeners
+      function setupDropzone(dropzone) {
+        const fileInput = dropzone.querySelector('.file-input');
+        const removeButton = dropzone.querySelector('.dropzone-remove');
+        const fileSelectionText = dropzone.querySelector('.file-selection-text');
+        const selectedFilename = dropzone.querySelector('.selected-filename');
+
+        fileInput.addEventListener('change', function (e) {
+          if (e.target.files.length > 0) {
+            selectedFilename.textContent = e.target.files[0].name;
+            selectedFilename.classList.remove('hidden');
+            fileSelectionText.classList.add('hidden');
+          } else {
+            selectedFilename.classList.add('hidden');
+            fileSelectionText.classList.remove('hidden');
+          }
+        });
+
+        dropzone.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          dropzone.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        dropzone.addEventListener('dragleave', function () {
+          dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        dropzone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+          if (e.dataTransfer.files.length > 0) {
+            const dataTransfer = new DataTransfer();
+            for (let i = 0; i < e.dataTransfer.files.length; i++) {
+              dataTransfer.items.add(e.dataTransfer.files[i]);
+            }
+            fileInput.files = dataTransfer.files;
+            const event = new Event('change');
+            fileInput.dispatchEvent(event);
+          }
+        });
+
+        removeButton.addEventListener('click', function () {
+          dropzone.closest('.dropzone-wrapper').remove();
+          updateFileValidationRules();
+        });
+
+        fileInput.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      }
+
+      // Add more owner account functionality
+      document.addEventListener("click", function (e) {
+        if (e.target.closest(".add-account")) {
+          const accountBlocks = domElements.ownerAccountContainer.querySelectorAll(".owner-account-block");
+          const lastAccount = accountBlocks[accountBlocks.length - 1];
+          const newAccount = lastAccount.cloneNode(true);
+          const newIndex = accountBlocks.length + 1;
+          newAccount.querySelector("h3").textContent = `Owner Account Details #${newIndex}`;
+          newAccount.querySelectorAll("input, select").forEach(field => {
+            field.value = "";
+            field.name = field.name.replace(/\d+$/, newIndex);
+            const errorElement = field.parentElement.nextElementSibling;
+            if (errorElement) {
+              errorElement.id = `${field.name}_error`;
+              errorElement.classList.add("hidden");
+            }
+          });
+          newAccount.querySelectorAll("p.text-red-500").forEach(p => p.classList.add("hidden"));
+          const oldBtn = lastAccount.querySelector(".add-account");
+          if (oldBtn) oldBtn.remove();
+          domElements.ownerAccountContainer.appendChild(newAccount);
+          updateAccountValidationRules();
+        }
+      });
+
+      // Initialize form
+      initForm();
+
+      function setupEventListeners() {
+        domElements.nextButtons.forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            nextStep();
+          });
+        });
+
+        domElements.prevButtons.forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            prevStep();
+          });
+        });
+
+        // Edit Details functionality
+        domElements.editDetailsButton.addEventListener('click', function () {
+          formState.currentStep = 1;
+          showCurrentStep();
+        });
+
+        // Submit button
+        domElements.submitButton.addEventListener('click', function (e) {
+          e.preventDefault();
+          if (formState.currentStep === formState.totalSteps && validateCurrentStep()) {
+            submitForm();
+          }
+        });
+      }
+
+      function initForm() {
+        updateAccountValidationRules();
+        updateFileValidationRules();
+        showCurrentStep();
+        restoreFormData();
+        setupEventListeners();
+      }
+
+      function showCurrentStep() {
+        domElements.stepContents.forEach(content => content.classList.add('hidden'));
+        const currentContent = document.querySelector(`.step-content[data-step="${formState.currentStep}"]`);
+        if (currentContent) currentContent.classList.remove('hidden');
+        updateProgressBar();
+        updateNavigationButtons();
+        if (formState.currentStep === 6) {
+          displaySummary();
+        }
+      }
+
+      function updateProgressBar() {
+        const percent = Math.round(((formState.currentStep - 1) / (formState.totalSteps - 1)) * 100);
+        domElements.activePercent.innerHTML = `${percent}%`;
+        const containerWidth = domElements.activeProgressBar.parentElement.offsetWidth;
+        const leftPos = (percent / 100) * containerWidth;
+        if (formState.currentStep === 1) {
+          domElements.activePercent.style.left = `0px`;
+          domElements.activePercent.classList.remove('-translate-x-1/2');
+        } else {
+          domElements.activePercent.style.left = `${leftPos}px`;
+          domElements.activePercent.classList.add('-translate-x-1/2');
+        }
+        const progressWidths = {
+          1: '2.5%',
+          2: '20%',
+          3: '39.9%',
+          4: '59.3%',
+          5: '79.6%',
+          6: '100%'
+        };
+        domElements.activeProgressBar.style.width = progressWidths[formState.currentStep] || '0%';
+        domElements.stepLabels.forEach((label, index) => {
+          label.style.color = index < formState.currentStep ? '#2F5D50' : '#BFBFBF';
+        });
+      }
+
+      function updateNavigationButtons() {
+        domElements.prevButton.style.display = formState.currentStep === 1 ? 'none' : 'flex';
+        domElements.nextButtons.forEach(btn => {
+          btn.parentElement.style.display = formState.currentStep === formState.totalSteps ? 'none' : 'flex';
+        });
+        domElements.submitButton.style.display = formState.currentStep === formState.totalSteps ? 'flex' : 'none';
+        domElements.buttonContainer.style.display = formState.currentStep !== 6 ? "flex" : "none";
+      }
+
+      function nextStep() {
+        if (validateCurrentStep()) {
+          saveFormData();
+          if (formState.currentStep < formState.totalSteps) {
+            formState.currentStep++;
+            showCurrentStep();
+          }
+        }
+      }
+
+      function prevStep() {
+        if (formState.currentStep > 1) {
+          formState.currentStep--;
+          showCurrentStep();
+        }
+      }
+
+      function validateCurrentStep() {
+        let isValid = true;
+        document.querySelectorAll('[id$="_error"]').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.input-styles').forEach(field => {
+          field.classList.remove('border-red-500');
+          field.classList.add('border-gray-300');
+        });
+
+        const currentContent = document.querySelector(`.step-content[data-step="${formState.currentStep}"]`);
+        if (currentContent) {
+          const fields = currentContent.querySelectorAll('input[name], select[name], textarea[name]');
+          fields.forEach(field => {
+            const fieldName = field.name;
+            const rule = validationRules[fieldName];
+            if (!rule) return;
+            const value = field.type === 'file' ? field.files : field.value.trim();
+            const errorElement = document.getElementById(`${fieldName}_error`);
+
+            if (rule.required && (field.type !== 'file' && value === '' || field.type === 'file' && !value.length)) {
+              showError(field, errorElement, rule.error);
+              isValid = false;
+            } else if (rule.validate && !rule.validate(value)) {
+              showError(field, errorElement, rule.error);
+              isValid = false;
+            }
+          });
+
+          // Special handling for radio buttons
+          if (formState.currentStep === 1) {
+            const tenantType = document.querySelector('input[name="tenant_type"]:checked');
+            const errorElement = document.getElementById('tenant_type_error');
+            if (!tenantType) {
+              showError(document.querySelector('input[name="tenant_type"]'), errorElement, validationRules.tenant_type.error);
+              isValid = false;
+            }
+          }
+        }
+
+        return isValid;
+      }
+
+      function showError(field, errorElement, message) {
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.classList.remove('hidden');
+          field.setAttribute('aria-invalid', 'true');
+          field.setAttribute('aria-describedby', errorElement.id);
+        }
+        field.classList.remove('border-gray-300');
+        field.classList.add('border-red-500');
+        field.addEventListener('input', function () {
+          field.classList.remove('border-red-500');
+          field.classList.add('border-gray-300');
+          field.removeAttribute('aria-invalid');
+          if (errorElement) errorElement.classList.add('hidden');
+        }, { once: true });
+      }
+
+      function saveFormData() {
+        const formData = { ...formState.formData };
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+          if (field.name) {
+            if (field.type === 'radio') {
+              if (field.checked) formData[field.name] = field.value;
+            } else if (field.type === 'file') {
+              if (field.files.length) {
+                formData[field.name] = Array.from(field.files).map(file => ({
+                  name: file.name,
+                  type: file.type,
+                  size: file.size
+                }));
+              }
+            } else {
+              formData[field.name] = field.value;
+            }
+          }
+        });
+        formState.formData = formData;
+        localStorage.setItem('rentFormData', JSON.stringify(formData));
+      }
+
+      function restoreFormData() {
+        const data = JSON.parse(localStorage.getItem('rentFormData')) || {};
+        formState.formData = data;
+        Object.keys(data).forEach(key => {
+          const field = document.querySelector(`[name="${key}"]`);
+          if (field && key !== 'file_upload_1' && !key.startsWith('file_upload_')) {
+            if (field.type === 'radio') {
+              const radio = document.querySelector(`input[name="${key}"][value="${data[key]}"]`);
+              if (radio) radio.checked = true;
+            } else {
+              field.value = data[key];
+            }
+          }
+        });
+        // Restore dynamic owner accounts
+        const accountKeys = Object.keys(data).filter(k => k.startsWith('account_holder_name_'));
+        const accountCount = accountKeys.length;
+        if (accountCount > 1) {
+          for (let i = 2; i <= accountCount; i++) {
+            const event = new Event('click');
+            domElements.ownerAccountContainer.querySelector('.add-account').dispatchEvent(event);
+          }
+        }
+        // Restore file uploads
+        const fileKeys = Object.keys(data).filter(k => k.startsWith('file_upload_'));
+        if (fileKeys.length > 1) {
+          for (let i = 2; i <= fileKeys.length; i++) {
+            domElements.addMoreButton.click();
+          }
+        }
+      }
+
+      function displaySummary() {
+        const data = formState.formData;
+
+        // Tenant Details
+        domElements.tenantDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">User Type</h6>
+            <p class="font-semibold">${data.tenant_type || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Mobile Number</h6>
+            <p class="font-semibold">${data.tenant_mobile || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Name</h6>
+            <p class="font-semibold">${data.salutation || ''} ${data.tenant_first_name || ''} ${data.tenant_middle_name || ''} ${data.tenant_last_name || ''}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">PAN Number</h6>
+            <p class="font-semibold">${data.tenant_pan || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">DOB</h6>
+            <p class="font-semibold">${data.tenant_dob || 'N/A'}</p>
+          </div>
+          <div></div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Email</h6>
+            <p class="font-semibold">${data.tenant_email || 'N/A'}</p>
+          </div>
+        `;
+
+        // Rental Details
+        domElements.rentalDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Address Line 1</h6>
+            <p class="font-semibold">${data.tenant_address || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">City</h6>
+            <p class="font-semibold">${data.tenant_city || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Rent Amount</h6>
+            <p class="font-semibold">₹${data.rent_amount || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Pin Code</h6>
+            <p class="font-semibold">${data.tenant_pin || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Payment Frequency</h6>
+            <p class="font-semibold">${data.payment_frequency || 'N/A'}</p>
+          </div>
+        `;
+
+        // Owner Details
+        domElements.ownerDetailsSummary.innerHTML = `
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Name</h6>
+            <p class="font-semibold">${data.owner_salutation || ''} ${data.owner_first_name || ''} ${data.owner_middle_name || ''} ${data.owner_last_name || ''}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Mobile Number</h6>
+            <p class="font-semibold">${data.owner_mobile || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">Email</h6>
+            <p class="font-semibold">${data.owner_email || 'N/A'}</p>
+          </div>
+          <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+            <h6 class="font-extrabold">PAN Number</h6>
+            <p class="font-semibold">${data.owner_pan || 'N/A'}</p>
+          </div>
+        `;
+
+        // Owner Accounts
+        let ownerAccountsHtml = '';
+        const accountKeys = Object.keys(data).filter(k => k.startsWith('account_holder_name_'));
+        accountKeys.forEach((_, idx) => {
+          const index = idx + 1;
+          ownerAccountsHtml += `
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Holder Name #${index}</h6>
+              <p class="font-semibold">${data[`account_holder_name_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Rent Amount #${index}</h6>
+              <p class="font-semibold">₹${data[`account_rent_amount_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Type #${index}</h6>
+              <p class="font-semibold">${data[`account_type_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">PAN Number #${index}</h6>
+              <p class="font-semibold">${data[`account_pan_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">Account Number #${index}</h6>
+              <p class="font-semibold">${data[`account_number_${index}`] || 'N/A'}</p>
+            </div>
+            <div class="flex justify-between text-[#4D4D4D] text-[20px]">
+              <h6 class="font-extrabold">IFSC #${index}</h6>
+              <p class="font-semibold">${data[`bank_ifsc_${index}`] || 'N/A'}</p>
+            </div>
+          `;
+        });
+        domElements.ownerAccountsSummary.innerHTML = ownerAccountsHtml || '<p>No account details available</p>';
+
+        // Files
+        let filesHtml = '';
+        const fileKeys = Object.keys(data).filter(k => k.startsWith('file_upload_'));
+        fileKeys.forEach((key, idx) => {
+          const files = data[key];
+          files.forEach(file => {
+            const extension = file.name.split('.').pop().toLowerCase();
+            const iconUrl = extension === 'pdf' ? 'https://img.icons8.com/color/96/pdf.png' : 'https://img.icons8.com/color/96/image.png';
+            filesHtml += `
+              <div class="p-2 flex flex-col  items-center">
+                <img src="${iconUrl}" alt="${extension.toUpperCase()} Icon" class="w-12 h-12" />
+                <p class="mt-2 text-xs text-gray-700 t text-center">${file.name}</p>
+              </div>
+            `;
+          });
+        });
+        domElements.filesSummary.innerHTML = filesHtml || '<p>No files uploaded</p>';
+      }
+
+      function submitForm() {
+        console.log('Form submitted with data:', formState.formData);
+        alert('Form submitted successfully!');
+        localStorage.removeItem('rentFormData');
+        formState.formData = {};
+        formState.currentStep = 1;
+        showCurrentStep();
+      }
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 700,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+      });
+    });
+  </script>
+</body>
+</html>

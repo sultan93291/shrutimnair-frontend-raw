@@ -244,7 +244,7 @@
           <img data-aos="fade-up" data-aos-delay="100" src="./assests/img/credit.png"
             class=" w-[320px] sm:w-[400px] md:w-[550px] lg:w-[650px] xl:w-[800px]  3xl:w-[755px] object-cover h-[250px] sm:h-[350px] 3xl:h-[542px] rounded-[20px] 3xl:rounded-[40px] "
             alt="not found" />
-          <div class="flex flex-col items-center gap-y-[7px] ">
+          <div id="pay-rent" class="flex flex-col items-center gap-y-[7px] ">
             <h4 data-aos="fade-up" data-aos-delay="100"
               class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
               Pay Rent
@@ -666,6 +666,19 @@
     </div>
   </footer>
   <!-- footer section ended here -->
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const PayRent = document.querySelector('#pay-rent');
+    if (PayRent) {
+      PayRent.addEventListener("click", () => {
+        window.location.href = "./pay-rent.html";
+      });
+    } else {
+      console.error("#pay-rent element not found.");
+    }
+  });
+</script>
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       AOS.init({
