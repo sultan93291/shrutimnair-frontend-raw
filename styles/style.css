@@ -44,3 +44,25 @@ body {
 .step-content {
   transition: all 0.3s ease;
 }
+
+.input-label {
+  color: #4d4d4d;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 130%;
+}
+.input-label span {
+  color: #d80027;
+}
+
+.input-styles {
+  max-width: 433px;
+  height: auto;
+  padding: 17px 17px;
+  border-radius: 5.575px;
+  border: 1.394px solid  #6b737a;
+  outline: none;
+  font-size: 20px;
+  width: 100%;
+}
