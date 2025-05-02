@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedGirraffe</title>
+  <link rel="stylesheet" href="./styles/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            LightGreen: "#80FFE84D",
+          },
+          fontFamily: {
+            inter: ["Inter", "sans-serif"],
+          },
+          boxShadow: {
+            TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+          },
+          borderRadius: {
+            lg: "1rem",
+            md: "0.75rem",
+            sm: "0.5rem",
+          },
+          screens: {
+            xs: "360px",
+            sm: "480px",
+            md: "576px",
+            lg: "768px",
+            xl: "992px",
+            "2xl": "1200px",
+            "3xl": "1500px",
+            "4xl": "1920px",
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    .input-label {
+      font-size: 18px;
+      font-weight: 500;
+      color: #2F5D50;
+      margin-bottom: 8px;
+    }
+
+    .input-label span {
+      color: #D80027;
+    }
+
+    .input-styles {
+      border: 1px solid #D1D5DB;
+      border-radius: 8px;
+      padding: 15px 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .input-styles:focus {
+      outline: none;
+      border-color: #2F5D50;
+    }
+
+    .btn-primary {
+      background-color: #2F5D50;
+      color: white;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #1E3E34;
+    }
+
+    .btn-outline {
+      background-color: white;
+      color: #2F5D50;
+      border: 1px solid #2F5D50;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background-color: #F0F7F5;
+    }
+  </style>
+</head>
+<body>
+  <div class="mx-auto pt-[205px] pb-[119px] flex items-center flex-col gap-y-[205px]">
+    <div>
+      <div class="text-center">
+        <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay Rent</h2>
+      </div>
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+        class="bg-white rounded-lg h-auto w-[1700px] rounded-[54px] px-[170px] pt-[198px] pb-[112px] relative">
+        <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+          class="absolute w-[1864px] bg-white top-0 left-1/2 transform -translate-x-1/2 py-[55.75px] px-[70.23px] rounded-[30px] mt-[-80px]">
+          <div class="flex flex-col gap-y-[13px]">
+            <div class="flex flex-col gap-y-[28px] items-center">
+              <div class="w-[1688px] rounded-[14px] h-[12px] bg-[#2F5D50] relative">
+                <div class="absolute top-0 left-0 h-full bg-[#D80027] progres-width rounded-[14px]"></div>
+                <span
+                  class="active-percent absolute top-[-30px] text-[17.704px] font-[500] transition-all duration-300 ease-in-out">0%</span>
+              </div>
+              <div class="flex flex-row justify-between w-full">
+                <span class="step-label font-[500] text-[17.704px]">Tenant Details</span>
+                <span class="step-label font-[500] text-[17.704px]">Rental Details</span>
+                <span class="step-label font-[500] text-[17.704px]">Owner Details</span>
+                <span class="step-label font-[500] text-[17.704px]">Owner Accounts</span>
+                <span class="step-label font-[500] text-[17.704px]">File Upload</span>
+                <span class="step-label font-[500] text-[17.704px]">Summary</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-[94px]">
+          <!-- Step 1: Tenant Details -->
+          <div id="tenant-details" class="step-content" data-step="1">
+            <div class="flex flex-col gap-y-[82px]">
+              <div class="flex flex-col gap-y-[50px]">
+                <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Tenant Personal Info</h3>
+                <div class="flex flex-col gap-y-2">
+                  <div class="flex flex-row gap-x-8 items-center">
+                    <h3 class="text-[20px] font-[600] leading-[130%] text-[#000000]">Tenant Type:</h3>
+                    <label class="inline-flex items-center space-x-2 cursor-pointer">
+                      <input type="radio" name="tenant_type" value="individual" required
+                        class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                      <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Individual</span>
+                    </label>
+                    <label class="inline-flex items-center space-x-2 cursor-pointer">
+                      <input type="radio" name="tenant_type" value="company" required
+                        class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                      <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Company</span>
+                    </label>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="tenant_type_error">Please select tenant type (Individual or
+                    Company)</p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-y-[25px] w-full relative">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Salutation <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="salutation" class="input-styles w-full pr-[10px]" required>
+                      <option value="">Select your title</option>
+                      <option value="Mr">Mr</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Dr">Dr</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="salutation_error">Please select your title</p>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">First Name <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_first_name" placeholder="Enter your first name"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_first_name_error">Please enter your first name</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Middle Name</label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_middle_name" placeholder="Enter your middle name"
+                        class="input-styles" />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_middle_name_error">Please enter a valid middle
+                      name</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Last Name <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_last_name" placeholder="Enter your last name" class="input-styles"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_last_name_error">Please enter your last name</p>
+                  </div>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Date of Birth <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="date" name="tenant_dob" class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_dob_error">Please enter a valid date of birth</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Mobile Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="tel" name="tenant_mobile" placeholder="Enter your 10-digit mobile number"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">Please enter a valid 10-digit mobile
+                      number</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Email Address <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="email" name="tenant_email" placeholder="Enter your email address"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_email_error">Please enter a valid email address
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">City <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_city" placeholder="Enter your city" class="input-styles"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_city_error">Please enter your city</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Pin Code <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_pin" placeholder="Enter your 6-digit pin code"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_pin_error">Please enter a valid 6-digit pin code
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Address (Rental Property) <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_address" placeholder="Enter your rental property address"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_address_error">Please enter your address</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 2: Rental Details -->
+          <div id="rental-details" class="step-content hidden" data-step="2">
+            <div class="flex flex-col gap-y-[50px]">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Rental Details</h3>
+              <div class="flex flex-col gap-y-[25px] w-full relative">
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="number" name="rent_amount" placeholder="Enter the monthly rent amount in INR"
+                        class="input-styles w-full pr-[10px]" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="rent_amount_error">Please enter a valid rent amount</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Tenant PAN <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="tenant_pan" placeholder="Enter your 10-character PAN number"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="tenant_pan_error">Please enter a valid 10-character PAN
+                      number</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Frequency <span>*</span></label>
+                    <div class="relative w-full">
+                      <select name="payment_frequency" class="input-styles w-full pr-[10px]" required>
+                        <option value="">Select payment frequency</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                      </select>
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="payment_frequency_error">Please select payment frequency
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">GSTIN (If Applicable)</label>
+                    <div class="relative w-full">
+                      <input type="text" name="gstin" placeholder="Enter your GSTIN" class="input-styles" />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="gstin_error">Please enter a valid 15-character GSTIN</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Due Date <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="date" name="due_date" class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="due_date_error">Please enter a valid due date</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Rent Agreement Expiry <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="date" name="agreement_expiry" class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="agreement_expiry_error">Please enter a valid expiry date
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Card Issuing Bank Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="card_issuing_bank" placeholder="Enter your card issuing bank name"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="card_issuing_bank_error">Please enter a valid bank name</p>
+                </div>
+                <div class="flex flex-row gap-x-[30px]">
+                  <div class="flex flex-row items-center gap-x-2">
+                    <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Charges & Taxes:</h2>
+                    <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                  </div>
+                  <div class="flex flex-row items-center gap-x-2">
+                    <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Total Amount:</h2>
+                    <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 3: Owner Details -->
+          <div id="owner-details" class="step-content hidden" data-step="3">
+            <div class="flex flex-col gap-y-[50px]">
+              <div class="flex flex-col gap-y-[36px]">
+                <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Owner Details</h3>
+                <p class="text-[17.704px] font-[600] leading-[130%] text-[#2F5D50]">
+                  *Please ensure & verify that the account no., IFSC code, and account holder's name are correct.
+                  Incorrect details may lead to issues with the rent payment in which case, RedGirraffe or/and the
+                  credit card/debit card issuing banks shall assume no liability.
+                </p>
+              </div>
+              <div class="flex flex-col gap-y-[25px] w-full relative">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Salutation <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="owner_salutation" class="input-styles w-full pr-[10px]" required>
+                      <option value="">Select your title</option>
+                      <option value="Mr">Mr</option>
+                      <option value="Ms">Ms</option>
+                      <option value="Dr">Dr</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="owner_salutation_error">Please select your title</p>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Owner First Name <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="owner_first_name" placeholder="Enter owner first name"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_first_name_error">Please enter owner first name</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Owner Middle Name</label>
+                    <div class="relative w-full">
+                      <input type="text" name="owner_middle_name" placeholder="Enter owner middle name"
+                        class="input-styles" />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_middle_name_error">Please enter a valid middle name
+                    </p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Owner Last Name <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="owner_last_name" placeholder="Enter owner last name" class="input-styles"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_last_name_error">Please enter owner last name</p>
+                  </div>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Mobile Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="tel" name="owner_mobile" placeholder="Enter owner 10-digit mobile number"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_mobile_error">Please enter a valid 10-digit mobile
+                      number</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Email Address <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="email" name="owner_email" placeholder="Enter owner email address"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_email_error">Please enter a valid email address</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">PAN Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="owner_pan" placeholder="Enter owner 10-character PAN number"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="owner_pan_error">Please enter a valid 10-character PAN
+                      number</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 4: Owner Accounts -->
+          <div id="owner-accounts" class="step-content hidden" data-step="4">
+            <div class="flex flex-col gap-y-[50px]" id="owner-account-container">
+              <div class="owner-account-block flex flex-col gap-y-[25px] w-full relative">
+                <div class="flex flex-col gap-y-[36px]">
+                  <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Owner Account Details #1</h3>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px] items-center">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Account Holder Name <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="account_holder_name_1" placeholder="Enter account holder name"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="account_holder_name_1_error">Please enter account holder
+                      name</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="number" name="account_rent_amount_1" placeholder="Enter rent amount (INR)"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="account_rent_amount_1_error">Please enter a valid rent
+                      amount</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Account Type <span>*</span></label>
+                    <div class="relative w-full">
+                      <select name="account_type_1" class="input-styles w-full pr-[10px]" required>
+                        <option value="">Select account type</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                      </select>
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="account_type_1_error">Please select account type</p>
+                  </div>
+                </div>
+                <div class="flex flex-row w-full relative gap-x-[30px]">
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">PAN Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="account_pan_1" placeholder="Enter your PAN number" class="input-styles"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="account_pan_1_error">Please enter a valid 10-character
+                      PAN number</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Account Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="account_number_1" placeholder="Enter account number" class="input-styles"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="account_number_1_error">Please enter a valid account
+                      number</p>
+                  </div>
+                  <div class="flex flex-col gap-y-2 w-full">
+                    <label class="input-label">Re-Enter Account Number <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="re_account_number_1" placeholder="Re-enter account number"
+                        class="input-styles" required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="re_account_number_1_error">Account numbers do not match
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-row items-center relative gap-x-[30px]">
+                  <div class="flex w-full max-w-[433px] flex-col gap-y-2">
+                    <label class="input-label">Bank IFSC <span>*</span></label>
+                    <div class="relative w-full">
+                      <input type="text" name="bank_ifsc_1" placeholder="Enter bank IFSC" class="input-styles w-full"
+                        required />
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="bank_ifsc_1_error">Please enter a valid 11-character IFSC
+                      code</p>
+                  </div>
+                  <div class="flex items-center cursor-pointer add-account">
+                    <span class="text-[22px] text-nowrap text-[#2F5D50] font-[600] underline self-start">+ Add More
+                      Account</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 5: File Upload -->
+          <div id="file-upload" class="step-content hidden" data-step="5">
+            <div class="flex flex-col gap-y-[50px]">
+              <div class="flex flex-col gap-y-[36px]">
+                <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Upload Rent Agreement/Lease</h3>
+              </div>
+              <div class="flex flex-col gap-y-[50px]">
+                <div id="file-upload-container" class="flex flex-col gap-y-[30px]">
+                  <div class="dropzone-wrapper relative">
+                    <div id="dropzone-template"
+                      class="w-full bg-white border border-dashed border-gray-400 py-[53px] text-center shadow-[0_6px_16px_8px_rgba(0,0,0,0.05)] transition-colors duration-300 relative">
+                      <button
+                        class="dropzone-remove absolute top-2 right-2 bg-red-500 text-white rounded px-2 py-1 text-xs hidden">Remove</button>
+                      <div class="flex flex-col items-center justify-center space-y-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26" fill="none"
+                          class="upload-icon">
+                          <path
+                            d="M12.6537 11.6542C12.6355 11.63 12.6121 11.6103 12.5855 11.5968C12.5588 11.5833 12.5296 11.5763 12.4999 11.5763C12.4703 11.5763 12.441 11.5833 12.4144 11.5968C12.3877 11.6103 12.3644 11.63 12.3461 11.6542L9.61175 15.2521C9.58921 15.282 9.57522 15.3179 9.57139 15.3558C9.56755 15.3936 9.57403 15.4318 9.59007 15.4659C9.60612 15.5001 9.63108 15.5289 9.66212 15.549C9.69315 15.5691 9.72899 15.5797 9.76556 15.5796H11.5698V21.7343C11.5698 21.846 11.6576 21.9374 11.7651 21.9374H13.2299C13.3373 21.9374 13.4252 21.846 13.4252 21.7343V15.5822H15.2343C15.3979 15.5822 15.4882 15.3867 15.3881 15.2546L12.6537 11.6542Z"
+                            fill="#4A3B2C" />
+                          <path
+                            d="M19.8096 9.31074C18.6914 6.24355 15.8423 4.0625 12.5049 4.0625C9.16748 4.0625 6.31836 6.24102 5.2002 9.3082C3.10791 9.87949 1.5625 11.8625 1.5625 14.2188C1.5625 17.0244 3.74756 19.2969 6.44287 19.2969H7.42188C7.5293 19.2969 7.61719 19.2055 7.61719 19.0938V17.5703C7.61719 17.4586 7.5293 17.3672 7.42188 17.3672H6.44287C5.62012 17.3672 4.84619 17.027 4.27002 16.41C3.69629 15.7955 3.39111 14.9678 3.41797 14.1096C3.43994 13.4393 3.65967 12.8096 4.05762 12.2789C4.46533 11.7381 5.03662 11.3445 5.67139 11.1693L6.59668 10.918L6.93604 9.98867C7.146 9.40977 7.43896 8.86895 7.80762 8.37891C8.17156 7.8932 8.60267 7.46624 9.08691 7.11191C10.0903 6.37813 11.272 5.98965 12.5049 5.98965C13.7378 5.98965 14.9194 6.37813 15.9229 7.11191C16.4087 7.46738 16.8384 7.89395 17.2021 8.37891C17.5708 8.86895 17.8638 9.4123 18.0737 9.98867L18.4106 10.9154L19.3335 11.1693C20.6567 11.54 21.582 12.7918 21.582 14.2188C21.582 15.0592 21.2671 15.8514 20.6958 16.4455C20.4156 16.7386 20.0823 16.971 19.7152 17.1292C19.3481 17.2874 18.9545 17.3683 18.5571 17.3672H17.5781C17.4707 17.3672 17.3828 17.4586 17.3828 17.5703V19.0938C17.3828 19.2055 17.4707 19.2969 17.5781 19.2969H18.5571C21.2524 19.2969 23.4375 17.0244 23.4375 14.2188C23.4375 11.865 21.897 9.88457 19.8096 9.31074Z"
+                            fill="#4A3B2C" />
+                        </svg>
+                        <div class="file-selection-text">
+                          <p class="text-[17px] font-[400] text-[#000000]">Select Your File or Drag & Drop</p>
+                          <p style="color: #000000B2" class="text-[12px] font-[400]">png, pdf, jpg, docx accepted</p>
+                        </div>
+                        <div
+                          class="selected-filename hidden text-[17px] font-[400] text-[#000000] max-w-[80%] truncate">
+                        </div>
+                        <label
+                          class="cursor-pointer bg-[#4A3B2C] h-auto w-auto py-1 px-[11px] text-[12px] text-white rounded">
+                          Browse
+                          <input type="file" name="file_upload_1" class="hidden file-input cursor-pointer"
+                            accept=".png,.pdf,.jpg,.docx" multiple required />
+                        </label>
+                      </div>
+                    </div>
+                    <p class="text-red-500 text-sm hidden" id="file_upload_1_error">Please upload at least one valid
+                      file (PNG, PDF, JPG, DOCX, max 5MB)</p>
+                  </div>
+                </div>
+                <div class="flex w-full justify-center items-center">
+                  <button id="addMoreButton"
+                    class="text-[22px] text-nowrap text-[#2F5D50] font-[600] underline self-start">+ Add More
+                    Files</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Step 6: Summary -->
+          <div id="summary" class="step-content hidden" data-step="6">
+            <div class="flex flex-col gap-y-[50px]">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Summary</h3>
+              <div id="summary-content" class="flex flex-col gap-y-[25px]">
+                <!-- Summary will be dynamically populated -->
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-row items-center mt-[94px] gap-x-[36px]">
+            <div class="flex prev-step items-center group" style="display: none;">
+              <button
+                class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
+                Prev Step
+              </button>
+            </div>
+            <div class="flex next-step items-center group">
+              <button
+                class="px-3 md:px-4 xl:px-8 py-[5px] 2xl:py-[11px] rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
+                Next Step
+              </button>
+              <div
+                class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#2F5D50] text-white border-transparent group-hover:bg-transparent group-hover:border-[#2F5D50]">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                  class="text-white group-hover:text-[#2F5D50]" height="1em" width="1em"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                  </path>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize form state
+      const formState = {
+        currentStep: 1,
+        totalSteps: 6,
+        formData: {}
+      };
+
+      // DOM elements
+      const domElements = {
+        stepContents: document.querySelectorAll('.step-content'),
+        prevButton: document.querySelector('.prev-step'),
+        nextButtons: document.querySelectorAll('.next-step button'),
+        prevButtons: document.querySelectorAll('.prev-step button'),
+        activeProgressBar: document.querySelector(".progres-width"),
+        stepLabels: document.querySelectorAll('.step-label'),
+        activePercent: document.querySelector(".active-percent"),
+        fileUploadContainer: document.getElementById("file-upload-container"),
+        addMoreButton: document.getElementById("addMoreButton"),
+        dropzoneTemplate: document.querySelector('#dropzone-template'),
+        ownerAccountContainer: document.getElementById("owner-account-container"),
+        summaryContent: document.getElementById("summary-content")
+      };
+
+      // Validation rules for all fields
+      const validationRules = {
+        tenant_type: { required: true, validate: () => document.querySelector('input[name="tenant_type"]:checked'), error: 'Please select tenant type (Individual or Company)' },
+        salutation: { required: true, validate: value => value !== '', error: 'Please select your title' },
+        tenant_first_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid first name (letters only, max 50 characters)' },
+        tenant_middle_name: { required: false, validate: value => !value || /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid middle name (letters only, max 50 characters)' },
+        tenant_last_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid last name (letters only, max 50 characters)' },
+        tenant_dob: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            const today = new Date();
+            return !isNaN(date.getTime()) && date < today;
+          }, error: 'Please enter a valid date of birth in the past'
+        },
+        tenant_mobile: { required: true, validate: value => /^[0-9]{10}$/.test(value), error: 'Please enter a valid 10-digit mobile number' },
+        tenant_email: { required: true, validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), error: 'Please enter a valid email address' },
+        tenant_city: { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid city name (letters only, max 100 characters)' },
+        tenant_pin: { required: true, validate: value => /^[0-9]{6}$/.test(value), error: 'Please enter a valid 6-digit pin code' },
+        tenant_address: { required: true, validate: value => value.length >= 5 && value.length <= 200, error: 'Please enter a valid address (5–200 characters)' },
+        rent_amount: { required: true, validate: value => !isNaN(value) && parseFloat(value) > 0, error: 'Please enter a valid rent amount' },
+        tenant_pan: { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character PAN number' },
+        payment_frequency: { required: true, validate: value => ['monthly', 'yearly'].includes(value), error: 'Please select payment frequency' },
+        gstin: { required: false, validate: value => !value || /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/.test(value), error: 'Please enter a valid 15-character GSTIN' },
+        due_date: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            return !isNaN(date.getTime());
+          }, error: 'Please enter a valid due date'
+        },
+        agreement_expiry: {
+          required: true, validate: value => {
+            const date = new Date(value);
+            const dueDate = new Date(document.querySelector('[name="due_date"]').value);
+            return !isNaN(date.getTime()) && (!dueDate || date > dueDate);
+          }, error: 'Please enter a valid expiry date after the due date'
+        },
+        card_issuing_bank: { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid bank name (letters only, max 100 characters)' },
+        owner_salutation: { required: true, validate: value => value !== '', error: 'Please select owner title' },
+        owner_first_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner first name (letters only, max 50 characters)' },
+        owner_middle_name: { required: false, validate: value => !value || /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner middle name (letters only, max 50 characters)' },
+        owner_last_name: { required: true, validate: value => /^[A-Za-z\s]{1,50}$/.test(value), error: 'Please enter a valid owner last name (letters only, max 50 characters)' },
+        owner_mobile: { required: true, validate: value => /^[0-9]{10}$/.test(value), error: 'Please enter a valid 10-digit owner mobile number' },
+        owner_email: { required: true, validate: value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value), error: 'Please enter a valid owner email address' },
+        owner_pan: { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character owner PAN number' }
+      };
+
+      // Initialize dynamic validation rules for owner accounts
+      function updateAccountValidationRules() {
+        const accountBlocks = domElements.ownerAccountContainer.querySelectorAll('.owner-account-block');
+        accountBlocks.forEach((block, index) => {
+          const idx = index + 1;
+          validationRules[`account_holder_name_${idx}`] = { required: true, validate: value => /^[A-Za-z\s]{1,100}$/.test(value), error: 'Please enter a valid account holder name (letters only, max 100 characters)' };
+          validationRules[`account_rent_amount_${idx}`] = { required: true, validate: value => !isNaN(value) && parseFloat(value) > 0, error: 'Please enter a valid rent amount' };
+          validationRules[`account_type_${idx}`] = { required: true, validate: value => ['active', 'inactive'].includes(value), error: 'Please select account type' };
+          validationRules[`account_pan_${idx}`] = { required: true, validate: value => /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value), error: 'Please enter a valid 10-character PAN number' };
+          validationRules[`account_number_${idx}`] = { required: true, validate: value => /^[0-9]{9,18}$/.test(value), error: 'Please enter a valid account number (9–18 digits)' };
+          validationRules[`re_account_number_${idx}`] = {
+            required: true,
+            validate: value => value === document.querySelector(`[name="account_number_${idx}"]`).value,
+            error: 'Account numbers do not match'
+          };
+          validationRules[`bank_ifsc_${idx}`] = { required: true, validate: value => /^[A-Z]{4}0[A-Z0-9]{6}$/.test(value), error: 'Please enter a valid 11-character IFSC code' };
+        });
+      }
+
+      // Initialize file upload validation
+      function updateFileValidationRules() {
+        const dropzones = domElements.fileUploadContainer.querySelectorAll('.dropzone-wrapper');
+        dropzones.forEach((wrapper, index) => {
+          const idx = index + 1;
+          validationRules[`file_upload_${idx}`] = {
+            required: idx === 1, // Only the first file upload is required
+            validate: () => {
+              const fileInput = wrapper.querySelector('.file-input');
+              if (!fileInput.files.length && idx === 1) return false;
+              const allowedTypes = ['image/png', 'application/pdf', 'image/jpeg', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+              const maxSize = 5 * 1024 * 1024; // 5MB
+              for (let file of fileInput.files) {
+                if (!allowedTypes.includes(file.type) || file.size > maxSize) return false;
+              }
+              return true;
+            },
+            error: 'Please upload at least one valid file (PNG, PDF, JPG, DOCX, max 5MB)'
+          };
+        });
+      }
+
+      // Setup initial dropzone
+      const firstDropzone = domElements.fileUploadContainer.querySelector('.dropzone-wrapper');
+      firstDropzone.querySelector('.dropzone-remove').classList.add('hidden');
+      setupDropzone(firstDropzone.querySelector('#dropzone-template'));
+
+      // Add more dropzone functionality
+      domElements.addMoreButton.addEventListener('click', function () {
+        const newDropzoneWrapper = document.createElement('div');
+        newDropzoneWrapper.className = 'dropzone-wrapper relative';
+        const newDropzone = domElements.dropzoneTemplate.cloneNode(true);
+        newDropzone.id = '';
+        const fileInput = newDropzone.querySelector('.file-input');
+        fileInput.name = `file_upload_${document.querySelectorAll('.dropzone-wrapper').length + 1}`;
+        fileInput.value = '';
+        newDropzone.querySelector('.dropzone-remove').classList.remove('hidden');
+        newDropzone.querySelector('.file-selection-text').classList.remove('hidden');
+        newDropzone.querySelector('.selected-filename').classList.add('hidden');
+        newDropzone.querySelector('.selected-filename').textContent = '';
+        newDropzoneWrapper.appendChild(newDropzone);
+        domElements.fileUploadContainer.appendChild(newDropzoneWrapper);
+        setupDropzone(newDropzone);
+        updateFileValidationRules();
+      });
+
+      // Setup dropzone event listeners
+      function setupDropzone(dropzone) {
+        const fileInput = dropzone.querySelector('.file-input');
+        const removeButton = dropzone.querySelector('.dropzone-remove');
+        const fileSelectionText = dropzone.querySelector('.file-selection-text');
+        const selectedFilename = dropzone.querySelector('.selected-filename');
+
+        fileInput.addEventListener('change', function (e) {
+          if (e.target.files.length > 0) {
+            selectedFilename.textContent = e.target.files[0].name;
+            selectedFilename.classList.remove('hidden');
+            fileSelectionText.classList.add('hidden');
+          } else {
+            selectedFilename.classList.add('hidden');
+            fileSelectionText.classList.remove('hidden');
+          }
+        });
+
+        dropzone.addEventListener('dragover', function (e) {
+          e.preventDefault();
+          dropzone.classList.add('border-blue-500', 'bg-blue-50');
+        });
+
+        dropzone.addEventListener('dragleave', function () {
+          dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+        });
+
+        dropzone.addEventListener('drop', function (e) {
+          e.preventDefault();
+          dropzone.classList.remove('border-blue-500', 'bg-blue-50');
+          if (e.dataTransfer.files.length > 0) {
+            const dataTransfer = new DataTransfer();
+            for (let i = 0; i < e.dataTransfer.files.length; i++) {
+              dataTransfer.items.add(e.dataTransfer.files[i]);
+            }
+            fileInput.files = dataTransfer.files;
+            const event = new Event('change');
+            fileInput.dispatchEvent(event);
+          }
+        });
+
+        removeButton.addEventListener('click', function () {
+          dropzone.closest('.dropzone-wrapper').remove();
+          updateFileValidationRules();
+        });
+
+        fileInput.addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      }
+
+      // Add more owner account functionality
+      document.addEventListener("click", function (e) {
+        if (e.target.closest(".add-account")) {
+          const accountBlocks = domElements.ownerAccountContainer.querySelectorAll(".owner-account-block");
+          const lastAccount = accountBlocks[accountBlocks.length - 1];
+          const newAccount = lastAccount.cloneNode(true);
+          const newIndex = accountBlocks.length + 1;
+          newAccount.querySelector("h3").textContent = `Owner Account Details #${newIndex}`;
+          newAccount.querySelectorAll("input, select").forEach(field => {
+            field.value = "";
+            field.name = field.name.replace(/\d+$/, newIndex);
+            const errorElement = field.parentElement.nextElementSibling;
+            if (errorElement) {
+              errorElement.id = `${field.name}_error`;
+              errorElement.classList.add("hidden");
+            }
+          });
+          newAccount.querySelectorAll("p.text-red-500").forEach(p => p.classList.add("hidden"));
+          const oldBtn = lastAccount.querySelector(".add-account");
+          if (oldBtn) oldBtn.remove();
+          domElements.ownerAccountContainer.appendChild(newAccount);
+          updateAccountValidationRules();
+        }
+      });
+
+      // Initialize form
+      initForm();
+
+      function setupEventListeners() {
+        domElements.nextButtons.forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            nextStep();
+          });
+        });
+
+        domElements.prevButtons.forEach(button => {
+          button.addEventListener('click', function (e) {
+            e.preventDefault();
+            prevStep();
+          });
+        });
+      }
+
+      function initForm() {
+        updateAccountValidationRules();
+        updateFileValidationRules();
+        showCurrentStep();
+        restoreFormData();
+        setupEventListeners();
+      }
+
+      function showCurrentStep() {
+        domElements.stepContents.forEach(content => content.classList.add('hidden'));
+        const currentContent = document.querySelector(`.step-content[data-step="${formState.currentStep}"]`);
+        if (currentContent) currentContent.classList.remove('hidden');
+        updateProgressBar();
+        updateNavigationButtons();
+        if (formState.currentStep === 6) {
+          displaySummary();
+        }
+      }
+
+      function updateProgressBar() {
+        const percent = Math.round(((formState.currentStep - 1) / (formState.totalSteps - 1)) * 100);
+        domElements.activePercent.innerHTML = `${percent}%`;
+        const containerWidth = domElements.activeProgressBar.parentElement.offsetWidth;
+        const leftPos = (percent / 100) * containerWidth;
+        if (formState.currentStep === 1) {
+          domElements.activePercent.style.left = `0px`;
+          domElements.activePercent.classList.remove('-translate-x-1/2');
+        } else {
+          domElements.activePercent.style.left = `${leftPos}px`;
+          domElements.activePercent.classList.add('-translate-x-1/2');
+        }
+        const progressWidths = {
+          1: '2.5%',
+          2: '20%',
+          3: '39.9%',
+          4: '59.3%',
+          5: '79.6%',
+          6: '100%'
+        };
+        domElements.activeProgressBar.style.width = progressWidths[formState.currentStep] || '0%';
+        domElements.stepLabels.forEach((label, index) => {
+          label.style.color = index < formState.currentStep ? '#2F5D50' : '#BFBFBF';
+        });
+      }
+
+      function updateNavigationButtons() {
+        domElements.prevButton.style.display = formState.currentStep === 1 ? 'none' : 'flex';
+        domElements.nextButtons.forEach(btn => {
+          btn.textContent = formState.currentStep === formState.totalSteps ? 'Submit' : 'Next Step';
+        });
+      }
+
+      function nextStep() {
+        if (validateCurrentStep()) {
+          saveFormData();
+          if (formState.currentStep === formState.totalSteps) {
+            submitForm();
+          } else {
+            formState.currentStep++;
+            showCurrentStep();
+          }
+        }
+      }
+
+      function prevStep() {
+        if (formState.currentStep > 1) {
+          formState.currentStep--;
+          showCurrentStep();
+        }
+      }
+
+      function validateCurrentStep() {
+        let isValid = true;
+        document.querySelectorAll('[id$="_error"]').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.input-styles').forEach(field => {
+          field.classList.remove('border-red-500');
+          field.classList.add('border-gray-300');
+        });
+
+        const currentContent = document.querySelector(`.step-content[data-step="${formState.currentStep}"]`);
+        if (currentContent) {
+          const fields = currentContent.querySelectorAll('input[name], select[name], textarea[name]');
+          fields.forEach(field => {
+            const fieldName = field.name;
+            const rule = validationRules[fieldName];
+            if (!rule) return;
+            const value = field.type === 'file' ? field.files : field.value.trim();
+            const errorElement = document.getElementById(`${fieldName}_error`);
+
+            if (rule.required && (field.type !== 'file' && value === '' || field.type === 'file' && !value.length)) {
+              showError(field, errorElement, rule.error);
+              isValid = false;
+            } else if (rule.validate && !rule.validate(value)) {
+              showError(field, errorElement, rule.error);
+              isValid = false;
+            }
+          });
+
+          // Special handling for radio buttons
+          if (formState.currentStep === 1) {
+            const tenantType = document.querySelector('input[name="tenant_type"]:checked');
+            const errorElement = document.getElementById('tenant_type_error');
+            if (!tenantType) {
+              showError(document.querySelector('input[name="tenant_type"]'), errorElement, validationRules.tenant_type.error);
+              isValid = false;
+            }
+          }
+        }
+
+        return isValid;
+      }
+
+      function showError(field, errorElement, message) {
+        if (errorElement) {
+          errorElement.textContent = message;
+          errorElement.classList.remove('hidden');
+          field.setAttribute('aria-invalid', 'true');
+          field.setAttribute('aria-describedby', errorElement.id);
+        }
+        field.classList.remove('border-gray-300');
+        field.classList.add('border-red-500');
+        field.addEventListener('input', function () {
+          field.classList.remove('border-red-500');
+          field.classList.add('border-gray-300');
+          field.removeAttribute('aria-invalid');
+          if (errorElement) errorElement.classList.add('hidden');
+        }, { once: true });
+      }
+
+      function saveFormData() {
+        const formData = { ...formState.formData };
+        document.querySelectorAll('input, select, textarea').forEach(field => {
+          if (field.name) {
+            if (field.type === 'radio') {
+              if (field.checked) formData[field.name] = field.value;
+            } else if (field.type === 'file') {
+              if (field.files.length) {
+                formData[field.name] = Array.from(field.files).map(file => ({
+                  name: file.name,
+                  type: file.type,
+                  size: file.size
+                }));
+              }
+            } else {
+              formData[field.name] = field.value;
+            }
+          }
+        });
+        formState.formData = formData;
+        localStorage.setItem('rentFormData', JSON.stringify(formData));
+      }
+
+      function restoreFormData() {
+        const data = JSON.parse(localStorage.getItem('rentFormData')) || {};
+        formState.formData = data;
+        Object.keys(data).forEach(key => {
+          const field = document.querySelector(`[name="${key}"]`);
+          if (field && key !== 'file_upload_1' && !key.startsWith('file_upload_')) {
+            if (field.type === 'radio') {
+              const radio = document.querySelector(`input[name="${key}"][value="${data[key]}"]`);
+              if (radio) radio.checked = true;
+            } else {
+              field.value = data[key];
+            }
+          }
+        });
+        // Restore dynamic owner accounts
+        const accountKeys = Object.keys(data).filter(k => k.startsWith('account_holder_name_'));
+        const accountCount = accountKeys.length;
+        if (accountCount > 1) {
+          for (let i = 2; i <= accountCount; i++) {
+            const event = new Event('click');
+            domElements.ownerAccountContainer.querySelector('.add-account').dispatchEvent(event);
+          }
+        }
+        // Restore file uploads
+        const fileKeys = Object.keys(data).filter(k => k.startsWith('file_upload_'));
+        if (fileKeys.length > 1) {
+          for (let i = 2; i <= fileKeys.length; i++) {
+            domElements.addMoreButton.click();
+          }
+        }
+      }
+
+      function displaySummary() {
+        const data = formState.formData;
+        domElements.summaryContent.innerHTML = `
+          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Tenant Details</h4>
+          <p>Tenant Type: ${data.tenant_type || 'N/A'}</p>
+          <p>Salutation: ${data.salutation || 'N/A'}</p>
+          <p>Name: ${data.tenant_first_name || ''} ${data.tenant_middle_name || ''} ${data.tenant_last_name || ''}</p>
+          <p>Date of Birth: ${data.tenant_dob || 'N/A'}</p>
+          <p>Mobile: ${data.tenant_mobile || 'N/A'}</p>
+          <p>Email: ${data.tenant_email || 'N/A'}</p>
+          <p>City: ${data.tenant_city || 'N/A'}</p>
+          <p>Pin Code: ${data.tenant_pin || 'N/A'}</p>
+          <p>Address: ${data.tenant_address || 'N/A'}</p>
+          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Rental Details</h4>
+          <p>Rent Amount: ₹${data.rent_amount || 'N/A'}</p>
+          <p>Tenant PAN: ${data.tenant_pan || 'N/A'}</p>
+          <p>Payment Frequency: ${data.payment_frequency || 'N/A'}</p>
+          <p>GSTIN: ${data.gstin || 'N/A'}</p>
+          <p>Due Date: ${data.due_date || 'N/A'}</p>
+          <p>Agreement Expiry: ${data.agreement_expiry || 'N/A'}</p>
+          <p>Card Issuing Bank: ${data.card_issuing_bank || 'N/A'}</p>
+          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Owner Details</h4>
+          <p>Salutation: ${data.owner_salutation || 'N/A'}</p>
+          <p>Name: ${data.owner_first_name || ''} ${data.owner_middle_name || ''} ${data.owner_last_name || ''}</p>
+          <p>Mobile: ${data.owner_mobile || 'N/A'}</p>
+          <p>Email: ${data.owner_email || 'N/A'}</p>
+          <p>PAN: ${data.owner_pan || 'N/A'}</p>
+          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Owner Accounts</h4>
+          ${Object.keys(data).filter(k => k.startsWith('account_holder_name_')).map((_, idx) => `
+            <p>Account #${idx + 1}</p>
+            <p>Holder Name: ${data[`account_holder_name_${idx + 1}`] || 'N/A'}</p>
+            <p>Rent Amount: ₹${data[`account_rent_amount_${idx + 1}`] || 'N/A'}</p>
+            <p>Account Type: ${data[`account_type_${idx + 1}`] || 'N/A'}</p>
+            <p>PAN: ${data[`account_pan_${idx + 1}`] || 'N/A'}</p>
+            <p>Account Number: ${data[`account_number_${idx + 1}`] || 'N/A'}</p>
+            <p>IFSC: ${data[`bank_ifsc_${idx + 1}`] || 'N/A'}</p>
+          `).join('')}
+          <h4 class="text-[20px] font-[600] text-[#2F5D50]">Uploaded Files</h4>
+          ${Object.keys(data).filter(k => k.startsWith('file_upload_')).map((key, idx) => `
+            <p>File #${idx + 1}: ${data[key].map(file => file.name).join(', ')}</p>
+          `).join('')}
+        `;
+      }
+
+      function submitForm() {
+        console.log('Form submitted with data:', formState.formData);
+        alert('Form submitted successfully!');
+        localStorage.removeItem('rentFormData');
+        formState.formData = {};
+        formState.currentStep = 1;
+        showCurrentStep();
+      }
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({
+        duration: 700,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+      });
+    });
+  </script>
+</body>
+</html>
