@@ -3,6 +3,47 @@ const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("overlay");
 const closeBtn = document.getElementById("close-btn");
 const redirectBtn = document.querySelector(".redirect");
+const redirectBtnTwo = document.querySelector(".redirect-two");
+
+document.addEventListener("DOMContentLoaded", function () {
+  AOS.init({
+    duration: 700,
+    easing: "ease-in-out",
+    once: true,
+    offset: 100,
+  });
+});
+
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        LightGreen: "#80FFE84D",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      boxShadow: {
+        TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+      },
+      borderRadius: {
+        lg: "1rem",
+        md: "0.75rem",
+        sm: "0.5rem",
+      },
+      screens: {
+        xs: "360px",
+        sm: "480px",
+        md: "576px",
+        lg: "768px",
+        xl: "992px",
+        "2xl": "1200px",
+        "3xl": "1500px",
+        "4xl": "1920px",
+      },
+    },
+  },
+};
 
 menuBtn.addEventListener("click", () => {
   sidebar.classList.toggle("-translate-x-full");
@@ -27,6 +68,9 @@ redirectBtn.addEventListener("click", () => {
   window.location.href = "../select-option.html";
 });
 
+redirectBtnTwo.addEventListener("click", () => {
+  window.location.href = "../select-option.html";
+});
 document.addEventListener("DOMContentLoaded", function () {
   const steps = document.querySelectorAll(".step");
   const stepContents = document.querySelectorAll(".step-content");

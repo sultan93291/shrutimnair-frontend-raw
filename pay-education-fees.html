@@ -128,7 +128,7 @@
               In</a></li>
         </ul>
 
-
+        <!-- Mobile Social Contacts -->
         <!-- Mobile Social Contacts -->
         <div class="space-y-4 mt-10">
           <div class="flex gap-2 items-center">
@@ -159,7 +159,7 @@
             <p class="text-[#FFF] text-[15px] font-medium leading-6">connect@redgirraffe.com</p>
           </div>
         </div>
-
+        
         <!-- Close Button -->
         <button id="close-btn" class="absolute top-3 right-3">
           <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -171,9 +171,9 @@
   </header>
   <!-- navbar ended here -->
   <!-- step form  section started here -->
-  <div class="mx-auto  pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px] ">
+  <div class="mx-auto pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px]">
     <div class="text-center">
-      <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay My Rent</h2>
+      <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay Education Fees</h2>
     </div>
     <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
       class="bg-white rounded-lg h-auto w-[90%] rounded-[54px] px-[20px] xl:px-[70px] 3xl:px-[170px] pt-[198px] pb-[60px] lg:pb-[80px] xl:pb-[112px] relative">
@@ -187,44 +187,27 @@
                 class="active-percent absolute top-[-30px] text-[17.704px] font-[500] transition-all duration-300 ease-in-out">0%</span>
             </div>
             <div class="flex flex-row justify-between flex-wrap gap-5 w-full">
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Tenant Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Rental Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Owner Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Owner Accounts</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">File Upload</span>
+              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Applicant Details</span>
+              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Student Details</span>
+              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Institute Details</span>
+              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Institute Account Details</span>
+              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Upload Student Document</span>
               <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Summary</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="flex flex-col ">
-        <!-- Step 1: Tenant Details -->
-        <div id="tenant-details" class="step-content" data-step="1">
+      <div class="flex flex-col">
+        <!-- Step 1: Applicant Details -->
+        <div id="payer-details" class="step-content" data-step="1">
           <div class="flex flex-col gap-y-[42px] xl:gap-y-[82px]">
             <div class="flex flex-col gap-y-[25px] xl:gap-y-[50px]">
-              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Tenant Personal Info</h3>
-              <div class="flex flex-col gap-y-2">
-                <div class="flex flex-col lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
-                  <h3 class=" text-base lg:text-[20px] font-[600] leading-[130%] text-[#000000]">Tenant Type:</h3>
-                  <label class="inline-flex items-center space-x-2 cursor-pointer">
-                    <input type="radio" name="tenant_type" value="individual" required
-                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
-                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Individual</span>
-                  </label>
-                  <label class="inline-flex items-center space-x-2 cursor-pointer">
-                    <input type="radio" name="tenant_type" value="company" required
-                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
-                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Company</span>
-                  </label>
-                </div>
-                <p class="text-red-500 text-sm hidden" id="tenant_type_error">Please select tenant type (Individual or
-                  Company)</p>
-              </div>
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Applicant Details</h3>
             </div>
             <div class="flex flex-col gap-y-[25px] relative">
-              <div class="flex flex-col gap-y-">
+              <div class="flex flex-col gap-y-2">
                 <label class="input-label">Salutation <span>*</span></label>
-                <div class="relative max-w-[433px] ">
+                <div class="relative max-w-[433px]">
                   <select name="salutation" class="input-styles pr-[10px]" required>
                     <option value="">Select your title</option>
                     <option value="Mr">Mr</option>
@@ -232,263 +215,462 @@
                     <option value="Dr">Dr</option>
                   </select>
                 </div>
-                <p class="text-red-500 text-sm hidden" id="salutation_error">Please select your title</p>
+                <p class="text-red-500 text-sm hidden" id="salutation_error">Please select a valid title (Mr, Ms, Dr)
+                </p>
               </div>
               <div class="flex flex-col lg:flex-row w-full relative gap-y-[15px] gap-x-[30px] items-center">
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">First Name <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="text" name="tenant_first_name" placeholder="Enter your first name" class="input-styles"
+                    <input type="text" name="first_name" placeholder="Enter your first name" class="input-styles"
                       required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_first_name_error">Please enter your first name</p>
+                  <p class="text-red-500 text-sm hidden" id="first_name_error">Please enter a valid first name (letters
+                    only, max 50 characters)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Middle Name</label>
                   <div class="relative w-full">
-                    <input type="text" name="tenant_middle_name" placeholder="Enter your middle name"
-                      class="input-styles" />
+                    <input type="text" name="middle_name" placeholder="Enter your middle name" class="input-styles" />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_middle_name_error">Please enter a valid middle
-                    name</p>
+                  <p class="text-red-500 text-sm hidden" id="middle_name_error">Please enter a valid middle name
+                    (letters
+                    only, max 50 characters)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Last Name <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="text" name="tenant_last_name" placeholder="Enter your last name" class="input-styles"
+                    <input type="text" name="last_name" placeholder="Enter your last name" class="input-styles"
                       required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_last_name_error">Please enter your last name</p>
+                  <p class="text-red-500 text-sm hidden" id="last_name_error">Please enter a valid last name (letters
+                    only, max 50 characters)</p>
                 </div>
               </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px]  w-full relative gap-x-[30px]">
+              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Date of Birth <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="date" name="tenant_dob" class="input-styles" required />
+                    <input type="date" name="dob" class="input-styles" required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_dob_error">Please enter a valid date of birth</p>
+                  <p class="text-red-500 text-sm hidden" id="dob_error">Please enter a valid date of birth (must be at
+                    least 18 years old)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Mobile Number <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="tel" name="tenant_mobile" placeholder="Enter your 10-digit mobile number"
-                      class="input-styles" required />
+                    <input type="tel" name="mobile" placeholder="Enter your 10-digit mobile number" class="input-styles"
+                      required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">Please enter a valid 10-digit mobile
-                    number</p>
+                  <p class="text-red-500 text-sm hidden" id="mobile_error">Please enter a valid 10-digit Indian mobile
+                    number (starting with 6-9)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Email Address <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="email" name="tenant_email" placeholder="Enter your email address" class="input-styles"
+                    <input type="email" name="email" placeholder="Enter your email address" class="input-styles"
                       required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_email_error">Please enter a valid email address
-                  </p>
+                  <p class="text-red-500 text-sm hidden" id="email_error">Please enter a valid email address</p>
                 </div>
               </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px]  w-full relative gap-x-[30px]">
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">City <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="tenant_city" placeholder="Enter your city" class="input-styles" required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_city_error">Please enter your city</p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Pin Code <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="tenant_pin" placeholder="Enter your 6-digit pin code" class="input-styles"
-                      required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_pin_error">Please enter a valid 6-digit pin code
-                  </p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Address (Rental Property) <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="tenant_address" placeholder="Enter your rental property address"
-                      class="input-styles" required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_address_error">Please enter your address</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Step 2: Rental Details -->
-        <div id="rental-details" class="step-content hidden" data-step="2">
-          <div class="flex flex-col gap-y-[25px] xl:gap-y-[50px]">
-            <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Rental Details</h3>
-            <div class="flex flex-col gap-y-[25px] w-full relative">
               <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                  <label class="input-label">PAN Number <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="number" name="rent_amount" placeholder="Enter the monthly rent amount in INR"
-                      class="input-styles w-full pr-[10px]" required />
+                    <input type="text" name="pan_number" placeholder="Enter your PAN number" class="input-styles"
+                      required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="rent_amount_error">Please enter a valid rent amount</p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Tenant PAN <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="tenant_pan" placeholder="Enter your 10-character PAN number"
-                      class="input-styles" required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_pan_error">Please enter a valid 10-character PAN
+                  <p class="text-red-500 text-sm hidden" id="pan_number_error">Please enter a valid 10-character PAN
                     number</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Frequency <span>*</span></label>
+                  <label class="input-label">GSTIN</label>
                   <div class="relative w-full">
-                    <select name="payment_frequency" class="input-styles w-full pr-[10px]" required>
-                      <option value="">Select payment frequency</option>
-                      <option value="monthly">Monthly</option>
-                      <option value="yearly">Yearly</option>
-                    </select>
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="payment_frequency_error">Please select payment frequency
-                  </p>
-                </div>
-              </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">GSTIN (If Applicable)</label>
-                  <div class="relative w-full">
-                    <input type="text" name="gstin" placeholder="Enter your GSTIN" class="input-styles" />
+                    <input type="text" name="gstin" placeholder="Enter your 15-character GSTIN" class="input-styles" />
                   </div>
                   <p class="text-red-500 text-sm hidden" id="gstin_error">Please enter a valid 15-character GSTIN</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Due Date <span>*</span></label>
+                  <label class="input-label">Alternate Number</label>
                   <div class="relative w-full">
-                    <input type="date" name="due_date" class="input-styles" required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="due_date_error">Please enter a valid due date</p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Rent Agreement Expiry <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="date" name="agreement_expiry" class="input-styles" required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="agreement_expiry_error">Please enter a valid expiry date
-                  </p>
-                </div>
-              </div>
-              <div class="flex flex-col gap-y-2">
-                <label class="input-label">Card Issuing Bank Name <span>*</span></label>
-                <div class="relative ">
-                  <input type="text" name="card_issuing_bank" placeholder="Enter your card issuing bank name"
-                    class="input-styles" required />
-                </div>
-                <p class="text-red-500 text-sm hidden" id="card_issuing_bank_error">Please enter a valid bank name</p>
-              </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
-                <div class="flex flex-row items-center gap-x-2">
-                  <h2 class=" text-base lg:text-[20px] font-[600] leading-[130%] flex items-center">Charges & Taxes:
-                  </h2>
-                  <span class=" text-xl lg:text-[30px] text-[#B01842]">₹ 39</span>
-                </div>
-                <div class="flex flex-row items-center gap-x-2">
-                  <h2 class=" text-base lg:text-[20px] font-[600] leading-[130%] flex items-center">Total Amount:</h2>
-                  <span class=" text-xl lg:text-[30px] text-[#B01842]">₹ 39</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Step 3: Owner Details -->
-        <div id="owner-details" class="step-content hidden" data-step="3">
-          <div class="flex flex-col gap-y-[50px]">
-            <div class="flex flex-col gap-y-5 xl:gap-y-[36px]">
-              <h3 class="text-[24px] font-[600] leading-[180%] text-[#2F5D50]">Owner Details</h3>
-              <p class=" text-[15px] lg:text-[17.704px] font-[600] leading-[130%] text-[#2F5D50]">
-                *Please ensure & verify that the account no., IFSC code, and account holder's name are correct.
-                Incorrect details may lead to issues with the rent payment in which case, RedGirraffe or/and the
-                credit card/debit card issuing banks shall assume no liability.
-              </p>
-            </div>
-            <div class="flex flex-col gap-y-[25px] w-full relative">
-              <div class="flex flex-col gap-y-2 w-full">
-                <label class="input-label">Salutation <span>*</span></label>
-                <div class="relative w-full">
-                  <select name="owner_salutation" class="input-styles w-full pr-[10px]" required>
-                    <option value="">Select your title</option>
-                    <option value="Mr">Mr</option>
-                    <option value="Ms">Ms</option>
-                    <option value="Dr">Dr</option>
-                  </select>
-                </div>
-                <p class="text-red-500 text-sm hidden" id="owner_salutation_error">Please select your title</p>
-              </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Owner First Name <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="owner_first_name" placeholder="Enter owner first name" class="input-styles"
-                      required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_first_name_error">Please enter owner first name</p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Owner Middle Name</label>
-                  <div class="relative w-full">
-                    <input type="text" name="owner_middle_name" placeholder="Enter owner middle name"
+                    <input type="tel" name="alternate_number" placeholder="Enter your alternate number"
                       class="input-styles" />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_middle_name_error">Please enter a valid middle name
-                  </p>
-                </div>
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Owner Last Name <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="owner_last_name" placeholder="Enter owner last name" class="input-styles"
-                      required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_last_name_error">Please enter owner last name</p>
+                  <p class="text-red-500 text-sm hidden" id="alternate_number_error">Please enter a valid 10-digit
+                    Indian
+                    mobile number (starting with 6-9)</p>
                 </div>
               </div>
               <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Mobile Number <span>*</span></label>
+                  <label class="input-label">WhatsApp Number <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="tel" name="owner_mobile" placeholder="Enter owner 10-digit mobile number"
+                    <input type="tel" name="whatsapp_number" placeholder="Enter your WhatsApp number"
                       class="input-styles" required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_mobile_error">Please enter a valid 10-digit mobile
-                    number</p>
+                  <p class="text-red-500 text-sm hidden" id="whatsapp_number_error">Please enter a valid 10-digit Indian
+                    mobile number (starting with 6-9)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Email Address <span>*</span></label>
+                  <label class="input-label">Address Line 1 <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="email" name="owner_email" placeholder="Enter owner email address" class="input-styles"
+                    <input type="text" name="address_line_1" placeholder="Enter address line 1" class="input-styles"
                       required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_email_error">Please enter a valid email address</p>
+                  <p class="text-red-500 text-sm hidden" id="address_line_1_error">Please enter a valid address (5–200
+                    characters)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">PAN Number <span>*</span></label>
+                  <label class="input-label">Address Line 2</label>
                   <div class="relative w-full">
-                    <input type="text" name="owner_pan" placeholder="Enter owner 10-character PAN number"
-                      class="input-styles" required />
+                    <input type="text" name="address_line_2" placeholder="Enter address line 2" class="input-styles" />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="owner_pan_error">Please enter a valid 10-character PAN
-                    number</p>
+                  <p class="text-red-500 text-sm hidden" id="address_line_2_error">Please enter a valid address (max 200
+                    characters)</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">State <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="state" placeholder="Enter your state" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="state_error">Please enter a valid state name (letters only,
+                    max 100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">City <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="city" placeholder="Enter your city" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="city_error">Please enter a valid city name (letters only,
+                    max
+                    100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Pin Code <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="pin_code" placeholder="Enter your 6-digit pin code" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="pin_code_error">Please enter a valid 6-digit pin code</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Step 4: Owner Accounts -->
-        <div id="owner-accounts" class="step-content hidden" data-step="4">
-          <div class="flex flex-col gap-y-[50px]" id="owner-account-container">
-            <div class="owner-account-block flex flex-col gap-y-[25px] w-full relative">
-              <div class="flex flex-col gap-y-[36px]">
-                <h3 class=" text-[20px] lg:text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Owner Account Details
-                  #1</h3>
+        <!-- Step 2: Student Details -->
+        <div id="student-details" class="step-content hidden" data-step="2">
+          <div class="flex flex-col gap-y-[25px] xl:gap-y-[50px]">
+            <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Student Details</h3>
+            <div class="flex flex-col gap-y-[25px] w-full relative">
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-col lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
+                  <h3 class="text-base lg:text-[20px] font-[600] leading-[130%] text-[#000000]">Institute Type:</h3>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="institute_type" value="Pre-School" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Pre-School</span>
+                  </label>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="institute_type" value="School" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">School</span>
+                  </label>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="institute_type" value="College" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">College</span>
+                  </label>
+                  <label class="inline-flex items-center space-x-2 cursor-pointer">
+                    <input type="radio" name="institute_type" value="Coaching" required
+                      class="form-radio h-[22px] w-[22px] rounded-full accent-[#2F5D50] focus:ring-[#2F5D50]" />
+                    <span class="text-[#333333] leading-[133%] text-[17px] font-medium">Coaching</span>
+                  </label>
+                </div>
+                <p class="text-red-500 text-sm hidden" id="institute_type_error">Please select an institute type</p>
               </div>
+              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Student Full Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="student_full_name" placeholder="Enter student full name"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="student_full_name_error">Please enter a valid name (letters
+                    only, max 100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Roll Number / Student ID / Admission Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="student_id" placeholder="Enter student ID" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="student_id_error">Please enter a valid student ID
+                    (alphanumeric, max 50 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Date of Birth <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="student_dob" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="student_dob_error">Please enter a valid date of birth</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Applicant Relationship with Student <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="relationship" class="input-styles pr-[10px]" required>
+                      <option value="">Select relationship</option>
+                      <option value="Mother">Mother</option>
+                      <option value="Father">Father</option>
+                      <option value="Grandparent">Grandparent</option>
+                      <option value="Uncle">Uncle</option>
+                      <option value="Aunt">Aunt</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="relationship_error">Please select a valid relationship</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Class <span>*</span></label>
+                  <div class="relative w-full">
+                    <select name="class" class="input-styles pr-[10px]" required>
+                      <option value="">Select class</option>
+                      <option value="Kindergarten">Kindergarten</option>
+                      <option value="Montessori 1">Montessori 1</option>
+                      <option value="Montessori 2">Montessori 2</option>
+                      <option value="Montessori 3">Montessori 3</option>
+                      <option value="Pre-Nursery">Pre-Nursery</option>
+                      <option value="Nursery">Nursery</option>
+                      <option value="LKG">LKG</option>
+                      <option value="UKG">UKG</option>
+                      <option value="1">Class 1</option>
+                      <option value="2">Class 2</option>
+                      <option value="3">Class 3</option>
+                      <option value="4">Class 4</option>
+                      <option value="5">Class 5</option>
+                      <option value="6">Class 6</option>
+                      <option value="7">Class 7</option>
+                      <option value="8">Class 8</option>
+                      <option value="9">Class 9</option>
+                      <option value="10">Class 10</option>
+                      <option value="11">Class 11</option>
+                      <option value="12">Class 12</option>
+                      <option value="Undergraduate">Undergraduate</option>
+                      <option value="Postgraduate">Postgraduate</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="class_error">Please select a valid class</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Fees (in INR) <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="number" name="fees" placeholder="Enter fees amount" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="fees_error">Please enter a valid fee amount (greater than
+                    0)
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col w-full lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col w-full relative gap-y-2">
+                  <label class="input-label">Fees Frequency <span>*</span></label>
+                  <div class="relative">
+                    <select name="fees_frequency" class="input-styles pr-[10px]" required>
+                      <option value="">Select frequency</option>
+                      <option value="Monthly">Monthly</option>
+                      <option value="Quarterly">Quarterly</option>
+                      <option value="Semi-Annually">Semi-Annually</option>
+                      <option value="Annually">Annually</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="fees_frequency_error">Please select a valid frequency</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Fees Due Date <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="fees_due_date" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="fees_due_date_error">Please enter a valid due date</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Current Session End Date <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="date" name="session_end_date" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="session_end_date_error">Please enter a valid session end
+                    date
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col w-full lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col w-full relative gap-y-2">
+                  <label class="input-label">Card Issuing Bank Name <span>*</span></label>
+                  <div class="relative">
+                    <select name="card_bank" class="input-styles pr-[10px]" required>
+                      <option value="">Select bank</option>
+                      <option value="HDFC">HDFC</option>
+                      <option value="HSBC">HSBC</option>
+                      <option value="Payzapp">Payzapp</option>
+                      <option value="Kotak Mahindra">Kotak Mahindra</option>
+                      <option value="Yes Bank">Yes Bank</option>
+                      <option value="Standard Chartered">Standard Chartered</option>
+                      <option value="RBL">RBL</option>
+                      <option value="IndusInd">IndusInd</option>
+                      <option value="ICICI">ICICI</option>
+                    </select>
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="card_bank_error">Please select a valid bank</p>
+                </div>
+              </div>
+              <div class="flex flex-col xl:flex-row gap-x-[30px]">
+                <div class="flex flex-row items-center gap-x-2">
+                  <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Charges & Taxes:</h2>
+                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                </div>
+                <div class="flex flex-row items-center gap-x-2">
+                  <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Total Amount:</h2>
+                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 3: Institute Details -->
+        <div id="institute-details" class="step-content hidden" data-step="3">
+          <div class="flex flex-col gap-y-[50px]">
+            <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Institute Details</h3>
+            <div class="flex flex-col gap-y-[25px] w-full relative">
+              <div class="flex flex-col w-full relative lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Name <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_name" placeholder="Enter institute name" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_name_error">Please enter a valid institute name
+                    (max 100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Email <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="email" name="institute_email" placeholder="Enter institute email" class="input-styles"
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_email_error">Please enter a valid email address
+                  </p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Website</label>
+                  <div class="relative w-full">
+                    <input type="url" name="institute_website" placeholder="Enter institute website"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_website_error">Please enter a valid URL</p>
+                </div>
+              </div>
+              <div class="flex flex-col w-full relative lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Contact Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="tel" name="institute_contact" placeholder="Enter institute contact number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_contact_error">Please enter a valid 10-digit
+                    Indian
+                    mobile number (starting with 6-9)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Address Line 1 <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_address_line_1" placeholder="Enter address line 1"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_address_line_1_error">Please enter a valid
+                    address
+                    (5–200 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Address Line 2</label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_address_line_2" placeholder="Enter address line 2"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_address_line_2_error">Please enter a valid
+                    address
+                    (max 200 characters)</p>
+                </div>
+              </div>
+              <div class="flex flex-col w-full relative lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">State <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_state" placeholder="Enter state" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_state_error">Please enter a valid state name
+                    (letters only, max 100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">City <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_city" placeholder="Enter city" class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_city_error">Please enter a valid city name
+                    (letters
+                    only, max 100 characters)</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Pin Code <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_pin_code" placeholder="Enter 6-digit pin code"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_pin_code_error">Please enter a valid 6-digit pin
+                    code</p>
+                </div>
+              </div>
+              <div class="flex flex-col w-full relative lg:flex-row gap-y-[15px] gap-x-8 xl:items-center">
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute PAN Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_pan" placeholder="Enter institute PAN number"
+                      class="input-styles" required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_pan_error">Please enter a valid 10-character PAN
+                    number</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute GSTIN</label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_gstin" placeholder="Enter institute GSTIN"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_gstin_error">Please enter a valid 15-character
+                    GSTIN</p>
+                </div>
+                <div class="flex flex-col gap-y-2 w-full">
+                  <label class="input-label">Institute Registration Number</label>
+                  <div class="relative w-full">
+                    <input type="text" name="institute_reg_number" placeholder="Enter registration number"
+                      class="input-styles" />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="institute_reg_number_error">Please enter a valid
+                    registration
+                    number (alphanumeric, max 50 characters)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Step 4: Institute Account Details -->
+        <div id="account-details" class="step-content hidden" data-step="4">
+          <div class="flex flex-col gap-y-[50px]" id="account-container">
+            <div class="account-block flex flex-col gap-y-[25px] w-full relative">
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Institute Account Details</h3>
               <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Account Holder Name <span>*</span></label>
@@ -496,48 +678,40 @@
                     <input type="text" name="account_holder_name_1" placeholder="Enter account holder name"
                       class="input-styles" required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="account_holder_name_1_error">Please enter account holder
-                    name</p>
+                  <p class="text-red-500 text-sm hidden" id="account_holder_name_1_error">Please enter a valid name
+                    (letters only, max 100 characters)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">Rent Amount (INR) <span>*</span></label>
+                  <label class="input-label">Fee Amount (in INR) <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="number" name="account_rent_amount_1" placeholder="Enter rent amount (INR)"
-                      class="input-styles" required />
+                    <input type="number" name="account_fee_amount_1" placeholder="Enter fee amount" class="input-styles"
+                      required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="account_rent_amount_1_error">Please enter a valid rent
-                    amount</p>
+                  <p class="text-red-500 text-sm hidden" id="account_fee_amount_1_error">Please enter a valid fee amount
+                    (greater than 0)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Account Type <span>*</span></label>
                   <div class="relative w-full">
-                    <select name="account_type_1" class="input-styles w-full pr-[10px]" required>
+                    <select name="account_type_1" class="input-styles pr-[10px]" required>
                       <option value="">Select account type</option>
-                      <option value="active">Active</option>
-                      <option value="inactive">Inactive</option>
+                      <option value="Savings">Savings</option>
+                      <option value="Current">Current</option>
                     </select>
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="account_type_1_error">Please select account type</p>
+                  <p class="text-red-500 text-sm hidden" id="account_type_1_error">Please select a valid account type
+                  </p>
                 </div>
               </div>
               <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
-                <div class="flex flex-col gap-y-2 w-full">
-                  <label class="input-label">PAN Number <span>*</span></label>
-                  <div class="relative w-full">
-                    <input type="text" name="account_pan_1" placeholder="Enter your PAN number" class="input-styles"
-                      required />
-                  </div>
-                  <p class="text-red-500 text-sm hidden" id="account_pan_1_error">Please enter a valid 10-character
-                    PAN number</p>
-                </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Account Number <span>*</span></label>
                   <div class="relative w-full">
                     <input type="text" name="account_number_1" placeholder="Enter account number" class="input-styles"
                       required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="account_number_1_error">Please enter a valid account
-                    number</p>
+                  <p class="text-red-500 text-sm hidden" id="account_number_1_error">Please enter a valid account number
+                    (9–18 digits)</p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Re-Enter Account Number <span>*</span></label>
@@ -545,34 +719,25 @@
                     <input type="text" name="re_account_number_1" placeholder="Re-enter account number"
                       class="input-styles" required />
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="re_account_number_1_error">Account numbers do not match
-                  </p>
+                  <p class="text-red-500 text-sm hidden" id="re_account_number_1_error">Account numbers do not match</p>
                 </div>
-              </div>
-              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full items-center relative gap-x-[30px]">
-                <div class="flex w-full max-w-[433px] flex-col gap-y-2">
+                <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Bank IFSC <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="text" name="bank_ifsc_1" placeholder="Enter bank IFSC" class="input-styles w-full"
-                      required />
+                    <input type="text" name="bank_ifsc_1" placeholder="Enter bank IFSC" class="input-styles" required />
                   </div>
                   <p class="text-red-500 text-sm hidden" id="bank_ifsc_1_error">Please enter a valid 11-character IFSC
                     code</p>
-                </div>
-                <div class="flex lg:items-center items-start cursor-pointer add-account mt-[20px]">
-                  <span class="text-[22px] text-nowrap text-[#2F5D50] font-[600] underline self-start">+ Add More
-                    Account</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- Step 5: File Upload -->
+        <!-- Step 5: Documents Upload -->
         <div id="file-upload" class="step-content hidden" data-step="5">
           <div class="flex flex-col gap-y-[25px] lg:gap-y-[50px]">
             <div class="flex flex-col gap-y-[36px]">
-              <h3 class=" text-[19px] lg:text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Upload Rent
-                Agreement/Lease</h3>
+              <h3 class="text-[24px] font-[600] leading-[130%] text-[#2F5D50]">Upload Documents</h3>
             </div>
             <div class="flex flex-col gap-y-[50px]">
               <div id="file-upload-container" class="flex flex-col gap-y-[30px]">
@@ -605,8 +770,8 @@
                       </label>
                     </div>
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="file_upload_1_error">Please upload at least one valid
-                    file (PNG, PDF, JPG, DOCX, max 5MB)</p>
+                  <p class="text-red-500 text-sm hidden" id="file_upload_1_error">Please upload at least one valid file
+                    (PNG, PDF, JPG, DOCX, max 5MB, max 5 files)</p>
                 </div>
               </div>
               <div class="flex w-full justify-center items-center">
@@ -619,79 +784,60 @@
         </div>
         <!-- Step 6: Summary -->
         <div id="summary" class="step-content hidden" data-step="6">
-          <!-- Summary Header -->
-          <div class="summary-header flex flex-col  gap-y-5 lg:flex-row lg:items-center justify-between">
-            <h3 class="text-[#2F5D50] text-[18px] md:text-[24px] font-semibold">
-              Summary of Your Details
-            </h3>
+          <div class="summary-header flex flex-col gap-y-5 lg:flex-row lg:items-center justify-between">
+            <h3 class="text-[#2F5D50] text-[24px] font-semibold">Summary of Your Details</h3>
             <div class="flex items-center gap-[10px]">
-              <img src="./assests/img/edit.svg" alt="Edit Icon" />
-              <p class="text-[#2F5D50] text-[16px] md:text-[24px] font-semibold underline cursor-pointer">
-                Edit Details
-              </p>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                <path
+                  d="M13.2603 4.09997L5.05034 12.79C4.74034 13.12 4.44034 13.77 4.38034 14.22L4.01034 17.46C3.88034 18.63 4.72034 19.43 5.88034 19.23L9.10034 18.68C9.55034 18.6 10.1803 18.27 10.4903 17.93L18.7003 9.23997C20.1203 7.73997 20.7603 6.02997 18.5503 3.93997C16.3503 1.86997 14.6803 2.59997 13.2603 4.09997Z"
+                  stroke="#2F5D50" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M11.8896 5.55005C12.3196 8.31005 14.5596 10.42 17.3396 10.7" stroke="#2F5D50"
+                  stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M3 22.5H21" stroke="#2F5D50" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+              <p class="text-[#2F5D50] text-[24px] font-semibold underline cursor-pointer">Edit Details</p>
             </div>
           </div>
-          <!-- Summary Details -->
           <div class="flex flex-col gap-[30px] xl:gap-[139px]">
-            <!-- Tenant Details -->
-            <div class="mt-[50px]" id="tenant-details-summary">
-              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
-                Tenant Details
-              </h3>
-              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]">
-              </div>
+            <div class="mt-[50px]" id="payer-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">Applicant Details</h3>
+              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]"></div>
             </div>
-            <!-- Rental Details -->
-            <div id="rental-details-summary">
-              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
-                Rental Details
-              </h3>
-              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]">
-              </div>
+            <div id="student-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">Student Details</h3>
+              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]"></div>
             </div>
-            <!-- Owner Details -->
-            <div id="owner-details-summary">
-              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
-                Owner Details
-              </h3>
-              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]">
-              </div>
+            <div id="institute-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">Institute Details</h3>
+              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]"></div>
             </div>
-            <!-- Owner Accounts -->
-            <div id="owner-accounts-summary">
-              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
-                Owner Account
-              </h3>
-              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]">
-              </div>
+            <div id="account-details-summary">
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">Institute Account Details</h3>
+              <div class="details grid grid-cols-1 xl:grid-cols-2 gap-[32px] xl:gap-x-[278px] mt-[44px]"></div>
             </div>
-            <!-- Files Added -->
             <div id="files-summary">
-              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">
-                Files Added
-              </h3>
-              <div class="flex space-x-4 mt-[44px]">
-              </div>
+              <h3 class="text-[#2F5D50] text-[24px] font-extrabold">Files Added</h3>
+              <div class="flex space-x-4 mt-[44px]"></div>
             </div>
           </div>
         </div>
         <!-- Navigation Buttons -->
         <div class="form-button-container flex flex-row items-center mt-[42px] xl:mt-[94px] gap-x-[36px]">
-          <!-- Prev Button (hidden on step 1) -->
           <div class="flex text-sm 2xl:text-base prev-step items-center group" style="display: none">
             <button
               class="px-3 md:px-4 xl:px-8 py-[11px] rounded-[30px] xl:rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
               Prev Step
             </button>
           </div>
-          <!-- Next Button -->
           <div class="flex next-step items-center text-sm 2xl:text-base group">
             <button
-              class="px-3 md:px-4 xl:px-8  py-[11px] rounded-[30px] xl:rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent  group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
+              class="px-3 md:px-4 xl:px-8 py-[11px] rounded-[30px] xl:rounded-[60px] border-[2px] transition duration-300 bg-[#2F5D50] text-white border-transparent font-bold group-hover:bg-transparent group-hover:border-[#2F5D50] group-hover:text-[#2F5D50]">
               Next Step
             </button>
             <div
-              class=" rounded-[100px] lg:rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#2F5D50] text-white border-transparent group-hover:bg-transparent group-hover:border-[#2F5D50]">
+              class="rounded-[100px] lg:rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#2F5D50] text-white border-transparent group-hover:bg-transparent group-hover:border-[#2F5D50]">
               <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
                 class="text-white group-hover:text-[#2F5D50]" height="1em" width="1em"
                 xmlns="http://www.w3.org/2000/svg">
@@ -1087,7 +1233,8 @@
     </div>
   </footer>
   <!-- footer section ended here -->
-  <script src="./scripts/pay-rent.js"></script>
+
+  <script src="./scripts/pay-education-fees.js"></script>
   <script src="./scripts/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </body>
