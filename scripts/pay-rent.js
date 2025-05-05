@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
     addMoreButton: document.getElementById("addMoreButton"),
     dropzoneTemplate: document.querySelector("#dropzone-template"),
     ownerAccountContainer: document.getElementById("owner-account-container"),
+
+    // if you need to change the value of total and taxes push it on total and charges inner html or inner text
+
+    total: document.querySelector(".total"),
+    charge: document.querySelector(".charge"),
+  
     tenantDetailsSummary: document
       .getElementById("tenant-details-summary")
       .querySelector(".details"),

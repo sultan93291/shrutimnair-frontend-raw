@@ -38,39 +38,6 @@
       transform: translateZ(0) scale(1) !important;
     }
   </style>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            LightGreen: "#80FFE84D",
-          },
-          fontFamily: {
-            inter: ["Inter", "sans-serif"],
-          },
-          boxShadow: {
-            TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
-          },
-          borderRadius: {
-            lg: "1rem",
-            md: "0.75rem",
-            sm: "0.5rem",
-          },
-          screens: {
-            xs: "360px",
-            sm: "480px",
-            md: "576px",
-            lg: "768px",
-            xl: "992px",
-            "2xl": "1200px",
-            "3xl": "1500px",
-            "4xl": "1920px",
-          },
-        }
-      }
-    }
-  </script>
 </head>
 <body>
   <!-- navbar started here -->
@@ -253,29 +220,48 @@
         </p>
       </div>
     </div>
-    <div class="flex flex-col gap-y-5 lg:gap-y-[46px] ">
+    <div class="flex flex-col  gap-y-5 lg:gap-y-[46px] ">
       <div class="flex 2xl:flex-row flex-col gap-y-[30px]  2xl:gap-x-[30px] ">
-        <div id="pay-rent" style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+        <div  style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
           class=" h-auto w-auto 2xl:w-[50%] 3xl:w-[895px] cursor-pointer py-7 xl:py-[39.5px] px-5 xl:px-10 3xl:px-[70px] flex flex-col gap-y-[21px] items-center bg-[#F5F5F5] rounded-[20px] 2xl:rounded-[54px] ">
           <img data-aos="fade-up" data-aos-delay="100" src="./assests/img/for-rent.jpg"
             class=" w-[320px] sm:w-[400px] md:w-[550px] lg:w-[650px] xl:w-[800px]  3xl:w-[755px] object-cover h-[250px] sm:h-[350px] 3xl:h-[542px] rounded-[20px] 3xl:rounded-[40px] "
             alt="not found" />
-          <div class="flex flex-col items-center gap-y-[7px] ">
-            <h4 data-aos="fade-up" data-aos-delay="100"
-              class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
-              Pay Rent
-            </h4>
-            <span data-aos="fade-up" data-aos-delay="100"
-              class=" text-base xl:text-[24px]  text-[#752828] font-[600] leading-[130%] font-inter">
-              Debit Card | UPI | Fund Transfer
-            </span>
+          <div class="flex flex-col items-center gap-y-[12px] ">
+            <div class="flex flex-col items-center gap-y-[7px] ">
+              <h4 data-aos="fade-up" data-aos-delay="100"
+                class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
+                Pay Rent
+              </h4>
+              <span data-aos="fade-up" data-aos-delay="100"
+                class=" text-base xl:text-[24px]  text-[#752828] font-[600] leading-[130%] font-inter">
+                Debit Card | UPI | Fund Transfer
+              </span>
+            </div>
+            <div id="pay-rent"  data-aos="fade-up" data-aos-delay="100" class="flex items-center  group">
+              <button
+                class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828] font-[800]">
+                Start now
+              </button>
+              <button
+                class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828]">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="rotate-[-45deg]"
+                  height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+
           </div>
         </div>
-        <div id="pay-education-fees" style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+        <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
           class=" h-auto w-full 2xl:w-[50%] 3xl:w-[895px] cursor-pointer py-7 xl:py-[39.5px] px-5 xl:px-10 3xl:px-[70px] flex flex-col gap-y-[21px] items-center bg-[#F5F5F5] rounded-[20px] 2xl:rounded-[54px] ">
           <img data-aos="fade-up" data-aos-delay="100" src="./assests/img/education.jpg"
             class=" w-[320px] sm:w-[400px] md:w-[550px] lg:w-[650px] xl:w-[800px] 3xl:w-[755px] object-cover h-[250px] sm:h-[350px] 3xl:h-[542px] rounded-[20px] 3xl:rounded-[40px] "
             alt="" />
+          <div class="flex flex-col items-center gap-y-[12px] ">
           <div class="flex flex-col items-center gap-y-[7px] ">
             <h4 data-aos="fade-up" data-aos-delay="100"
               class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
@@ -285,23 +271,56 @@
               class=" text-base xl:text-[24px]  text-[#752828] font-[600] leading-[130%] font-inter">
               Debit Card | UPI | Fund Transfer
             </span>
+            </div>
+          <div id="pay-education-fees"   data-aos="fade-up" data-aos-delay="100" class="flex items-center  group">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828] font-[800]">
+              Start now
+            </button>
+            <button
+              class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828]">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" class="rotate-[-45deg]"
+                height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                </path>
+              </svg>
+            </button>
+          </div>
           </div>
         </div>
       </div>
-      <div id="society-rent" style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
+      <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
         class=" h-auto w-full cursor-pointer py-7 xl:py-[39.5px] px-5 xl:px-10 3xl:px-[70px] flex flex-col gap-y-[20px] 3xl:gap-y-[66px] items-center bg-[#F5F5F5] rounded-[20px] 2xl:rounded-[54px] ">
         <img data-aos="fade-up" data-aos-delay="100" src='./assests/img/housing&society.jpg'
           class=" w-[320px] sm:w-[400px] md:w-[550px] lg:w-[650px] xl:w-[800px] 3xl:w-[1200px] 4xl:w-[1662px] object-cover h-[250px] sm:h-[350px] xl:h-[542px] rounded-[20px] 3xl:rounded-[40px] object-cover "
           alt="" />
-        <div class="flex flex-col items-center gap-y-[7px] ">
-          <h4 data-aos="fade-up" data-aos-delay="100"
-            class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
-            Pay Society Charges
-          </h4>
-          <span data-aos="fade-up" data-aos-delay="100"
-            class=" text-base xl:text-[24px]  text-[#752828] font-[600] leading-[130%] font-inter ">
-            Debit Card | UPI | Fund Transfer
-          </span>
+        <div class="flex flex-col items-center gap-y-[12px] ">
+          <div class="flex flex-col items-center gap-y-[7px] ">
+            <h4 data-aos="fade-up" data-aos-delay="100"
+              class=" text-[26px] xl:text-[36px] text-[#752828] font-[800] leading-[130%] font-inter ">
+              Pay Society Charges
+            </h4>
+            <span data-aos="fade-up" data-aos-delay="100"
+              class=" text-base xl:text-[24px]  text-[#752828] font-[600] leading-[130%] font-inter ">
+              Debit Card | UPI | Fund Transfer
+            </span>
+          </div>
+          <div id="society-rent" data-aos="fade-up" data-aos-delay="100" class="flex items-center  group">
+            <button
+              class="px-3 md:px-4 xl:px-8 py-[5px] md:py-2 2xl:py-4 rounded-[60px] border-[2px] transition duration-300 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828] font-[800]">
+              Start now
+            </button>
+            <button
+              class="rounded-[200px] border-[2px] transition duration-300 p-[7px] md:p-[10px] 2xl:p-3 bg-[#752828] text-white border-transparent group-hover:bg-transparent group-hover:border-[#752828] group-hover:text-[#752828]">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                class="rotate-[-45deg]" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z">
+                </path>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </div>

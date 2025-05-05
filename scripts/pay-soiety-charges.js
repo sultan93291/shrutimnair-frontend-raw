@@ -457,15 +457,20 @@ document.addEventListener("DOMContentLoaded", function () {
       domElements.activePercent.classList.remove("-translate-x-1/2");
     } else {
       domElements.activePercent.style.left = `${leftPos}px`;
-      domElements.activePercent.classList.add("-translate-x-1/2");
+      // domElements.activePercent.classList.add("-translate-x-1/2");
     }
     const progressWidths = {
-      1: "2.5%",
+      1: "5.5%",
       2: "20%",
       3: "39.9%",
       4: "59.3%",
       5: "79.6%",
-      6: "100%",
+      6:
+        window.innerWidth > 1500
+          ? "98.6%"
+          : window.innerWidth < 768
+          ? "93.6%"
+          : "96.7%",
     };
     domElements.activeProgressBar.style.width =
       progressWidths[formState.currentStep] || "0%";

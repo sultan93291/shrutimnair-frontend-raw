@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     addMoreButton: document.getElementById("addMoreButton"),
     dropzoneTemplate: document.querySelector("#dropzone-template"),
     accountContainer: document.getElementById("account-container"),
+    Coaching: document.querySelectorAll(".Coaching"),
+    total: document.querySelector(".total"),
+    charge: document.querySelector(".charge"),
     payerDetailsSummary: document
       .getElementById("payer-details-summary")
       .querySelector(".details"),
@@ -43,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Validation rules for all fields
   const validationRules = {
-    // Step 1: Applicant Details
     salutation: {
       required: true,
       validate: value => ["Mr", "Ms", "Dr"].includes(value),
@@ -493,11 +495,33 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Real-time validation
+    // Real-time validation for all fields
     document.querySelectorAll("input, select, textarea").forEach(field => {
       field.addEventListener("input", () => validateField(field));
       field.addEventListener("change", () => validateField(field));
     });
+
+    // Add event listener for institute_type radio buttons to show/hide Coaching fields dynamically
+    document.querySelectorAll('input[name="institute_type"]').forEach(radio => {
+      radio.addEventListener("change", function () {
+        const selectedValue = this.value;
+        formState.formData["institute_type"] = selectedValue; // Save the value immediately
+        updateCoachingFieldsVisibility(selectedValue);
+      });
+    });
+  }
+
+  // Function to update visibility of Coaching fields
+  function updateCoachingFieldsVisibility(instituteType) {
+    if (instituteType === "Coaching") {
+      domElements.Coaching.forEach(element => {
+        element.style.display = "block";
+      });
+    } else {
+      domElements.Coaching.forEach(element => {
+        element.style.display = "none";
+      });
+    }
   }
 
   function initForm() {
@@ -536,15 +560,19 @@ document.addEventListener("DOMContentLoaded", function () {
       domElements.activePercent.classList.remove("-translate-x-1/2");
     } else {
       domElements.activePercent.style.left = `${leftPos}px`;
-      domElements.activePercent.classList.add("-translate-x-1/2");
     }
     const progressWidths = {
-      1: "2.5%",
+      1: "5.5%",
       2: "20%",
       3: "39.9%",
       4: "59.3%",
       5: "79.6%",
-      6: "100%",
+      6:
+        window.innerWidth > 1500
+          ? "98.6%"
+          : window.innerWidth < 768
+          ? "93.6%"
+          : "96.7%",
     };
     domElements.activeProgressBar.style.width =
       progressWidths[formState.currentStep] || "0%";
@@ -694,8 +722,14 @@ document.addEventListener("DOMContentLoaded", function () {
             })
           );
         } else if (field.type === "radio") {
-          if (field.checked) {
-            formState.formData[field.name] = field.value;
+          // Explicitly handle institute_type radio buttons
+          if (field.name === "institute_type") {
+            const checkedRadio = document.querySelector(
+              'input[name="institute_type"]:checked'
+            );
+            if (checkedRadio) {
+              formState.formData["institute_type"] = checkedRadio.value;
+            }
           }
         } else {
           formState.formData[field.name] = field.value;
@@ -715,24 +749,46 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
       const savedData = localStorage.getItem("formData");
       const savedStep = localStorage.getItem("currentStep");
-      if (savedData) {
+
+      // Reset to step 1 on full reload unless explicitly resuming
+      if (!savedData || !savedStep) {
+        formState.currentStep = 1;
+        formState.formData = {};
+        localStorage.removeItem("formData");
+        localStorage.removeItem("currentStep");
+      } else {
         formState.formData = JSON.parse(savedData);
+        formState.currentStep = parseInt(savedStep);
+
+        // Restore field values
         Object.keys(formState.formData).forEach(key => {
-          const field = document.querySelector(`[name="${key}"]`);
-          if (field && field.type !== "file" && field.type !== "radio") {
-            field.value = formState.formData[key];
-          } else if (field && field.type === "radio") {
-            if (field.value === formState.formData[key]) {
-              field.checked = true;
+          if (key === "institute_type") {
+            // Handle radio buttons for institute_type
+            const radios = document.querySelectorAll(`input[name="${key}"]`);
+            radios.forEach(radio => {
+              if (radio.value === formState.formData[key]) {
+                radio.checked = true;
+              }
+            });
+          } else {
+            const field = document.querySelector(`[name="${key}"]`);
+            if (field && field.type !== "file" && field.type !== "radio") {
+              field.value = formState.formData[key];
             }
           }
         });
-      }
-      if (savedStep) {
-        formState.currentStep = parseInt(savedStep);
+
+        // Update visibility of Coaching fields based on restored institute_type
+        if (formState.formData["institute_type"]) {
+          updateCoachingFieldsVisibility(formState.formData["institute_type"]);
+        }
       }
     } catch (e) {
       console.error("Error restoring form data from localStorage:", e);
+      formState.currentStep = 1;
+      formState.formData = {};
+      localStorage.removeItem("formData");
+      localStorage.removeItem("currentStep");
     }
   }
 
@@ -868,10 +924,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function submitForm() {
-    // Simulate form submission
     console.log("Form submitted with data:", formState.formData);
     alert("Form submitted successfully!");
-    // Clear form data
     localStorage.removeItem("formData");
     localStorage.removeItem("currentStep");
     formState.formData = {};

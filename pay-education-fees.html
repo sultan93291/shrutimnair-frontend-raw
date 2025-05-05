@@ -159,7 +159,7 @@
             <p class="text-[#FFF] text-[15px] font-medium leading-6">connect@redgirraffe.com</p>
           </div>
         </div>
-        
+
         <!-- Close Button -->
         <button id="close-btn" class="absolute top-3 right-3">
           <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -171,22 +171,34 @@
   </header>
   <!-- navbar ended here -->
   <!-- step form  section started here -->
-  <div class="mx-auto pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px]">
+  <form class="mx-auto pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px]">
     <div class="text-center">
       <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay Education Fees</h2>
     </div>
     <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
       class="bg-white rounded-lg h-auto w-[90%] rounded-[54px] px-[20px] xl:px-[70px] 3xl:px-[170px] pt-[198px] pb-[60px] lg:pb-[80px] xl:pb-[112px] relative">
       <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
-        class="absolute w-[95%] bg-white top-0 left-1/2 transform -translate-x-1/2 py-12 xl:py-[55.75px] px-10 xl:px-[70.23px] rounded-[30px] mt-[-80px]">
+        class="absolute w-[95%] bg-white top-0 left-1/2 transform -translate-x-1/2 py-12 xl:py-[55.75px] px-10 xl:px-[70.23px] rounded-[30px] mt-[-180px] md:mt-[-80px] ">
         <div class="flex flex-col gap-y-[13px]">
-          <div class="flex flex-col gap-y-[28px] items-center">
-            <div class="w-[100%] rounded-[14px] h-[12px] bg-gray-300 relative">
-              <div class="absolute top-0 left-0 h-full bg-[#2F5D50] progres-width rounded-[14px]"></div>
-              <span
-                class="active-percent absolute top-[-30px] text-[17.704px] font-[500] transition-all duration-300 ease-in-out">0%</span>
+          <div class="flex flex-col gap-y-[28px] items-center  ">
+            <!-- Outer Track -->
+            <div
+              class="w-full rounded-[24px] h-[30px] md:h-[40px] bg-[#2a2a32] relative shadow-inner border border-[1px] border-solid border-[#3b3b44]">
+
+              <!-- Progress Fill -->
+              <div
+                class="absolute shadow-sm left-0 mx-[10px] h-[65%] top-1/2 transform -translate-y-1/2 progres-width rounded-[14px] flex items-center justify-end bg-[length:40px_40px] bg-gradient-to-r from-green-400 via-lime-500 to-emerald-500 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22 fill-opacity=%220.15%22><path d=%22M0 4L4 0H0z%22 fill=%22%23fff%22/></svg>')] animate-[progressStripe_1s_linear_infinite]">
+
+                <!-- Circular Indicator -->
+                <div
+                  class=" h-[22px] md:h-[30px] w-[22px] md:w-[30px] bg-[#1f1f26] flex items-center justify-center rounded-full shadow-md border border-[#444]">
+                  <span
+                    class="active-percent text-[10px] md:text-[12px] text-white font-[500] transition-all duration-300 ease-in-out">0%</span>
+                </div>
+              </div>
             </div>
-            <div class="flex flex-row justify-between flex-wrap gap-5 w-full">
+            <!-- Step Labels -->
+            <div class="flex flex-wrap justify-between gap-5 w-full text-center">
               <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Applicant Details</span>
               <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Student Details</span>
               <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Institute Details</span>
@@ -197,6 +209,7 @@
           </div>
         </div>
       </div>
+
       <div class="flex flex-col">
         <!-- Step 1: Applicant Details -->
         <div id="payer-details" class="step-content" data-step="1">
@@ -256,14 +269,21 @@
                   <p class="text-red-500 text-sm hidden" id="dob_error">Please enter a valid date of birth (must be at
                     least 18 years old)</p>
                 </div>
+
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Mobile Number <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="tel" name="mobile" placeholder="Enter your 10-digit mobile number" class="input-styles"
-                      required />
+                    <input id="tenant_mobile" type="tel" name="mobile" placeholder="Enter your 10-digit mobile number"
+                      class="input-styles" required />
+
+                    <button type="button" id="getOtpBtn"
+                      class="absolute right-2 top-1/2 -translate-y-1/2 bg-[#2F5D50] text-white text-sm px-4 py-[6px] rounded-md shadow-md hover:bg-[#264c43] transition-all duration-200">
+                      Get OTP
+                    </button>
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="mobile_error">Please enter a valid 10-digit Indian mobile
-                    number (starting with 6-9)</p>
+                  <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">
+                    Please enter a valid 10-digit mobile number
+                  </p>
                 </div>
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Email Address <span>*</span></label>
@@ -527,14 +547,14 @@
                   <p class="text-red-500 text-sm hidden" id="card_bank_error">Please select a valid bank</p>
                 </div>
               </div>
-              <div class="flex flex-col xl:flex-row gap-x-[30px]">
+              <div class="flex chargeandTax flex-col xl:flex-row gap-x-[30px]">
                 <div class="flex flex-row items-center gap-x-2">
-                  <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Charges & Taxes:</h2>
-                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                  <h2 class="text-[20px]  font-[600] leading-[130%] flex items-center">Charges & Taxes:</h2>
+                  <span class="text-[30px] charge text-[#B01842]">₹ 0</span>
                 </div>
                 <div class="flex flex-row items-center gap-x-2">
                   <h2 class="text-[20px] font-[600] leading-[130%] flex items-center">Total Amount:</h2>
-                  <span class="text-[30px] text-[#B01842]">₹ 39</span>
+                  <span class="text-[30px] total text-[#B01842]">₹ 0</span>
                 </div>
               </div>
             </div>
@@ -663,6 +683,18 @@
                     number (alphanumeric, max 50 characters)</p>
                 </div>
               </div>
+              <div class="flex flex-col gap-y-2" >
+                <div class="flex flex-col  gap-y-2 w-full">
+                  <label class="input-label Coaching ">Coaching Affiliation Code <span></span></label>
+                  <div class="relative  w-full">
+                    <input type="text" name="coaching_affiliation" placeholder="Enter institute PAN number" class="input-styles Coaching "
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm  hidden" id="coaching_affiliation_error">Please enter college
+                    affiliation code
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -728,6 +760,17 @@
                   </div>
                   <p class="text-red-500 text-sm hidden" id="bank_ifsc_1_error">Please enter a valid 11-character IFSC
                     code</p>
+                </div>
+              </div>
+              <div class="flex flex-col lg:flex-row gap-y-[15px] w-full relative gap-x-[30px]">
+                <div class="flex flex-col  gap-y-2 w-full">
+                  <label class="input-label Coaching ">PAN Number <span>*</span></label>
+                  <div class="relative w-full">
+                    <input type="text" name="pan_number" placeholder="Enter your PAN number" class="input-styles Coaching "
+                      required />
+                  </div>
+                  <p class="text-red-500 text-sm hidden" id="pan_number_error">Please enter a valid 10-character PAN
+                    number</p>
                 </div>
               </div>
             </div>
@@ -855,7 +898,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- step form section ended here -->
   <!-- switch to saving section started here -->
@@ -890,8 +933,25 @@
       </div>
     </div>
   </section>
+  <div id="otpModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-xl space-y-4">
+      <h2 class="text-lg font-semibold text-gray-800">OTP sent to <span id="modalMobile"
+          class="text-[#2F5D50]">2345678989</span></h2>
+      <p class="text-gray-600 text-sm">
+        OTP to validate your Mobile number for Rent Payment via RedGirraffe is sent.
+      </p>
+      <input type="text" maxlength="6" placeholder="Enter the received OTP"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none " />
+      <div class="flex justify-end gap-2 pt-2">
+        <button id="cancelOtpModal"
+          class="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition">Cancel</button>
+        <button id="verifyOtpBtn" class="px-4 py-2 bg-[#2F5D50] text-white rounded-md hover:bg-[#264c43] transition">
+          Verify
+        </button>
+      </div>
+    </div>
+  </div>
   <!-- switch to saving section ended here -->
-
   <!-- footer section started here -->
   <footer>
     <!-- {/* This is the first div */} -->
@@ -1232,6 +1292,8 @@
       </div>
     </div>
   </footer>
+
+
   <!-- footer section ended here -->
 
   <script src="./scripts/pay-education-fees.js"></script>
