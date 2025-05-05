@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalMobile = document.getElementById("modalMobile");
   const cancelOtpModal = document.getElementById("cancelOtpModal");
   const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+  const chargeAndTax = document.querySelectorAll(".chargeandTax");
 
   const menuBtn = document.getElementById("menu-btn");
   const sidebar = document.getElementById("sidebar");
@@ -69,16 +70,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Redirect button events
   redirectBtn?.addEventListener("click", e => {
     e.preventDefault();
     window.location.href = "../select-option-credit.html";
+    localStorage.setItem("PaymentMode", "credit");
   });
 
   redirectBtnTwo?.addEventListener("click", e => {
     e.preventDefault();
     window.location.href = "../select-option-debit.html";
+    localStorage.setItem("PaymentMode", "debit"); // also corrected this line
   });
+
+  const paymentMode = localStorage.getItem("PaymentMode");
+
+  if (paymentMode === "credit") {
+    chargeAndTax.forEach(el => {
+      el.classList.remove("hidden");
+      el.classList.add("block");
+    });
+  } else {
+    chargeAndTax.forEach(el => {
+      el.classList.remove("block");
+      el.classList.add("hidden");
+    });
+  }
 
   // AOS Init
   AOS.init({
@@ -87,45 +103,44 @@ document.addEventListener("DOMContentLoaded", function () {
     once: true,
     offset: 100,
   });
+});
 
-  // Tailwind config
-  tailwind.config = {
-    theme: {
-      extend: {
-        keyframes: {
-          progressStripe: {
-            "0%": { backgroundPosition: "0 0" },
-            "100%": { backgroundPosition: "40px 0" },
-          },
-        },
-        animation: {
-          progressStripe: "progressStripe 1s linear infinite",
-        },
-        colors: {
-          LightGreen: "#80FFE84D",
-        },
-        fontFamily: {
-          inter: ["Inter", "sans-serif"],
-        },
-        boxShadow: {
-          TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
-        },
-        borderRadius: {
-          lg: "1rem",
-          md: "0.75rem",
-          sm: "0.5rem",
-        },
-        screens: {
-          xs: "360px",
-          sm: "480px",
-          md: "576px",
-          lg: "768px",
-          xl: "992px",
-          "2xl": "1200px",
-          "3xl": "1500px",
-          "4xl": "1920px",
+tailwind.config = {
+  theme: {
+    extend: {
+      keyframes: {
+        progressStripe: {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "40px 0" },
         },
       },
+      animation: {
+        progressStripe: "progressStripe 1s linear infinite",
+      },
+      colors: {
+        LightGreen: "#80FFE84D",
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
+      boxShadow: {
+        TabShadow: "0px 3.456px 9.217px 0px rgba(0,0,0,0.12)",
+      },
+      borderRadius: {
+        lg: "1rem",
+        md: "0.75rem",
+        sm: "0.5rem",
+      },
+      screens: {
+        xs: "360px",
+        sm: "480px",
+        md: "576px",
+        lg: "768px",
+        xl: "992px",
+        "2xl": "1200px",
+        "3xl": "1500px",
+        "4xl": "1920px",
+      },
     },
-  };
-});
+  },
+};
