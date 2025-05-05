@@ -74,27 +74,22 @@
       </div>
 
       <!-- Hamburger Button (Mobile) -->
+
       <button id="menu-btn"
         class="bg-primary 2xl:hidden text-white w-10 h-9 lg:w-11 lg:h-10 rounded grid place-items-center">
         <svg class="hb" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" stroke="#eee" stroke-width=".6"
           fill="rgba(0,0,0,0)" stroke-linecap="round" style="cursor: pointer">
-          <path d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
-            <animate dur="0.2s" attributeName="d"
+          <path id="hb-path" d="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7">
+            <animate id="start" dur="0.2s" attributeName="d"
               values="M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7;M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7" fill="freeze"
-              begin="start.begin" />
-            <animate dur="0.2s" attributeName="d"
+              begin="indefinite" />
+            <animate id="reverse" dur="0.2s" attributeName="d"
               values="M3,3L5,5L7,3M5,5L5,5M3,7L5,5L7,7;M2,3L5,3L8,3M2,5L8,5M2,7L5,7L8,7" fill="freeze"
-              begin="reverse.begin" />
+              begin="indefinite" />
           </path>
-          <rect width="10" height="10" stroke="none">
-            <animate dur="2s" id="reverse" attributeName="width" begin="click" />
-          </rect>
-          <rect width="10" height="10" stroke="none">
-            <animate dur="0.001s" id="start" attributeName="width" values="10;0" fill="freeze" begin="click" />
-            <animate dur="0.001s" attributeName="width" values="0;10" fill="freeze" begin="reverse.begin" />
-          </rect>
         </svg>
       </button>
+
 
       <!-- Blur Overlay -->
       <div id="overlay"
@@ -104,7 +99,7 @@
       <!-- Mobile Sidebar -->
       <div id="sidebar"
         class="fixed top-0 left-0 bg-[#2d2d2d] py-10 px-5 lg:px-7 shadow-lg overflow-y-auto max-h-screen min-h-screen w-[250px] lg:w-[270px] z-[999] 2xl:hidden transform -translate-x-full transition-transform duration-500">
-        <a href="/" class="flex justify-center mb-12">
+        <a href="/" class="flex  justify-center mb-12">
           <figure class="w-[150px]">
             <img class="w-full h-full object-cover" src="./assests/img/logo.svg" alt="Logo" />
           </figure>
@@ -127,8 +122,6 @@
               class="text-[#FFF] text-base font-medium leading-5 hover:text-gray-300 transition-all duration-300">Log
               In</a></li>
         </ul>
-
-
         <!-- Mobile Social Contacts -->
         <div class="space-y-4 mt-10">
           <div class="flex gap-2 items-center">
@@ -171,28 +164,41 @@
   </header>
   <!-- navbar ended here -->
   <!-- step form  section started here -->
-  <div class="mx-auto  pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px] ">
+  <form class="mx-auto  pt-[205px] 3xl:pb-[119px] flex items-center flex-col gap-y-[155px] 3xl:gap-y-[205px] ">
     <div class="text-center">
       <h2 class="text-[36px] text-[#752828] leading-[130%] font-[800]">Pay My Rent</h2>
     </div>
     <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
       class="bg-white rounded-lg h-auto w-[90%] rounded-[54px] px-[20px] xl:px-[70px] 3xl:px-[170px] pt-[198px] pb-[60px] lg:pb-[80px] xl:pb-[112px] relative">
       <div style="box-shadow: 0px 6px 16px 0px rgba(0, 0, 0, 0.12)"
-        class="absolute w-[95%] bg-white top-0 left-1/2 transform -translate-x-1/2 py-12 xl:py-[55.75px] px-10 xl:px-[70.23px] rounded-[30px] mt-[-80px]">
+        class="absolute w-[95%] bg-white top-0 left-1/2 transform -translate-x-1/2 py-12  xl:py-[55.75px] px-10 xl:px-[70.23px] rounded-[30px] mt-[-120px] md:mt-[-80px] ">
         <div class="flex flex-col gap-y-[13px]">
-          <div class="flex flex-col gap-y-[28px] items-center">
-            <div class="w-[100%] rounded-[14px] h-[12px] bg-gray-300 relative">
-              <div class="absolute top-0 left-0 h-full bg-[#2F5D50] progres-width rounded-[14px]"></div>
-              <span
-                class="active-percent absolute top-[-30px] text-[17.704px] font-[500] transition-all duration-300 ease-in-out">0%</span>
+          <div class="flex flex-col gap-y-[28px] items-center  ">
+            <!-- Outer Track -->
+            <div
+              class="w-full rounded-[24px] h-[30px] md:h-[40px] bg-[#2a2a32] relative shadow-inner border border-[1px] border-solid border-[#3b3b44]">
+
+              <!-- Progress Fill -->
+              <div
+                class="absolute shadow-sm left-0 mx-[10px] h-[65%] top-1/2 transform -translate-y-1/2 progres-width rounded-[14px] flex items-center justify-end bg-[length:40px_40px] bg-gradient-to-r from-green-400 via-lime-500 to-emerald-500 bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22 fill-opacity=%220.15%22><path d=%22M0 4L4 0H0z%22 fill=%22%23fff%22/></svg>')] animate-[progressStripe_1s_linear_infinite]">
+
+                <!-- Circular Indicator -->
+                <div
+                  class=" h-[22px] md:h-[30px] w-[22px] md:w-[30px] bg-[#1f1f26] flex items-center justify-center rounded-full shadow-md border border-[#444]">
+                  <span
+                    class="active-percent text-[10px] md:text-[12px] text-white font-[500] transition-all duration-300 ease-in-out">0%</span>
+                </div>
+              </div>
             </div>
-            <div class="flex flex-row justify-between flex-wrap gap-5 w-full">
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Tenant Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Rental Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Owner Details</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Owner Accounts</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">File Upload</span>
-              <span class="step-label font-[500] text-[14px] xl:text-[17.704px]">Summary</span>
+
+            <!-- Step Labels -->
+            <div class="flex flex-wrap justify-between gap-5 w-full text-center">
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">Tenant Details</span>
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">Rental Details</span>
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">Owner Details</span>
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">Owner Accounts</span>
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">File Upload</span>
+              <span class="step-label font-medium text-sm xl:text-[17.704px]">Summary</span>
             </div>
           </div>
         </div>
@@ -272,12 +278,19 @@
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Mobile Number <span>*</span></label>
                   <div class="relative w-full">
-                    <input type="tel" name="tenant_mobile" placeholder="Enter your 10-digit mobile number"
-                      class="input-styles" required />
+                    <input type="tel" name="tenant_mobile" id="tenant_mobile"
+                      placeholder="Enter your 10-digit mobile number" class="input-styles pr-[100px]" required />
+                    <button type="button" id="getOtpBtn"
+                      class="absolute right-2 top-1/2 -translate-y-1/2 bg-[#2F5D50] text-white text-sm px-4 py-[6px] rounded-md shadow-md hover:bg-[#264c43] transition-all duration-200">
+                      Get OTP
+                    </button>
                   </div>
-                  <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">Please enter a valid 10-digit mobile
-                    number</p>
+                  <p class="text-red-500 text-sm hidden" id="tenant_mobile_error">
+                    Please enter a valid 10-digit mobile number
+                  </p>
                 </div>
+
+
                 <div class="flex flex-col gap-y-2 w-full">
                   <label class="input-label">Email Address <span>*</span></label>
                   <div class="relative w-full">
@@ -709,7 +722,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- step form section ended here -->
   <!-- switch to saving section started here -->
@@ -1085,6 +1098,26 @@
         </p>
       </div>
     </div>
+    <!-- OTP Modal -->
+    <div id="otpModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+      <div class="bg-white rounded-xl p-6 w-[90%] max-w-md shadow-xl space-y-4">
+        <h2 class="text-lg font-semibold text-gray-800">OTP sent to <span id="modalMobile"
+            class="text-[#2F5D50]">2345678989</span></h2>
+        <p class="text-gray-600 text-sm">
+          OTP to validate your Mobile number for Rent Payment via RedGirraffe is sent.
+        </p>
+        <input type="text" maxlength="6" placeholder="Enter the received OTP"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none " />
+        <div class="flex justify-end gap-2 pt-2">
+          <button id="cancelOtpModal"
+            class="px-4 py-2 bg-gray-300 rounded-md hover:bg-gray-400 transition">Cancel</button>
+          <button id="verifyOtpBtn" class="px-4 py-2 bg-[#2F5D50] text-white rounded-md hover:bg-[#264c43] transition">
+            Verify
+          </button>
+        </div>
+      </div>
+    </div>
+
   </footer>
   <!-- footer section ended here -->
   <script src="./scripts/pay-rent.js"></script>
